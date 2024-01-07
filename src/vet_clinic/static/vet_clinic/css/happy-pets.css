@@ -1,0 +1,136 @@
+.happy-pets {
+    padding: 0 24px;
+}
+
+.happy-pets_item {
+    padding: 60px 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 50px;
+}
+
+.happy-pets_item-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+}
+
+.happy-pets_item-text h2 {
+    color: var(--title-text-color);
+    font-size: 28px;
+    line-height: 36.4px;
+}
+
+.happy-pets_item-text h3 {
+    color: var(--subtitle-text-color);
+    font-family: "Poppins Medium";
+    font-weight: normal;
+    font-size: 19px;
+    line-height: 28.5px;
+}
+
+.happy-pets_item-text-normal {
+    color: var(--paragraph-text-color);
+    font-size: 17px;
+    line-height: 25.5px;
+}
+
+.happy-pets_item-text-italic {
+    color: var(--subtitle-text-color);
+    font-family: "Poppins Medium";
+    font-style: italic;
+    font-size: 14px;
+    line-height: 18.6662px;
+}
+
+.happy-pets_item-text-italic span {
+    color: var(--bright-text-color);
+}
+
+.happy-pets_item-text-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: var(--subtitle-text-color);
+    font-size: 17px;
+    line-height: 25.5px;
+    list-style-type: none;
+    padding: 0;
+}
+
+.happy-pets_item-text-list li {
+    padding-left: 30px;
+    background-image: url("../img/icon-for-li.svg");
+    background-size: 20px 24px;
+    background-position: left top;
+    background-repeat: no-repeat;
+}
+
+.happy-pets_item-text-button {
+    display: inline-block;
+    width: 170.266px;
+    padding: 16px 28px;
+    text-decoration: none;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border-radius: 25px;
+    border: none;
+    font-family: "Poppins Bold";
+    font-size: 15.4px;
+    line-height: 18.48px;
+}
+
+.happy-pets_item-text-button:hover {
+    background-color: var(--button-hover-color);
+}
+
+.happy-pets_item-text-button:active {
+    background-color: var(--button-background-color);
+}
+
+/* MEDIA */
+
+@media (min-width: 768px) {
+
+    .happy-pets {
+        padding: 0 32px;
+    }
+
+    .happy-pets_item {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+    .happy-pets_item-text h2 {
+        font-size: 38px;
+        line-height: 49.4px;
+    }
+
+    .happy-pets_item-img:first-of-type {
+        padding-right: 40px;
+    }
+
+    .happy-pets_item-img:last-of-type {
+        padding: 0 25px;
+    }
+}
+
+@media (min-width: 992px) {
+
+    .happy-pets {
+        padding: 0 40px;
+    }
+
+    .happy-pets_item-text h2 {
+        font-size: 42px;
+        line-height: 54.6px;
+    }
+}
+
+@media (min-width: 1280px) {
+
+    .happy-pets {
+        padding: 0 15px;
+    }
+}
