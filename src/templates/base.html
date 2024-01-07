@@ -13,16 +13,12 @@
 <body>
 <div class="container-background">
     {% block content %}
-    <header class="header">
-        <div class="header__background">
-            <div class="header__wrapper">
+
                 {% block header_content %}
                 {% endblock header_content %}
                 {% block header_bottom %}
                 {% endblock header_bottom %}
-            </div>
-        </div>
-    </header>
+
     {% endblock content %}
 </div>
 </body>
