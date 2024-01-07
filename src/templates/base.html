@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Care Service</title>
+    <link rel="shortcut icon" href="img/icon-website.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <script type="module" src="./js/index.js"></script>
+</head>
+<body>
+<div class="container-background">
+    {% block content %}
+    <header class="header">
+        <div class="header__background">
+            <div class="header__wrapper">
+                {% block header_content %}
+                {% endblock header_content %}
+                {% block header_bottom %}
+                {% endblock header_bottom %}
+            </div>
+        </div>
+    </header>
+    {% endblock content %}
+</div>
+</body>
+</html>
