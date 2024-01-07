@@ -1,0 +1,60 @@
+@import url(fonts.css);
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --background-color: rgb(255, 246, 237);
+    --background-saturated-color: rgb(251, 241, 231);
+    --background-light-color: rgb(255, 255, 255);
+    --title-text-color: rgb(4, 15, 115);
+    --subtitle-text-color: rgb(66, 72, 117);
+    --link-text-color: rgb(45, 53, 121);
+    --paragraph-text-color: rgb(106, 110, 143);
+    --bright-text-color: rgb(255, 91, 46);
+    --button-background-color: rgb(255, 91, 46);
+    --button-background-light-color: rgb(251, 237, 223);
+    --button-text-color: rgb(255, 255, 255);
+    --button-text-dark-color: rgb(4, 15, 115);
+    --button-hover-color: rgb(66, 72, 117);
+    --header-navigation-link-color: rgb(106, 110, 143);
+    --header-icons-hover-color: rgb(255,0,0);
+    --contacts-accordion-content-color: rgb(106, 110, 143);
+    --button-background-color-hover:rgb(247, 229, 213);
+    --button-icon-color:rgb(209, 188, 161);
+    --wrong-input-color: rgba(245, 0, 0, 0.877);
+    --correct-input-collor: rgb(5, 168, 5);
+    --footer-boarder-color: rgb(4, 15, 115);
+    --map-icon-background-color: rgb(255, 91, 46);
+    --clock-icon-background-color: rgb(144, 204, 255);
+    --telephone-icon-background-color: rgb(250, 191, 62);
+    scroll-behavior: smooth;
+    font-family: "Poppins Regular";
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+h1,
+h2 {
+    font-family: "Rubik Bold";
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+
+}
+.container-background {
+    background-color: var(--background-color);
+}
+
+.fixed {
+    position: fixed;
+    width: 100%;
+}
