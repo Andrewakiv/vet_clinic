@@ -24,3 +24,7 @@ def responses(request):
 
 def contacts(request):
     return HttpResponse('contacts')
+
+
+def blog(request):
+    return HttpResponse('blog')

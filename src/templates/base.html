@@ -140,17 +140,18 @@
     {% block content %}
     {% endblock %}
 
-
+    {% block footer %}
     <div class="footer">
         <nav class="footer__nav">
             <ul class="footer__nav-list">
                 <li class="menu-item">
-                    <img class="footer__logo-image" src="img/logofooter.svg" alt="Footer Logo">
+                    <img class="footer__logo-image" src="{% static 'vet_clinic/img/logofooter.svg' %}" alt="Footer Logo">
                     <p class="footer-text">We care about every pet of our clients and provide all kinds of pet care
                         services in New York.</p>
                     <div class="footer__social-icons">
                         <a href="https://www.facebook.com/" class="footer__social-link">
-                            <svg class="icon si656a2bb0f0e7db000ea4343ac89d89cf5ce74c53921bbea4f9aaf0931701456822335 svgIcon_1J7 filled_Qbi"
+<!--                            <img class="footer__logo-image" src="{% static 'vet_clinic/img/facebook.svg' %}" alt="Footer Logo">-->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon si656a2bb0f0e7db000ea4343ac89d89cf5ce74c53921bbea4f9aaf0931701456822335 svgIcon_1J7 filled_Qbi"
                                  viewBox="0 0 32 32" style="border-radius:50%; ">
                                 <path class="outer_bDW"
                                       d="M32 0H0V32H32V0ZM16.9133 25H13.6383V16.0044H12V13.1936H13.6383V10.9374H13.6443C13.7014 8.9864 14.3604 7.129 17.5674 7.0126V7H19.6171V9.8108H17.9447C17.3379 9.8108 16.9133 10.5002 16.9133 11.1568V13.1936H19.8561L19.3702 16.0044H16.9133V25Z"
@@ -221,28 +222,25 @@
                 <li class="menu-item">
                     <h3 class="menu-item-title">Navigation</h3>
                     <div class="menu-item-link-countainer">
-                        <a class="menu-item-link" href="#">About us</a>
-                        <a class="menu-item-link" href="#">Features</a>
-                        <a class="menu-item-link" href="#">Testimonials</a>
-                        <a class="menu-item-link" href="#">Our team</a>
+                        {% for f in footer_nav %}
+                        <a class="menu-item-link" href="{% url f.url_name %}">{{f.title}}</a>
+                        {% endfor %}
                     </div>
                 </li>
                 <li class="menu-item">
                     <h3 class="menu-item-title">Qiuck Links</h3>
                     <div class="menu-item-link-countainer">
-                        <a class="menu-item-link" href="services.html">Services</a>
-                        <a class="menu-item-link" href="faq.html">FAQ</a>
-                        <a class="menu-item-link" href="#">Blog</a>
-                        <a class="menu-item-link" href="#">Help</a>
+                        {% for f in footer_links %}
+                        <a class="menu-item-link" href="{% url f.url_name %}">{{f.title}}</a>
+                        {% endfor %}
                     </div>
                 </li>
                 <li class="menu-item">
                     <h3 class="menu-item-title">Support</h3>
                     <div class="menu-item-link-countainer">
-                        <a class="menu-item-link" href="#">Join Our Team</a>
-                        <a class="menu-item-link" href="#">Vet Consultations</a>
-                        <a class="menu-item-link" href="#">Extra Services</a>
-                        <a class="menu-item-link" href="#">Contacts</a>
+                        {% for f in footer_support %}
+                        <a class="menu-item-link" href="{% url f.url_name %}">{{f.title}}</a>
+                        {% endfor %}
                     </div>
                 </li>
                 <li class="menu-item">
@@ -261,6 +259,7 @@
             </ul>
         </nav>
     </div>
+    {% endblock footer %}
 </div>
 </body>
 </html>
