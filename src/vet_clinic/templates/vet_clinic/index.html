@@ -1,15 +1,73 @@
 {% extends 'base.html' %}
+{% load static %}
+
 
 {% block content %}
-<header class="header">
-    <div class="header__background">
-        <div class="header__wrapper">
-            {% include 'includes/header_content.html' %}
-            {% include 'includes/header_bottom.html' %}
+<section class="services-carousel">
+    <h2 class="services-carousel__title">Our Services</h2>
+    <p class="services-carousel__subtitle">
+        We offer different kinds of pet care services.
+    </p>
+    <div class="services-carousel__main-blok">
+        <div class="services-carousel__items">
+            <div>
+                <div class="services-carousel__item">
+                    <div class="services-carousel__image">
+                        <img src="{% static 'vet_clinic/img/girl-with-dog-blue.png' %}" alt="A girl with a Jack Russell Terrier"
+                             class="services-carousel__img" width="360"/>
+                    </div>
+                    <div class="services-carousel__content">
+                        <p class="services-carousel__title-item">Dog Walking</p>
+                        <p class="services-carousel__text-item"> We can take your dog for a walk on schedule and bring
+                            it back home. </p>
+                        <span class="services-carousel__price-item">from $10/hour</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="services-carousel__item">
+                    <div class="services-carousel__image">
+                        <img src="img/parrot.png" alt="A colorful parrot"
+                             class="services-carousel__img" width="360"/>
+                    </div>
+                    <div class="services-carousel__content">
+                        <p class="services-carousel__title-item">Vet Consultations</p>
+                        <p class="services-carousel__text-item"> If you have any questions or issues with your pet,
+                            we will be happy to advise you. </p>
+                        <span class="services-carousel__price-item">from $25/session</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="services-carousel__item">
+                    <div class="services-carousel__image">
+                        <img src="img/girl-with-cat.png" alt="A girl with a cat"
+                             class="services-carousel__img" width="360"/>
+                    </div>
+                    <div class="services-carousel__content">
+                        <p class="services-carousel__title-item">Pet Sitting</p>
+                        <p class="services-carousel__text-item"> We will sit with your pet and even stay overnight if
+                            needed. </p>
+                        <span class="services-carousel__price-item">from $15/hour</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="services-carousel__item">
+                    <div class="services-carousel__image">
+                        <img src="img/girl-with-dog-pink.png" alt="A girl with a pink Siberian Husky dog"
+                             class="services-carousel__img" width="360"/>
+                    </div>
+                    <div class="services-carousel__content">
+                        <p class="services-carousel__title-item">Dog Training</p>
+                        <p class="services-carousel__text-item"> Professional dog handlers can
+                            train dogs of any breed and consult their owners. </p>
+                        <span class="services-carousel__price-item">from $35/hour</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</header>
-{% include 'includes/pets_carousel.html' %}
+</section>
 {% include 'includes/happy_pets.html' %}
-{% include 'includes/meet_our_team.html' %}
 {% endblock %}
