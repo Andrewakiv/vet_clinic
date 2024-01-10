@@ -1,9 +1,12 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
+from .models import Service
+
 
 def home(request):
-    return render(request, 'vet_clinic/index.html')
+    services_list = Service.objects.all()
+    return render(request, 'vet_clinic/index.html', {'services_list': services_list})
 
 
 def about(request):
@@ -11,7 +14,8 @@ def about(request):
 
 
 def services(request):
-    return HttpResponse('services')
+    services_list = Service.objects.all()
+    return render(request, 'vet_clinic/services.html', {'services_list': services_list})
 
 
 def faq(request):

@@ -3,6 +3,41 @@
 
 
 {% block content %}
+<header class="header">
+    <div class="header__background">
+        <div class="header__wrapper">
+            <div class="header__bottom">
+                <div class="header__text">
+                    <h1 class="header__title">Your Pet Deserves the Best Care</h1>
+                    <p class="header__paragraph">We offer professional pet care services in New York.</p>
+                </div>
+                <div class="header__buttons">
+                    <a class="header__buttons-services" href="#">Order Services
+                        <svg class="icon--buttons" xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink"
+                             version="1.1"
+                             x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100"
+                             xml:space="preserve">
+        <path d="M59.999,55.001v15l20-20c0,0-10-10-20-20v15h-40v10H59.999z" fill="currentColor"></path>
+      </svg>
+                    </a>
+                    <a class="header__buttons-call-us" href="contacts.html">
+                        <svg class="icon--buttons" xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink"
+                             version="1.1" x="0px" y="0px"
+                             viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;max-width:100%"
+                             xml:space="preserve">
+        <path
+                d="M20,15.01c-1.172,0-2.32-0.183-3.408-0.542c-0.531-0.183-1.134-0.042-1.483,0.314l-2.157,1.629  c-2.475-1.321-4.059-2.904-5.362-5.361l1.585-2.106c0.399-0.399,0.542-0.983,0.371-1.53C9.184,6.319,9,5.17,9,4  c0-0.827-0.673-1.5-1.5-1.5H4C3.173,2.5,2.5,3.173,2.5,4c0,9.649,7.851,17.5,17.5,17.5c0.827,0,1.5-0.673,1.5-1.5v-3.49  C21.5,15.683,20.827,15.01,20,15.01z"
+                fill="currentColor"></path>
+      </svg>
+                        Call Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 <section class="services-carousel">
     <h2 class="services-carousel__title">Our Services</h2>
     <p class="services-carousel__subtitle">
@@ -10,65 +45,26 @@
     </p>
     <div class="services-carousel__main-blok">
         <div class="services-carousel__items">
+            {% for service in services_list %}
             <div>
                 <div class="services-carousel__item">
                     <div class="services-carousel__image">
-                        <img src="{% static 'vet_clinic/img/girl-with-dog-blue.png' %}"
+                        {% if service.photo %}
+                        <img src="{{ service.photo.url }}"
                              alt="A girl with a Jack Russell Terrier"
                              class="services-carousel__img" width="360"/>
+                        {% endif %}
                     </div>
                     <div class="services-carousel__content">
-                        <p class="services-carousel__title-item">Dog Walking</p>
-                        <p class="services-carousel__text-item"> We can take your dog for a walk on schedule and bring
-                            it back home. </p>
-                        <span class="services-carousel__price-item">from $10/hour</span>
+                        <p class="services-carousel__title-item">{{service.title}}</p>
+                        <p class="services-carousel__text-item"> {{service.description}}</p>
+                        <span class="services-carousel__price-item">from ${{service.price}}/hour</span>
                     </div>
                 </div>
             </div>
-            <div>
-                <div class="services-carousel__item">
-                    <div class="services-carousel__image">
-                        <img src="img/parrot.png" alt="A colorful parrot"
-                             class="services-carousel__img" width="360"/>
-                    </div>
-                    <div class="services-carousel__content">
-                        <p class="services-carousel__title-item">Vet Consultations</p>
-                        <p class="services-carousel__text-item"> If you have any questions or issues with your pet,
-                            we will be happy to advise you. </p>
-                        <span class="services-carousel__price-item">from $25/session</span>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="services-carousel__item">
-                    <div class="services-carousel__image">
-                        <img src="img/girl-with-cat.png" alt="A girl with a cat"
-                             class="services-carousel__img" width="360"/>
-                    </div>
-                    <div class="services-carousel__content">
-                        <p class="services-carousel__title-item">Pet Sitting</p>
-                        <p class="services-carousel__text-item"> We will sit with your pet and even stay overnight if
-                            needed. </p>
-                        <span class="services-carousel__price-item">from $15/hour</span>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="services-carousel__item">
-                    <div class="services-carousel__image">
-                        <img src="img/girl-with-dog-pink.png" alt="A girl with a pink Siberian Husky dog"
-                             class="services-carousel__img" width="360"/>
-                    </div>
-                    <div class="services-carousel__content">
-                        <p class="services-carousel__title-item">Dog Training</p>
-                        <p class="services-carousel__text-item"> Professional dog handlers can
-                            train dogs of any breed and consult their owners. </p>
-                        <span class="services-carousel__price-item">from $35/hour</span>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
-{% include 'includes/happy_pets.html' %}
+{% include 'includes/happy_pets_index.html' %}
 {% endblock %}

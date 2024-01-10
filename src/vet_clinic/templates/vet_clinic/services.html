@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="services-carousel">
+    <h2 class="services-carousel__title">Our Services</h2>
+    <p class="services-carousel__subtitle">
+        We offer different kinds of pet care services.
+    </p>
+    <div class="services-carousel__main-blok">
+        <div class="services-carousel__items">
+            {% for service in services_list %}
+            <div>
+                <div class="services-carousel__item">
+                    <div class="services-carousel__image">
+                        {% if service.photo %}
+                        <img src="{{ service.photo.url }}"
+                             alt="A girl with a Jack Russell Terrier"
+                             class="services-carousel__img" width="360"/>
+                        {% else %}
+                        <img src="{% static 'vet_clinic/img/logofooter.svg' %}">
+                        {% endif %}
+                    </div>
+                    <div class="services-carousel__content">
+                        <p class="services-carousel__title-item">{{service.title}}</p>
+                        <p class="services-carousel__text-item"> {{service.description}}</p>
+                        <span class="services-carousel__price-item">from ${{service.price}}/hour</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% include 'includes/happy_pets_services.html' %}
+{% endblock %}
