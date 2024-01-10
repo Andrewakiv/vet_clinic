@@ -28,6 +28,12 @@
     width: 185px;
 }
 
+.footer__social-image {
+    display: block;
+    width: 33px;
+    height: 33px;
+}
+
 .menu-item {
     display: flex;
     flex-direction: column;
