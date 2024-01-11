@@ -17,7 +17,7 @@
                              alt="A girl with a Jack Russell Terrier"
                              class="services-carousel__img" width="360"/>
                         {% else %}
-                        <img src="{% static 'vet_clinic/img/logofooter.svg' %}">
+                        <img src="{{ default_service }}" class="services-carousel__img" width="360"/>
                         {% endif %}
                     </div>
                     <div class="services-carousel__content">

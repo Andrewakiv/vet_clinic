@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -15,7 +16,11 @@ def about(request):
 
 def services(request):
     services_list = Service.objects.all()
-    return render(request, 'vet_clinic/services.html', {'services_list': services_list})
+    data = {
+        'services_list': services_list,
+        'default_service': settings.DEFAULT_USER_IMAGE
+    }
+    return render(request, 'vet_clinic/services.html', context=data)
 
 
 def faq(request):

@@ -131,4 +131,4 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# DEFAULT_USER_IMAGE = MEDIA_URL+'accounts/default.jpg'
+DEFAULT_USER_IMAGE = MEDIA_URL+'services/default_service.png'
