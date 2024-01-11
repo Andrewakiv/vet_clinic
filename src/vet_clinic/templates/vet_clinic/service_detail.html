@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-background">
+    <header class="header">
+        <div class="header__wrapper">
+            <div data-include="header__content.partial.html"></div>
+        </div>
+    </header>
+    <main>
+        <section class="vet-consultations">
+            <div class="vet-consultations__title container">
+                <h1>{{service.title}}</h1>
+                <p>Order our services now! <a href="#">+ 1 (234) 567 89 00</a></p>
+            </div>
+        </section>
+        <section class="consultations">
+            <div class="consultations__description container">
+                <div class="consultations__description-left-item">
+                    <h2>{{service.title}}</h2>
+                    <h3>Schedule your consultation at Best.Pet.</h3>
+                    <p>{{service.description}}</p>
+                </div>
+                <div class="consultations__description-right-item">
+                    {% if service.photo %}
+                    <p><img src="{{ service.photo.url }}"></p>
+                    {% else %}
+                    <p><img src="{{ default_service }}" class="services-carousel__img"></p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="consultations__text container">
+                <p>{{ service.content|linebreaksbr }}</p>
+            </div>
+        </section>
+    </main>
+</div>
+<script src="js/services.single-service.js"></script>
+{% endblock %}

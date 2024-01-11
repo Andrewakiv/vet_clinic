@@ -21,7 +21,7 @@
                         {% endif %}
                     </div>
                     <div class="services-carousel__content">
-                        <p class="services-carousel__title-item">{{service.title}}</p>
+                        <p class="services-carousel__title-item"><a href="{{ service.get_absolute_url }}">{{service.title}}</a></p>
                         <p class="services-carousel__text-item"> {{service.description}}</p>
                         <span class="services-carousel__price-item">from ${{service.price}}/hour</span>
                     </div>

@@ -24,8 +24,8 @@ class Service(models.Model):
             models.Index(fields=['-price']),
         ]
 
-    # def get_absolute_url(self):
-    #     return reverse("pts:post_view", kwargs={"post_slug": self.slug})
+    def get_absolute_url(self):
+        return reverse("vet_clinic:service_detail", kwargs={"service_slug": self.slug})
 
 
 class Team(models.Model):
