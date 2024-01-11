@@ -1,7 +1,7 @@
 menu = [
     {'title': "About", 'url_name': 'vet_clinic:about'},
     {'title': "Services", 'url_name': 'vet_clinic:services'},
-    {'title': "FAQ", 'url_name': 'vet_clinic:faq'},
+    {'title': "Blog", 'url_name': 'vet_clinic:blog'},
     {'title': "Happy Clients", 'url_name': 'vet_clinic:responses'},
     {'title': "Contacts", 'url_name': 'vet_clinic:contacts'},
 ]

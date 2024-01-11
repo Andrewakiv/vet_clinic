@@ -1,0 +1,121 @@
+.containerarticles_container{
+    max-width: 1200px;
+    justify-content: center;
+    margin: 0 auto;
+
+}
+.Articles{
+    display: flex;
+    font-size: 42px;
+    font-family: 'Rubik Bold', sans-serif;
+    align-items: center;
+    justify-content: center;
+    color: #040f73;
+    font-weight: 700px;
+}
+.Articles_info{
+    display: flex;
+    margin-top: 25px;
+    font-size: 19px;
+    font-family: 'Poppins SemiBold', sans-serif;
+    justify-content: center;
+    font-weight: 500;
+    color:#424875;
+}
+
+.blockarticles_cards{
+   margin-top: 50px;
+   padding-left: 15px;
+   padding-right: 15px;
+}
+
+.BlockArticles_cards_card {
+
+    position: relative;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.cards_card_h6{
+
+    margin-top: 30px;
+    color: #ff5b2e;
+    font-family: 'Poppins SemiBold', sans-serif;
+    font-size: 13px;
+
+    font-weight: 600px;
+}
+
+.card_img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+.cards_card_h1{
+    font-family: 'Rubik Bold', sans-serif;
+
+    margin-top: 20px;
+    color: #040f73;
+    font-size: 24px;
+    font-weight: bold;
+}
+.cards_text{
+
+
+    color: rgb(106,110,143);
+    font-size: 17px;
+    line-height: 1.5;
+    margin-top: 20px;
+}
+
+.blockarticles_cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+.cards_button_border{
+
+    background-color: #ff5b2e;
+    width:140px;
+    height:50px;
+    font-size:14px;
+    border-radius: 25px;
+    justify-content: center;
+    text-align: center;
+    display:flex;
+    align-items: center;
+    margin-top: 40px;
+      text-decoration: none;
+
+}
+
+.cards_button_border:hover{
+background-color: rgb(66, 72, 117);
+    transition: background-color 0.5s ease 0s;
+}
+
+
+.cards_button{
+    color:aliceblue;
+    font-weight: 700;
+    font-family: "Poppins Bold";
+    font-size: 14px;
+    margin: 10px;
+    text-decoration: none;
+}
+
+@media (min-width: 768px) {
+    .blockarticles_cards {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 992px) {
+    .blockarticles_cards {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
