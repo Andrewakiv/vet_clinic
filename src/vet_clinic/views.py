@@ -2,7 +2,7 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 
-from .models import Service, Post
+from .models import Service, Post, Category
 
 
 def home(request):
@@ -35,6 +35,17 @@ def service_detail(request, service_slug):
 
 def blog(request):
     posts = Post.objects.all()
+    data = {
+        'posts': posts,
+        'default_service': settings.DEFAULT_USER_IMAGE
+    }
+    return render(request, 'vet_clinic/blog.html', context=data)
+
+
+def category_blog(request, category_blog_slug):
+    category = get_object_or_404(Category, slug=category_blog_slug)
+    posts = Post.objects.filter(category_id=category.pk).select_related('category')
+
     data = {
         'posts': posts,
         'default_service': settings.DEFAULT_USER_IMAGE

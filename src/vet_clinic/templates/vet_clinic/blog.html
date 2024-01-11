@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
+{% load vet_clinic_tags %}
 
 {% block content %}
 <div class="containerarticles_container">
     <div class="Articles">Our Latest Articles</div>
     <div class="Articles_info">Read more about pet care in our blog.</div>
+    {% category_blog_tag %}
     <div class="blockarticles_cards">
         {% for post in posts %}
         <div class="BlockArticles_cards_card">

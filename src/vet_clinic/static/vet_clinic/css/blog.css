@@ -1,3 +1,30 @@
+.categories {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.categories__link {
+    text-decoration: none;
+    margin: 0 10px;
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #333;
+}
+
+.categories__item {
+    text-align: center;
+}
+
+.categories__item a:hover {
+    background-color: var(--contacts-accordion-content-color);
+    color: var(--button-background-color-hover);
+}
+
 .containerarticles_container{
     max-width: 1200px;
     justify-content: center;

@@ -84,6 +84,9 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse("vet_clinic:category_blog", kwargs={"category_blog_slug": self.slug})
+
 
 class Testimonial(models.Model):
     name = models.CharField(max_length=50, db_index=True)

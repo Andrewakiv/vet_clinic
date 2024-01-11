@@ -3,7 +3,6 @@
     max-width: 1200px;
     padding: 60px 15px;
     position: relative;
-    border-top: 0.2px solid var(--footer-boarder-color);
 }
 
 .footer__social-link {
@@ -48,6 +47,7 @@
 .footer__nav-list {
     display: flex;
     flex-direction: column;
+    border-bottom: 0.2px solid var(--footer-boarder-color);
 }
 
 .footer__social-icons {
