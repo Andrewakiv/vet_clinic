@@ -23,6 +23,12 @@
   padding-bottom: 20px;
 }
 
+.services-carousel__title-item a {
+    text-decoration: none;
+    border-bottom: 1px solid var(--link-text-color);
+    color: var(--link-text-color);
+}
+
 .services-carousel__text-item {
   font-family: "Poppins", sans-serif;
   font-size: 17px;
