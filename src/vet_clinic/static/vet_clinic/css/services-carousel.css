@@ -38,11 +38,16 @@
   color: var(--bright-text-color);
 }
 
+.services-carousel__img {
+    max-height: 246px;
+    border-radius: 40px;
+}
+
 .services-carousel__items {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  width: 1500px;
+  width: 1200px;
 }
 
 .services-carousel__item {
@@ -136,6 +141,9 @@
 @media (min-width: 1024px) {
   .services-carousel__item {
     max-width: 360px;
+  }
+  .services-carousel__items {
+    justify-content: start;
   }
   .services-carousel__button-prev,
   .services-carousel__button-next {

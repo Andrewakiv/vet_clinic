@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Service, Team, Post, Category
+from .models import Service, Team, Post, Category, Testimonial
 
 
 @admin.register(Service)
@@ -38,3 +38,12 @@ class ServiceAdmin(admin.ModelAdmin):
     list_display_links = ['id', 'name']
     prepopulated_fields = {'slug': ('name', )}
     search_fields = ['name']
+
+
+@admin.register(Testimonial)
+class ServiceAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'response', 'publish_date', 'is_published']
+    list_display_links = ['id', 'name']
+    prepopulated_fields = {'slug': ('name', )}
+    ordering = ['-publish_date', 'name']
+    search_fields = ['publish_date', 'name']

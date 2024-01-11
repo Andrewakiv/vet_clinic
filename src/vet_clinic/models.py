@@ -83,3 +83,18 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Testimonial(models.Model):
+    name = models.CharField(max_length=50, db_index=True)
+    slug = models.SlugField(max_length=50, unique=True, db_index=True)
+    response = models.TextField(blank=True)
+    publish_date = models.DateTimeField(auto_now_add=True)
+    is_published = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name = 'Testimonial'
+        verbose_name_plural = 'Testimonials'
+
+    def __str__(self):
+        return self.name
