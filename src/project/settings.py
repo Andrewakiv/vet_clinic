@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'vet_clinic.apps.VetClinicConfig'
+    'vet_clinic.apps.VetClinicConfig',
+    'accounts.apps.AccountsConfig'
 ]
 
 MIDDLEWARE = [
