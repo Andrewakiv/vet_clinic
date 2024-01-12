@@ -72,6 +72,9 @@ class Post(models.Model):
             models.Index(fields=['-publish_date']),
         ]
 
+    def get_absolute_url(self):
+        return reverse("vet_clinic:blog_detail", kwargs={"blog_slug": self.slug})
+
 
 class Category(models.Model):
     name = models.CharField(max_length=50, db_index=True)

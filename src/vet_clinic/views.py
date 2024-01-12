@@ -7,7 +7,13 @@ from .models import Service, Post, Category
 
 def home(request):
     services_list = Service.objects.all()
-    return render(request, 'vet_clinic/index.html', {'services_list': services_list})
+
+    data = {
+        'services_list': services_list,
+        'default_service': settings.DEFAULT_USER_IMAGE
+    }
+
+    return render(request, 'vet_clinic/index.html', context=data)
 
 
 def about(request):
@@ -40,6 +46,16 @@ def blog(request):
         'default_service': settings.DEFAULT_USER_IMAGE
     }
     return render(request, 'vet_clinic/blog.html', context=data)
+
+
+def blog_detail(request, blog_slug):
+    post = get_object_or_404(Post, slug=blog_slug)
+
+    data = {
+        'post': post,
+        'default_service': settings.DEFAULT_USER_IMAGE
+    }
+    return render(request, 'vet_clinic/blog_detail.html', context=data)
 
 
 def category_blog(request, category_blog_slug):
