@@ -2,7 +2,7 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 
-from .models import Service, Post, Category
+from .models import Service, Post, Category, Testimonial
 
 
 def home(request):
@@ -74,7 +74,12 @@ def faq(request):
 
 
 def responses(request):
-    return HttpResponse('responses')
+    responses_list = Testimonial.objects.all()
+    data = {
+        'responses_list': responses_list,
+        'default_service': settings.DEFAULT_USER_IMAGE
+    }
+    return render(request, 'vet_clinic/responses.html', context=data)
 
 
 def contacts(request):
