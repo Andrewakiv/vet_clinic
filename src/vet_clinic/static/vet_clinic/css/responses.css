@@ -67,6 +67,7 @@
     width: 80%;
     font-weight: 400;
     line-height: 25.5px;
+    word-wrap: break-word;
 }
 .responses__date{
     font-family: 'Poppins', sans-serif;
@@ -134,12 +135,9 @@
 
 
 
-
-
-
-
-
-
+.responses__form-title {
+    color: var(--title-text-color);
+}
 
 .contacts-help-section__form-container {
     background-color: var(--background-color);
@@ -181,10 +179,7 @@
 }
 
 .contacts-form__input-name,
-.contacts-form__input-phone,
-.contacts-form__input-pets-info,
-.contacts-form__input-service,
-.contacts-form__input-date {
+.contacts-form__input-response {
     background-color: var(--background-saturated-color);
     color: var(--paragraph-text-color);
     width: 100%;
@@ -198,6 +193,10 @@
     font-weight: 400;
     margin-top: 20px;
     padding: 11px 22px;
+}
+
+.contacts-form__input-response {
+    height: 200px;
 }
 
 .error-message__name,

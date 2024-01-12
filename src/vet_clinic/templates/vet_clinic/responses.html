@@ -9,10 +9,10 @@
         </div>
         <div class="responses__all-feedbacks">
             {% for response in responses_list %}
-             <div class="responses__item">
-<!--                <div class="responses__img-animal">-->
-<!--                    <img src="./img/parrot-jokie.png" alt='Satified parrot Jokie'>-->
-<!--                </div>-->
+            <div class="responses__item">
+                <!--                <div class="responses__img-animal">-->
+                <!--                    <img src="./img/parrot-jokie.png" alt='Satified parrot Jokie'>-->
+                <!--                </div>-->
                 <h3 class="responses__subtitle">{{ response.name }}</h3>
                 <div class="responses__underline">
                     <svg xmlns="http://www.w3.org/2000/svg" width="3000px" height="33" style="width:15%">
@@ -28,41 +28,30 @@
 </section>
 
 
-<div class="contacts-help-section__wrapper">
-    <form class="contacts-form" action="#" method="post">
-        <div class="contacts-form__field">
-            <input class="contacts-form__input-name" type="text" placeholder="Enter your full name*" required
-                name="full-name">
-            <div class="error-message__name"></div>
-        </div>
-        <div class="contacts-form__field">
-            <input class="contacts-form__input-phone" type="tel" placeholder="Enter your phone number*" required
-                name="phone-number">
-            <div class="error-message__phone"></div>
-        </div>
-        <div class="contacts-form__field">
-            <input class="contacts-form__input-pets-info" type="text" placeholder="Pet's name and age*" required
-                name="pet-info">
-            <div class="error-message__pets-info"></div>
-        </div>
-        <div class="contacts-form__field">
-            <select class="contacts-form__input-service" name="service" required>
-                <option value disabled selected hidden>Choose services*</option>
-                <option value="service1">Pet Sitting</option>
-                <option value="service2">Dog Training</option>
-                <option value="service3">Dog Walking</option>
-                <option value="service4">Vet Consultations</option>
-                <option value="service5">Mini Hotel</option>
-                <option class="option-link" value="option-link">More about Services</option>
-            </select>
-            <div class="error-message__choose-servise"></div>
-        </div>
-        <div class="contacts-form__field">
-            <input class="contacts-form__input-date" type="date" name="form-date" value="dd-mm-yyyy">
-        </div>
-        <div class="contacts-form__field">
-            <button class="contacts-form__button" type="submit">Request a quote</button>
-        </div>
-    </form>
+<div class="contacts-help-section__form-container ">
+    <div class="contacts-help-section__wrapper">
+        <form class="contacts-form" action="#" method="post">
+            <div class="responses__form-title">
+                <h1>Write your response</h1>
+            </div>
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="contacts-form__field">
+                <div class="contacts-form__field">
+                    {{ form.name }}
+                </div>
+                <div class="error-message__name">{{ form.name.errors }}</div>
+            </div>
+            <div class="contacts-form__field">
+                <div class="contacts-form__field">
+                    {{ form.response }}
+                </div>
+                <div class="error-message__pets-info">{{ form.response.errors }}</div>
+            </div>
+            <div class="contacts-form__field">
+                <button class="contacts-form__button" type="submit">Request a quote</button>
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock %}

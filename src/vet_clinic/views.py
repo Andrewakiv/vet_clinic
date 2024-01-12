@@ -1,7 +1,8 @@
 from django.conf import settings
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
+from .forms import TestimonialAddForm
 from .models import Service, Post, Category, Testimonial
 
 
@@ -75,8 +76,18 @@ def faq(request):
 
 def responses(request):
     responses_list = Testimonial.objects.all()
+
+    if request.method == 'POST':
+        form = TestimonialAddForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('vet_clinic:responses')
+    else:
+        form = TestimonialAddForm()
+
     data = {
         'responses_list': responses_list,
+        'form': form,
         'default_service': settings.DEFAULT_USER_IMAGE
     }
     return render(request, 'vet_clinic/responses.html', context=data)

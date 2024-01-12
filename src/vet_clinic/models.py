@@ -94,7 +94,7 @@ class Category(models.Model):
 class Testimonial(models.Model):
     name = models.CharField(max_length=50, db_index=True)
     slug = models.SlugField(max_length=50, unique=True, db_index=True)
-    response = models.TextField(blank=True)
+    response = models.TextField(max_length=500, blank=True)
     publish_date = models.DateTimeField(auto_now_add=True)
     is_published = models.BooleanField(default=True)
 
