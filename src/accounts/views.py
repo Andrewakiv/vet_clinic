@@ -1,8 +1,9 @@
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.shortcuts import render
+from django.urls import reverse_lazy
 
-from accounts.forms import UserRegistrationForm
+from accounts.forms import UserRegistrationForm, UserChangePasswordForm
 
 
 class MyCustomLoginForm(AuthenticationForm):
@@ -34,3 +35,9 @@ def register(request):
         form = UserRegistrationForm()
 
     return render(request, 'accounts/register.html', {'form': form})
+
+
+class UserChangePassword(PasswordChangeView):
+    form_class = UserChangePasswordForm
+    template_name = 'accounts/password_change_form.html'
+    success_url = reverse_lazy('accounts:password_change_done')
