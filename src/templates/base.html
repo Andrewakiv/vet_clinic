@@ -36,11 +36,12 @@
                         </div>
                         <form id="logout-form" method="post" action="{% url 'accounts:logout' %}">
                             {% csrf_token %}
-                            <button class="custom-button" type="submit">logout</button>
+                            <button class="custom-button" type="submit">Logout</button>
                         </form>
                         {% else %}
                         <div class="user-auth__login-link">
-                            <a class="custom-button__login" href="{% url 'accounts:login' %}">login</a> |
+                            <a class="custom-button__login" href="{% url 'accounts:login' %}">Login</a>
+                            <a class="custom-button__register" href="{% url 'accounts:register' %}">Register</a>
                         </div>
                         {% endif %}
                     </div>

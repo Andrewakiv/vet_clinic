@@ -8,6 +8,7 @@
     margin-right: 10px;
 }
 
+.custom-button__register,
 .custom-button__login,
 .custom-button {
     background-color: var(--telephone-icon-background-color); /* Колір фону */
@@ -17,9 +18,13 @@
     border: none; /* Видалення рамки кнопки */
     border-radius: 5px; /* Закруглені кути */
     cursor: pointer; /* Зміна курсору при наведенні */
+    text-decoration: none;
 }
 .custom-button__login {
     background-color: var(--correct-input-collor);
+}
+.custom-button__register {
+    background-color: var(--subtitle-text-color);
 }
 
 

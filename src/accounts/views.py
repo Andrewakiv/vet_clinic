@@ -2,6 +2,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render
 
+from accounts.forms import UserRegistrationForm
+
 
 class MyCustomLoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
@@ -18,3 +20,17 @@ class LoginUser(LoginView):
 class LogoutUser(LogoutView):
     template_name = 'accounts/logout.html'
     extra_context = {'title': 'Logout'}
+
+
+def register(request):
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            new_user = form.save(commit=False)
+            new_user.set_password(form.cleaned_data['password'])
+            new_user.save()
+            return render(request, 'accounts/register_done.html', {'new_user': new_user})
+    else:
+        form = UserRegistrationForm()
+
+    return render(request, 'accounts/register.html', {'form': form})
