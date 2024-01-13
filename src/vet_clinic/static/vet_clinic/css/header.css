@@ -1,3 +1,42 @@
+.user-auth {
+    padding-top: 3px;
+    display: flex;
+    align-items: center; /* Вирівнювання по вертикалі */
+}
+
+.user-auth__greeting {
+    margin-right: 10px;
+}
+
+.custom-button__login,
+.custom-button {
+    background-color: var(--telephone-icon-background-color); /* Колір фону */
+    color: white; /* Колір тексту */
+    padding: 10px 20px; /* Відступи всередині кнопки */
+    font-size: 16px; /* Розмір шрифту */
+    border: none; /* Видалення рамки кнопки */
+    border-radius: 5px; /* Закруглені кути */
+    cursor: pointer; /* Зміна курсору при наведенні */
+}
+.custom-button__login {
+    background-color: var(--correct-input-collor);
+}
+
+
+/* Стилізація кнопки при наведенні миші */
+.custom-button:hover {
+    background-color: var(--header-icons-hover-color); /* Зміна колору фону при наведенні */
+}
+.custom-button__login:hover {
+    background-color: #45a049; /* Зміна колору фону при наведенні */
+}
+
+/* Стилізація кнопки при активізації (кліку) */
+.custom-button:active {
+    background-color: #367939; /* Зміна колору фону при активізації */
+}
+
+
 .header {
     position: relative;
     z-index: 1;

@@ -29,6 +29,21 @@
                             {% endfor %}
                         </ul>
                     </nav>
+                    <div class="user-auth">
+                        {% if user.is_authenticated %}
+                        <div class="user-auth__greeting">
+                            Hello {{ user.username }},
+                        </div>
+                        <form id="logout-form" method="post" action="{% url 'accounts:logout' %}">
+                            {% csrf_token %}
+                            <button class="custom-button" type="submit">logout</button>
+                        </form>
+                        {% else %}
+                        <div class="user-auth__login-link">
+                            <a class="custom-button__login" href="{% url 'accounts:login' %}">login</a> |
+                        </div>
+                        {% endif %}
+                    </div>
                     <div class="header__top-icons">
                         <a href="#" class="header__menu-btn">
                             <span class="header__navicon"></span>

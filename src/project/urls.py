@@ -21,7 +21,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('vet_clinic.urls', namespace='vet_clinic'))
+    path('', include('vet_clinic.urls', namespace='vet_clinic')),
+    path('accounts/', include('accounts.urls', namespace='accounts'))
 ]
 
 if settings.DEBUG:

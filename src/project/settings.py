@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'vet_clinic.apps.VetClinicConfig',
-    'accounts.apps.AccountsConfig'
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +133,9 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DEFAULT_USER_IMAGE = MEDIA_URL+'services/default_service.png'
+
+
+LOGIN_REDIRECT_URL = 'vet_clinic:home'
+LOGIN_URL = 'accounts:login'  # must create LoginUserView(LoginView) to use it or use accounts/registration/login.html
+# LOGOUT_REDIRECT_URL = 'accounts:logout'
+LOGOUT_URL = 'accounts:logout'
