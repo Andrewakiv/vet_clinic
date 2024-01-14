@@ -139,3 +139,9 @@ LOGIN_REDIRECT_URL = 'vet_clinic:home'
 LOGIN_URL = 'accounts:login'  # must create LoginUserView(LoginView) to use it or use accounts/registration/login.html
 # LOGOUT_REDIRECT_URL = 'accounts:logout'
 LOGOUT_URL = 'accounts:logout'
+
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_HOST_USER = config("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = config("EMAIL_PORT")
+EMAIL_USE_TLS = config("EMAIL_USE_TLS")
