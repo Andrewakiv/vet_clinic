@@ -43,6 +43,11 @@ def service_detail(request, service_slug):
 
 def blog(request):
     posts = Post.objects.all()
+
+    paginator = Paginator(posts, 6)
+    page_number = request.GET.get('page', 1)
+    posts = paginator.page(page_number)
+
     data = {
         'posts': posts,
         'default_service': settings.DEFAULT_USER_IMAGE

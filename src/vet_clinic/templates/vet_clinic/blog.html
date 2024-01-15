@@ -2,7 +2,7 @@
 {% load vet_clinic_tags %}
 
 {% block content %}
-<div class="containerarticles_container">
+<div class="container articles_container">
     <div class="Articles">Our Latest Articles</div>
     <div class="Articles_info">Read more about pet care in our blog.</div>
     {% category_blog_tag %}
@@ -17,9 +17,42 @@
             <div class="cards_card_h6"> {{post.category}} | {{post.publish_date|date:"F j, Y"}}</div>
             <div class="cards_card_h1">{{ post.title }}</div>
             <div class="cards_text">{{ post.description }}</div>
-            <a class="cards_button_border" href="{{ post.get_absolute_url }}"><span class="cards_button">Read More</span></a>
+            <a class="cards_button_border" href="{{ post.get_absolute_url }}"><span
+                    class="cards_button">Read More</span></a>
         </div>
         {% endfor %}
     </div>
+
+
+    <div class="pagination" style="margin: 20px auto; display: flex; justify-content: center; padding-top:20px;">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    {% if posts.has_previous %}
+                    <a class="page-link"
+                       href="?page={{ posts.previous_page_number }}"
+                       aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                    {% endif %}
+                </li>
+                {% for page in posts.paginator.page_range %}
+                <li class="page-item {% if page == posts.number %}active{% endif %}">
+                    <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+                </li>
+                {% endfor %}
+                <li class="page-item">
+                    {% if posts.has_next %}
+                    <a class="page-link"
+                       href="?page={{ posts.next_page_number }}"
+                       aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                    {% endif %}
+                </li>
+            </ul>
+        </nav>
+    </div>
 </div>
+
 {% endblock %}
