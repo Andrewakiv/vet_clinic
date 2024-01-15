@@ -31,6 +31,7 @@
     margin-top: 30px;
     grid-template-columns: 1fr;
     gap: 40px;
+    padding-bottom: 40px;
 }
 .responses__item {
     max-width: 719px;
@@ -41,6 +42,11 @@
     text-align: center;
     line-height: 25.5px;
     border-radius: 25px;
+}
+
+.page-item.active a {
+    background-color: var(--button-background-color);
+    border-color: var(--button-background-color);
 }
 
 .responses__img-animal {
@@ -142,7 +148,7 @@
 .contacts-help-section__form-container {
     background-color: var(--background-color);
     text-align: center;
-    padding: 0 15px;
+    padding: 20px 0 15px;
     margin-top: 50px;
 }
 

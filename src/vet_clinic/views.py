@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
@@ -76,6 +77,10 @@ def faq(request):
 
 def responses(request):
     responses_list = Testimonial.objects.all()
+
+    paginator = Paginator(responses_list, 6)
+    page_number = request.GET.get('page', 1)
+    responses_list = paginator.page(page_number)
 
     if request.method == 'POST':
         form = TestimonialAddForm(request.POST)
