@@ -36,6 +36,7 @@
                         </div>
                         <form id="logout-form" method="post" action="{% url 'accounts:logout' %}">
                             {% csrf_token %}
+                            <a class="custom-button__login" href="{% url 'accounts:edit' %}">Edit</a>
                             <button class="custom-button" type="submit">Logout</button>
                         </form>
                         {% else %}
