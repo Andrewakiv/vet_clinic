@@ -6,10 +6,10 @@ from django.views.generic import ListView, DetailView, FormView
 
 from .forms import TestimonialAddForm
 from .models import Service, Post, Category, Testimonial
+from .utils import DataMixin
 
 
-class HomeView(ListView):
-    model = Service
+class HomeView(DataMixin, ListView):
     context_object_name = 'services_list'
     template_name = 'vet_clinic/index.html'
 
@@ -18,17 +18,14 @@ class HomeView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Home'
-        context['default_service'] = settings.DEFAULT_USER_IMAGE
-        return context
+        return self.get_mixin_context(context, title='Home')
 
 
 def about(request):
     return HttpResponse('about')
 
 
-class ServicesView(ListView):
-    model = Service
+class ServicesView(DataMixin, ListView):
     context_object_name = 'services_list'
     template_name = 'vet_clinic/services.html'
 
@@ -37,12 +34,10 @@ class ServicesView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Services'
-        context['default_service'] = settings.DEFAULT_USER_IMAGE
-        return context
+        return self.get_mixin_context(context, title='Services')
 
 
-class ServiceDetailView(DetailView):
+class ServiceDetailView(DataMixin, DetailView):
     # model = Service
     template_name = 'vet_clinic/service_detail.html'
     context_object_name = 'service'
@@ -53,13 +48,10 @@ class ServiceDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = context['service'].title
-        context['default_service'] = settings.DEFAULT_USER_IMAGE
-        return context
+        return self.get_mixin_context(context, title=context['service'].title)
 
 
-class BlogView(ListView):
-    model = Post
+class BlogView(DataMixin, ListView):
     context_object_name = 'posts'
     template_name = 'vet_clinic/blog.html'
     paginate_by = 6
@@ -69,25 +61,20 @@ class BlogView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Blog'
-        context['default_service'] = settings.DEFAULT_USER_IMAGE
-        return context
+        return self.get_mixin_context(context, title='Blog')
 
 
-class BlogDetailView(DetailView):
-    # model = Post
+class BlogDetailView(DataMixin, DetailView):
     template_name = 'vet_clinic/blog_detail.html'
     context_object_name = 'post'
-    slug_url_kwarg = 'blog_slug'  # from url
+    slug_url_kwarg = 'blog_slug'
 
     def get_object(self, queryset=None):
         return get_object_or_404(Post, slug=self.kwargs[self.slug_url_kwarg])
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = context['post'].title
-        context['default_service'] = settings.DEFAULT_USER_IMAGE
-        return context
+        return self.get_mixin_context(context, title=context['post'].title)
 
 
 def category_blog(request, category_blog_slug):
@@ -116,7 +103,6 @@ class CategoryBlogView(ListView):
         category = context['posts'].first().category  # from queryset first item then its category
         context['title'] = 'Category - ' + category.name  # name from category
         return context
-
 
 
 def faq(request):
@@ -148,4 +134,3 @@ def responses(request):
 
 def contacts(request):
     return HttpResponse('contacts')
-
