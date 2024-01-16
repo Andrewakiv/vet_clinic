@@ -4,13 +4,14 @@ from . import views
 app_name = 'vet_clinic'
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', views.HomeView.as_view(), name='home'),
     path('about/', views.about, name='about'),
-    path('services/', views.services, name='services'),
-    path('services/<slug:service_slug>/', views.service_detail, name='service_detail'),
-    path('blog/', views.blog, name='blog'),
-    path('blog/<slug:blog_slug>/', views.blog_detail, name='blog_detail'),
-    path('blog/category/<slug:category_blog_slug>/', views.category_blog, name='category_blog'),
+    path('services/', views.ServicesView.as_view(), name='services'),
+    path('services/<slug:service_slug>/', views.ServiceDetailView.as_view(), name='service_detail'),
+    path('blog/', views.BlogView.as_view(), name='blog'),
+    path('blog/<slug:blog_slug>/', views.BlogDetailView.as_view(), name='blog_detail'),
+    # path('blog/category/<slug:category_blog_slug>/', views.category_blog, name='category_blog'),
+    path('blog/category/<slug:category_blog_slug>/', views.CategoryBlogView.as_view(), name='category_blog'),
     path('faq/', views.faq, name='faq'),
     path('responses/', views.responses, name='responses'),
     path('contacts/', views.contacts, name='contacts'),

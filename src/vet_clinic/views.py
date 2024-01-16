@@ -2,67 +2,92 @@ from django.conf import settings
 from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
+from django.views.generic import ListView, DetailView, FormView
 
 from .forms import TestimonialAddForm
 from .models import Service, Post, Category, Testimonial
 
 
-def home(request):
-    services_list = Service.objects.all()
+class HomeView(ListView):
+    model = Service
+    context_object_name = 'services_list'
+    template_name = 'vet_clinic/index.html'
 
-    data = {
-        'services_list': services_list,
-        'default_service': settings.DEFAULT_USER_IMAGE
-    }
+    def get_queryset(self):
+        return Service.objects.all()
 
-    return render(request, 'vet_clinic/index.html', context=data)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Home'
+        context['default_service'] = settings.DEFAULT_USER_IMAGE
+        return context
 
 
 def about(request):
     return HttpResponse('about')
 
 
-def services(request):
-    services_list = Service.objects.all()
-    data = {
-        'services_list': services_list,
-        'default_service': settings.DEFAULT_USER_IMAGE
-    }
-    return render(request, 'vet_clinic/services.html', context=data)
+class ServicesView(ListView):
+    model = Service
+    context_object_name = 'services_list'
+    template_name = 'vet_clinic/services.html'
+
+    def get_queryset(self):
+        return Service.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Services'
+        context['default_service'] = settings.DEFAULT_USER_IMAGE
+        return context
 
 
-def service_detail(request, service_slug):
-    service = get_object_or_404(Service, slug=service_slug)
+class ServiceDetailView(DetailView):
+    # model = Service
+    template_name = 'vet_clinic/service_detail.html'
+    context_object_name = 'service'
+    slug_url_kwarg = 'service_slug'  # from url
 
-    data = {
-        'service': service,
-        'default_service': settings.DEFAULT_USER_IMAGE
-    }
-    return render(request, 'vet_clinic/service_detail.html', context=data)
+    def get_object(self, queryset=None):
+        return get_object_or_404(Service.objects, slug=self.kwargs[self.slug_url_kwarg])
 
-
-def blog(request):
-    posts = Post.objects.all()
-
-    paginator = Paginator(posts, 6)
-    page_number = request.GET.get('page', 1)
-    posts = paginator.page(page_number)
-
-    data = {
-        'posts': posts,
-        'default_service': settings.DEFAULT_USER_IMAGE
-    }
-    return render(request, 'vet_clinic/blog.html', context=data)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = context['service'].title
+        context['default_service'] = settings.DEFAULT_USER_IMAGE
+        return context
 
 
-def blog_detail(request, blog_slug):
-    post = get_object_or_404(Post, slug=blog_slug)
+class BlogView(ListView):
+    model = Post
+    context_object_name = 'posts'
+    template_name = 'vet_clinic/blog.html'
+    paginate_by = 6
 
-    data = {
-        'post': post,
-        'default_service': settings.DEFAULT_USER_IMAGE
-    }
-    return render(request, 'vet_clinic/blog_detail.html', context=data)
+    def get_queryset(self):
+        return Post.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Blog'
+        context['default_service'] = settings.DEFAULT_USER_IMAGE
+        return context
+
+
+class BlogDetailView(DetailView):
+    # model = Post
+    template_name = 'vet_clinic/blog_detail.html'
+    context_object_name = 'post'
+    slug_url_kwarg = 'blog_slug'  # from url
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Post, slug=self.kwargs[self.slug_url_kwarg])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = context['post'].title
+        context['default_service'] = settings.DEFAULT_USER_IMAGE
+        return context
 
 
 def category_blog(request, category_blog_slug):
@@ -74,6 +99,24 @@ def category_blog(request, category_blog_slug):
         'default_service': settings.DEFAULT_USER_IMAGE
     }
     return render(request, 'vet_clinic/blog.html', context=data)
+
+
+class CategoryBlogView(ListView):
+    model = Category
+    template_name = 'vet_clinic/blog.html'
+    context_object_name = 'posts'
+    allow_empty = False
+
+    def get_queryset(self):
+        # category_slug from its url
+        return Post.objects.filter(category__slug=self.kwargs['category_blog_slug']).select_related('category')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        category = context['posts'].first().category  # from queryset first item then its category
+        context['title'] = 'Category - ' + category.name  # name from category
+        return context
+
 
 
 def faq(request):
