@@ -185,6 +185,10 @@
 }
 
 .contacts-form__input-name,
+.contacts-form__input-phone,
+.contacts-form__input-pets-info,
+.contacts-form__input-service,
+.contacts-form__input-date,
 .contacts-form__input-response {
     background-color: var(--background-saturated-color);
     color: var(--paragraph-text-color);

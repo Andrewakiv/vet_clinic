@@ -77,17 +77,6 @@ class BlogDetailView(DataMixin, DetailView):
         return self.get_mixin_context(context, title=context['post'].title)
 
 
-def category_blog(request, category_blog_slug):
-    category = get_object_or_404(Category, slug=category_blog_slug)
-    posts = Post.objects.filter(category_id=category.pk).select_related('category')
-
-    data = {
-        'posts': posts,
-        'default_service': settings.DEFAULT_USER_IMAGE
-    }
-    return render(request, 'vet_clinic/blog.html', context=data)
-
-
 class CategoryBlogView(ListView):
     model = Category
     template_name = 'vet_clinic/blog.html'

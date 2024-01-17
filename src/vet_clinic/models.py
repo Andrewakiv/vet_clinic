@@ -104,3 +104,15 @@ class Testimonial(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Order(models.Model):
+    name = models.CharField(max_length=50)
+    phone_number = models.CharField(max_length=20)
+    pet_info = models.CharField(max_length=50)
+    service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='service', null=True)
+    order_date = models.DateTimeField(auto_now_add=True)
+    date_for_visit = models.DateField(null=True, blank=True)
+
+    def __str__(self):
+        return f'Order by {self.name}'
