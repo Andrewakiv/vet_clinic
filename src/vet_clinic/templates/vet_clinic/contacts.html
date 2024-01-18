@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="vet-consultations__title container">
+    <h1>Make order</h1>
+</div>
+<div class="contacts-help-section__form-container ">
+    <div class="contacts-help-section__wrapper">
+        <form class="contacts-form" action="#" method="post" enctype="multipart/form-data">
+            <div class="responses__form-title">
+                <h3>Please, make order using the following form</h3>
+            </div>
+            <div class="contacts-form__field">
+                <div class="contacts-form__field">
+                    {{ form.as_p }}
+                    {% csrf_token %}
+                </div>
+            </div>
+            <div class="contacts-form__field">
+                <input type="hidden" name="next" value="{{ next }}"/>
+                <button class="contacts-form__button" type="submit">Order</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

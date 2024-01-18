@@ -3,8 +3,9 @@ from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, FormView
+from django.views.generic.edit import ModelFormMixin
 
-from .forms import TestimonialAddForm
+from .forms import TestimonialAddForm, OrderForm
 from .models import Service, Post, Category, Testimonial
 from .utils import DataMixin
 
@@ -37,18 +38,27 @@ class ServicesView(DataMixin, ListView):
         return self.get_mixin_context(context, title='Services')
 
 
-class ServiceDetailView(DataMixin, DetailView):
+class ServiceDetailView(DataMixin, ModelFormMixin, DetailView):
     # model = Service
     template_name = 'vet_clinic/service_detail.html'
     context_object_name = 'service'
     slug_url_kwarg = 'service_slug'  # from url
+    form_class = OrderForm
 
     def get_object(self, queryset=None):
-        return get_object_or_404(Service.objects, slug=self.kwargs[self.slug_url_kwarg])
+        return get_object_or_404(Service, slug=self.kwargs[self.slug_url_kwarg])
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return self.get_mixin_context(context, title=context['service'].title)
+
+    def post(self, request, *args, **kwargs):
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            new_order = form.save(commit=False)
+            new_order.service = self.get_object()
+            new_order.save()
+            return redirect('vet_clinic:services')
 
 
 class BlogView(DataMixin, ListView):

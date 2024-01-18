@@ -209,6 +209,10 @@
     height: 200px;
 }
 
+.contacts-form__input-service {
+    width: 200px;
+}
+
 .error-message__name,
 .error-message__phone,
 .error-message__pets-info,

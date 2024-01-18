@@ -10,9 +10,9 @@ urlpatterns = [
     path('services/<slug:service_slug>/', views.ServiceDetailView.as_view(), name='service_detail'),
     path('blog/', views.BlogView.as_view(), name='blog'),
     path('blog/<slug:blog_slug>/', views.BlogDetailView.as_view(), name='blog_detail'),
-    # path('blog/category/<slug:category_blog_slug>/', views.category_blog, name='category_blog'),
     path('blog/category/<slug:category_blog_slug>/', views.CategoryBlogView.as_view(), name='category_blog'),
     path('faq/', views.faq, name='faq'),
     path('responses/', views.responses, name='responses'),
     path('contacts/', views.contacts, name='contacts'),
+    path('contacts/<slug:service_slug>/', views.contacts, name='contacts_detail'),
 ]
