@@ -29,10 +29,10 @@ class OrderForm(forms.ModelForm):
 
     class Meta:
         model = Order
-        fields = ['name', 'phone_number', 'pet_info', 'date_for_visit']
+        fields = ['phone_number', 'pet_info', 'date_for_visit']
         widgets = {
-            'name': forms.TextInput(
-                attrs={'class': 'contacts-form__input-name', 'placeholder': 'Enter your full name'}),
+            # 'name': forms.TextInput(
+            #     attrs={'class': 'contacts-form__input-name', 'placeholder': 'Enter your full name'}),
             'phone_number': PhoneNumberPrefixWidget(attrs={'class': 'contacts-form__input-service'}, initial='UA'),
             'pet_info': forms.TextInput(
                 attrs={'class': 'contacts-form__input-pets-info', 'placeholder': "Pet's name and age"}),

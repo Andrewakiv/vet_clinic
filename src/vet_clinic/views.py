@@ -1,4 +1,7 @@
 from django.conf import settings
+from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
@@ -6,7 +9,7 @@ from django.views.generic import ListView, DetailView, FormView
 from django.views.generic.edit import ModelFormMixin
 
 from .forms import TestimonialAddForm, OrderForm
-from .models import Service, Post, Category, Testimonial
+from .models import Service, Post, Category, Testimonial, Order
 from .utils import DataMixin
 
 
@@ -57,6 +60,7 @@ class ServiceDetailView(DataMixin, ModelFormMixin, DetailView):
         if form.is_valid():
             new_order = form.save(commit=False)
             new_order.service = self.get_object()
+            new_order.name = request.user
             new_order.save()
             return redirect('vet_clinic:services')
 
@@ -129,6 +133,17 @@ def responses(request):
         'default_service': settings.DEFAULT_USER_IMAGE
     }
     return render(request, 'vet_clinic/responses.html', context=data)
+
+
+@permission_required("order.view_order")
+def show_orders(request):
+    orders = Order.objects.all()
+
+    data = {
+        'orders': orders
+    }
+
+    return render(request, 'vet_clinic/orders.html', context=data)
 
 
 def contacts(request):

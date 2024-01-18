@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth import get_user_model
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
@@ -9,7 +9,7 @@ from django.urls import reverse_lazy
 
 from accounts.forms import UserRegistrationForm, UserChangePasswordForm, UserEditForm, ProfileEditForm
 from accounts.models import Profile
-
+from vet_clinic.models import Order
 
 class MyCustomLoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
@@ -71,7 +71,7 @@ def profile_to_view(request, user_username):
     user_to_view = get_object_or_404(User, username=user_username)
 
     data = {
-        'user_to_view': user_to_view
+        'user_to_view': user_to_view,
     }
 
     return render(request, 'accounts/profile.html', context=data)

@@ -28,6 +28,9 @@
                 <span class="responses__story">{{ user_to_view.last_name }}</span>
 <!--                <span class="responses__date">{{response.publish_date|date:"F j, Y"}}</span>-->
             </div>
+            {% if perms.order.view_order %}
+            <h1><a href="{% url 'vet_clinic:show_orders' %}">Orders</a></h1>
+            {% endif %}
         </div>
     </div>
 </section>

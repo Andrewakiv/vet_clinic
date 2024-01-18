@@ -1,3 +1,6 @@
+from django.conf import settings
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 from phonenumber_field.modelfields import PhoneNumberField
@@ -108,7 +111,7 @@ class Testimonial(models.Model):
 
 
 class Order(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='names', null=True, blank=True)
     phone_number = PhoneNumberField()
     pet_info = models.CharField(max_length=50)
     service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='service', null=True)

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="vet-consultations__title container">
+    <h1>Orders</h1>
+</div>
+
+<section class="responses container" id="responses-happy-client">
+    <div class="responses__block-items">
+        <div class="responses__all-feedbacks">
+            {% if perms.order.view_order %}
+            {% for order in orders %}
+            <div class="responses__item">
+                <div class="responses__item">
+                    <h3>{{ order.name }}</h3>
+                    <h4>{{ order.name.first_name }} {{ order.name.last_name }}</h4>
+                    <p>{{ order.phone_number }}</p>
+                    <p>{{ order.pet_info }}</p>
+                    <p>{{ order.service }}</p>
+                    <p>{{ order.order_date }}</p>
+                    <p>{{ order.date_for_visit }}</p>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -13,6 +13,7 @@ urlpatterns = [
     path('blog/category/<slug:category_blog_slug>/', views.CategoryBlogView.as_view(), name='category_blog'),
     path('faq/', views.faq, name='faq'),
     path('responses/', views.responses, name='responses'),
+    path('orders/', views.show_orders, name='show_orders'),
     path('contacts/', views.contacts, name='contacts'),
     path('contacts/<slug:service_slug>/', views.contacts, name='contacts_detail'),
 ]

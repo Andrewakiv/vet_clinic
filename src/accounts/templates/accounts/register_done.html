@@ -1,9 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Welcome {{ new_user.first_name }}!</h1>
-<p>
-    Your account has been successfully created.
-    Now you can <a href="{% url 'accounts:login' %}">log in</a>.
-</p>
+
+
+<div class="vet-consultations__title container">
+    <h1>Welcome {{ new_user.first_name }}!</h1>
+</div>
+<div class="contacts-help-section__form-container ">
+    <div class="contacts-help-section__wrapper">
+        <div class="responses__form-title">
+            <h3>
+                Your account has been successfully created.
+                Now you can <a href="{% url 'accounts:login' %}">log in</a>.
+            </h3>
+        </div>
+    </div>
+</div>
 {% endblock %}
