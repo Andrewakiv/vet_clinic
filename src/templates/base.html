@@ -34,7 +34,7 @@
                     <div class="user-auth">
                         {% if user.is_authenticated %}
                         <div class="user-auth__greeting">
-                            Hello {{ user.username }},
+                            Hello <a href="{% url 'accounts:profile_to_view' user_username=user.username %}">{{ user.username }}</a>,
                         </div>
                         <form id="logout-form" method="post" action="{% url 'accounts:logout' %}">
                             {% csrf_token %}

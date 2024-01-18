@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="vet-consultations__title container">
+    <h1>{{ user_to_view.username }}'s Profile</h1>
+</div>
+
+<section class="responses container" id="responses-happy-client">
+    <div class="responses__block-items">
+        <div class="responses__all-feedbacks">
+            <div class="responses__item">
+                <div class="responses__img-animal">
+                    {% if user_to_view.profile.photo %}
+                    <img src="{{ user_to_view.profile.photo.url }}"
+                         alt="A girl with a Jack Russell Terrier"
+                         class="services-carousel__img" width="360" style="max-width: 200px;"/>
+                    {% else %}
+                    <h1>undefined</h1>
+                    {% endif %}
+                </div>
+                <h3 class="responses__subtitle">{{ user_to_view.username }}</h3>
+                <div class="responses__underline">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="3000px" height="33" style="width:15%">
+                        <path d="M0 16.5 L3000 16.5" style="fill:none;stroke:#ff5b2e;stroke-width:3px"></path>
+                    </svg>
+                </div>
+                <span class="responses__story">{{ user_to_view.first_name }}</span>
+                <span class="responses__story">{{ user_to_view.last_name }}</span>
+<!--                <span class="responses__date">{{response.publish_date|date:"F j, Y"}}</span>-->
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

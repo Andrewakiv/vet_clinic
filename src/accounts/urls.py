@@ -30,4 +30,6 @@ urlpatterns = [
          name='password_reset_complete'),
 
     path('edit/', views.edit, name='edit'),
+
+    path('profile/<str:user_username>/', views.profile_to_view, name='profile_to_view'),
 ]
