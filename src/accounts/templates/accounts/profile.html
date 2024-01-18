@@ -29,7 +29,9 @@
 <!--                <span class="responses__date">{{response.publish_date|date:"F j, Y"}}</span>-->
             </div>
             {% if perms.order.view_order %}
+            {% if request.user.username ==  user_to_view.username %}
             <h1><a href="{% url 'vet_clinic:show_orders' %}">Orders</a></h1>
+            {% endif %}
             {% endif %}
         </div>
     </div>
