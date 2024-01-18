@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'vet_clinic.apps.VetClinicConfig',
     'accounts.apps.AccountsConfig',
+    "phonenumber_field",
 ]
 
 MIDDLEWARE = [
@@ -151,3 +152,5 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'accounts.authentication.EmailAuthBackend',
 ]
+
+

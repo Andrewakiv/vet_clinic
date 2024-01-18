@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Service(models.Model):
@@ -108,7 +109,7 @@ class Testimonial(models.Model):
 
 class Order(models.Model):
     name = models.CharField(max_length=50)
-    phone_number = models.CharField(max_length=20)
+    phone_number = PhoneNumberField()
     pet_info = models.CharField(max_length=50)
     service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='service', null=True)
     order_date = models.DateTimeField(auto_now_add=True)
