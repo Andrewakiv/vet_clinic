@@ -39,3 +39,4 @@ footer_support = [
 
 def get_support(request):
     return {'footer_support': footer_support}
+
