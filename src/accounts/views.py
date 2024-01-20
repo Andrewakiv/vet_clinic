@@ -11,6 +11,7 @@ from accounts.forms import UserRegistrationForm, UserChangePasswordForm, UserEdi
 from accounts.models import Profile
 from vet_clinic.models import Order
 
+
 class MyCustomLoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -59,7 +60,7 @@ def edit(request):
             profile_form.save()
             # messages.success(request, 'Profile updated successfully')
         # else:
-            # messages.error(request, 'Error updating your profile')
+        # messages.error(request, 'Error updating your profile')
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=request.user.profile)

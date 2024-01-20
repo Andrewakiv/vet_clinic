@@ -33,6 +33,7 @@
             <h1><a href="{% url 'vet_clinic:show_orders' %}">Orders</a></h1>
             {% endif %}
             {% endif %}
+            <h1><a href="{% url 'vet_clinic:show_user_orders' user_username=request.user.username %}">My Orders</a></h1>
         </div>
     </div>
 </section>

@@ -146,5 +146,17 @@ def show_orders(request):
     return render(request, 'vet_clinic/orders.html', context=data)
 
 
+def show_user_orders(request, user_username):
+    user_order = get_object_or_404(User, username=user_username)
+    orders = Order.objects.filter(name=user_order)
+
+    data = {
+        'user_order': user_order,
+        'orders': orders
+    }
+
+    return render(request, 'vet_clinic/user_orders.html', context=data)
+
+
 def contacts(request):
     return HttpResponse('contacts')
