@@ -1,6 +1,6 @@
 from django import forms
 from phonenumber_field.widgets import PhoneNumberPrefixWidget
-from .models import Testimonial, Order
+from .models import Testimonial, Order, Comment
 from django.utils.text import slugify
 
 
@@ -36,4 +36,14 @@ class OrderForm(forms.ModelForm):
             'phone_number': PhoneNumberPrefixWidget(attrs={'class': 'contacts-form__input-service'}, initial='UA'),
             'pet_info': forms.TextInput(
                 attrs={'class': 'contacts-form__input-pets-info', 'placeholder': "Pet's name and age"}),
+        }
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['comm_content']
+        widgets = {
+            forms.Textarea(attrs={'cols': 50, 'rows': 10, 'class': 'contacts-form__input-response',
+                                              'placeholder': "Enter your response"})
         }

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from phonenumber_field.widgets import PhoneNumberPrefixWidget
 
-from .models import Service, Team, Post, Category, Testimonial, Order
+from .models import Service, Team, Post, Category, Testimonial, Order, Comment
 from django import forms
 
 
@@ -66,3 +66,10 @@ class ServiceAdmin(admin.ModelAdmin):
     ordering = ['-order_date', 'name']
     search_fields = ['name', 'pet_info']
     form = OrderForm
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ['name', 'post', 'created', 'active']
+    list_filter = ['active', 'created', 'updated']
+    search_fields = ['name']
