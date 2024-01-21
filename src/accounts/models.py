@@ -6,6 +6,7 @@ class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date_of_birth = models.DateField(null=True, blank=True)
     photo = models.ImageField(upload_to='accounts/%Y/%m/%d/', blank=True)
+    send_mail = models.BooleanField(default=False)
 
     def __str__(self):
         return f'Profile of {self.user.username}'
