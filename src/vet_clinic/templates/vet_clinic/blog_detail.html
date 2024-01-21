@@ -6,7 +6,7 @@
         <section class="vet-consultations">
             <div class="vet-consultations__title container">
                 <h1>{{post.title}}</h1>
-<!--                <p>Order our services now! <a href="#">+ 1 (234) 567 89 00</a></p>-->
+                <!--                <p>Order our services now! <a href="#">+ 1 (234) 567 89 00</a></p>-->
             </div>
         </section>
         <section class="consultations">
@@ -27,8 +27,19 @@
             <div class="consultations__text container">
                 <p>{{ post.content|linebreaksbr }}</p>
             </div>
+
+            {% for comment in comments %}
+            <div class="card mb-3 container">
+                <div class="card-body">
+                    <h5 class="card-title">{{ comment.name }}</h5>
+                    <p class="card-text">{{ comment.comm_content }}</p>
+                    <p class="card-text"><small class="text-muted">{{ comment.created }}</small></p>
+                </div>
+            </div>
+            {% endfor %}
         </section>
     </main>
+
 
     <div class="contacts-help-section__form-container ">
         <div class="contacts-help-section__wrapper">

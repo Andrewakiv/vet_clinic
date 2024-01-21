@@ -90,6 +90,7 @@ class BlogDetailView(DataMixin, ModelFormMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['comments'] = self.get_object().comm_post.filter(active=True)  # check related name
         return self.get_mixin_context(context, title=context['post'].title)
 
     def post(self, request, *args, **kwargs):
