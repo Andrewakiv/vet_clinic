@@ -3,9 +3,10 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
+from django.views.decorators.http import require_POST
 from django.views.generic import ListView, DetailView, FormView
 from django.views.generic.edit import ModelFormMixin
 
@@ -101,6 +102,24 @@ class BlogDetailView(DataMixin, ModelFormMixin, DetailView):
             new_comment.name = request.user
             new_comment.save()
             return redirect('vet_clinic:blog_detail',  blog_slug=self.kwargs[self.slug_url_kwarg])
+
+
+@require_POST
+def post_like(request):
+    post_id = request.POST.get('id')
+    action = request.POST.get('action')
+
+    if post_id and action:
+        try:
+            post = Post.objects.get(id=post_id)
+            if action == 'like':
+                post.users_like.add(request.user)
+            else:
+                post.users_like.remove(request.user)
+            return JsonResponse({'status': 'ok'})
+        except Post.DoesNotExists:
+            pass
+    return JsonResponse({'status': 'error'})
 
 
 class CategoryBlogView(ListView):

@@ -18,11 +18,26 @@
                     <p><img src="{{ default_service }}" class="services-carousel__img"></p>
                     {% endif %}
                 </div>
+                {% with total_likes=post.users_like.count users_like=post.users_like.all %}
                 <div class="consultations__description-left-item">
                     <h2>{{post.title}}</h2>
                     <h3>Read about:</h3>
                     <p>{{post.description}}</p>
+                    <span class="count">
+                        <span class="total">{{ total_likes }}</span>
+                        like{{ total_likes|pluralize }}
+                    </span>
+                    <a href="#" data-id="{{ post.id }}"
+                       data-action="{% if request.user in users_like %}un{% endif %}like"
+                       class="like button">
+                        {% if request.user not in users_like %}
+                        Like
+                        {% else %}
+                        Unlike
+                        {% endif %}
+                    </a>
                 </div>
+                {% endwith %}
             </div>
             <div class="consultations__text container">
                 <p>{{ post.content|linebreaksbr }}</p>
@@ -61,5 +76,45 @@
         </div>
     </div>
 </div>
-<script src="js/services.single-service.js"></script>
+{% endblock %}
+
+{% block domready %}
+const url = '{% url "vet_clinic:post_like" %}';
+var options = {
+    method: 'POST',
+    headers: {'X-CSRFToken': csrftoken},
+    mode: 'same-origin'
+}
+
+document.querySelector('a.like')
+    .addEventListener('click', function(e){
+    e.preventDefault();
+    var likeButton = this;
+
+    // add request body
+    var formData = new FormData();
+    formData.append('id', likeButton.dataset.id);
+    formData.append('action', likeButton.dataset.action);
+    options['body'] = formData;
+
+    // send HTTP request
+    fetch(url, options)
+    .then(response => response.json())
+    .then(data => {
+        if (data['status'] === 'ok')
+        {
+            var previousAction = likeButton.dataset.action;
+
+            // toggle button text and data-action
+            var action = previousAction === 'like' ? 'unlike' : 'like';
+            likeButton.dataset.action = action;
+            likeButton.innerHTML = action;
+
+            // update like count
+            var likeCount = document.querySelector('span.count .total');
+            var totalLikes = parseInt(likeCount.innerHTML);
+            likeCount.innerHTML = previousAction === 'like' ? totalLikes + 1 : totalLikes - 1;
+        }
+    })
+});
 {% endblock %}

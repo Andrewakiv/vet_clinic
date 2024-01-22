@@ -60,6 +60,7 @@ class Post(models.Model):
     description = models.TextField(blank=True)
     content = models.TextField(blank=True)
     photo = models.ImageField(upload_to='posts/%Y/%m/%d/', blank=True, null=True, default=None)
+    users_like = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='post_likes', blank=True)
     publish_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=True)
