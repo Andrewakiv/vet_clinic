@@ -5,36 +5,32 @@
     <h1>{{ user_to_view.username }}'s Profile</h1>
 </div>
 
-<section class="responses container" id="responses-happy-client">
-    <div class="responses__block-items">
-        <div class="responses__all-feedbacks">
-            <div class="responses__item">
-                <div class="responses__img-animal">
-                    {% if user_to_view.profile.photo %}
-                    <img src="{{ user_to_view.profile.photo.url }}"
-                         alt="A girl with a Jack Russell Terrier"
-                         class="services-carousel__img" width="360" style="max-width: 200px;"/>
-                    {% else %}
-                    <h1>undefined</h1>
-                    {% endif %}
-                </div>
-                <h3 class="responses__subtitle">{{ user_to_view.username }}</h3>
-                <div class="responses__underline">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="3000px" height="33" style="width:15%">
-                        <path d="M0 16.5 L3000 16.5" style="fill:none;stroke:#ff5b2e;stroke-width:3px"></path>
-                    </svg>
-                </div>
-                <span class="responses__story">{{ user_to_view.first_name }}</span>
-                <span class="responses__story">{{ user_to_view.last_name }}</span>
-<!--                <span class="responses__date">{{response.publish_date|date:"F j, Y"}}</span>-->
-            </div>
-            {% if perms.order.view_order %}
-            {% if request.user.username ==  user_to_view.username %}
-            <h1><a href="{% url 'vet_clinic:show_orders' %}">Orders</a></h1>
-            {% endif %}
-            {% endif %}
-            <h1><a href="{% url 'vet_clinic:show_user_orders' user_username=request.user.username %}">My Orders</a></h1>
+<div  class="d-flex flex-row bd-highlight mb-3 container">
+    <div class="card" style="width: 18rem;">
+        {% if user_to_view.profile.photo %}
+        <img src="{{ user_to_view.profile.photo.url }}" class="card-img-top" alt="...">
+        {% endif %}
+        <div class="card-body">
+            <h5 class="card-title">{{ user_to_view.username }}</h5>
+            <p class="card-text">{{ user_to_view.first_name }} {{ user_to_view.last_name }}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
     </div>
-</section>
+
+    <ul class="list-group mx-3 container">
+        <li class="list-group-item">
+            {% if perms.order.view_order %}
+            {% if request.user.username == user_to_view.username %}
+            <a href="{% url 'vet_clinic:show_orders' %}">Orders</a>
+            {% endif %}
+            {% endif %}
+        </li>
+        <li class="list-group-item">
+            <a href="{% url 'vet_clinic:show_user_orders' user_username=request.user.username %}">My Orders</a>
+        </li>
+        <li class="list-group-item">A third item</li>
+        <li class="list-group-item">A fourth item</li>
+        <li class="list-group-item">And a fifth one</li>
+    </ul>
+</div>
 {% endblock %}

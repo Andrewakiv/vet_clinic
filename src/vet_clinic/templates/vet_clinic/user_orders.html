@@ -2,28 +2,36 @@
 
 {% block content %}
 <div class="vet-consultations__title container">
-    <h1>Orders</h1>
+    <h1>My Orders</h1>
 </div>
 
-<section class="responses container" id="responses-happy-client">
-    <div class="responses__block-items">
-        <div class="responses__all-feedbacks">
-            {% if request.user.username ==  user_order.username %}
-            {% for order in orders %}
-            <div class="responses__item">
-                <div class="responses__item">
-                    <h3>{{ order.name }}</h3>
-                    <h4>{{ order.name.first_name }} {{ order.name.last_name }}</h4>
-                    <p>{{ order.phone_number }}</p>
-                    <p>{{ order.pet_info }}</p>
-                    <p>{{ order.service }}</p>
-                    <p>{{ order.order_date }}</p>
-                    <p>{{ order.date_for_visit }}</p>
-                </div>
-            </div>
-            {% endfor %}
-            {% endif %}
-        </div>
+{% if request.user.username ==  user_order.username %}
+{% for order in orders %}
+<div class="card container mb-3">
+    <div class="card-header">
+        <ul class="nav nav-pills card-header-pills">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Active</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+        </ul>
     </div>
-</section>
+    <div class="card-body my-2">
+        <h3 class="card-title">service: {{ order.service }}</h3>
+        <p class="card-text">nickname: {{ order.name }}</p>
+        <p class="card-text">First and last name: {{ order.name.first_name }} {{ order.name.last_name }}</p>
+        <p class="card-text">Phone Number: {{ order.phone_number }}</p>
+        <p class="card-text">About Pet: {{ order.pet_info }}</p>
+        <p class="card-text">Order date: {{ order.order_date }}</p>
+        <p class="card-text">Client date for visiting: {{ order.date_for_visit }}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+{% endfor %}
+{% endif %}
 {% endblock %}

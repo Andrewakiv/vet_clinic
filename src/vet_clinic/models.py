@@ -119,6 +119,14 @@ class Order(models.Model):
     order_date = models.DateTimeField(auto_now_add=True)
     date_for_visit = models.DateField(null=True, blank=True)
 
+    class Meta:
+        verbose_name = 'Order'
+        verbose_name_plural = 'Orders'
+        ordering = ['-order_date']
+        indexes = [
+            models.Index(fields=['-order_date']),
+        ]
+
     def __str__(self):
         return f'Order by {self.name}'
 
