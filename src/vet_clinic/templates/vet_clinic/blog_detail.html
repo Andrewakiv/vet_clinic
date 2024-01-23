@@ -43,6 +43,27 @@
                 <p>{{ post.content|linebreaksbr }}</p>
             </div>
 
+            <div class="contacts-help-section__form-container ">
+                <div class="contacts-help-section__wrapper">
+                    <form class="contacts-form" action="#" method="post" enctype="multipart/form-data">
+                        <div class="responses__form-title">
+                            <h3>Please, leave comment using the following form</h3>
+                        </div>
+                        <div class="contacts-form__field">
+                            <div class="contacts-form__field">
+                                {{ form.as_p }}
+                                {% csrf_token %}
+                            </div>
+                        </div>
+                        <div class="contacts-form__field">
+                            <input type="hidden" name="next" value="{{ next }}"/>
+                            <button class="contacts-form__button" type="submit">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
             {% for comment in comments %}
             <div class="card mb-3 container">
                 <div class="card-body">
@@ -54,67 +75,46 @@
             {% endfor %}
         </section>
     </main>
-
-
-    <div class="contacts-help-section__form-container ">
-        <div class="contacts-help-section__wrapper">
-            <form class="contacts-form" action="#" method="post" enctype="multipart/form-data">
-                <div class="responses__form-title">
-                    <h3>Please, leave comment using the following form</h3>
-                </div>
-                <div class="contacts-form__field">
-                    <div class="contacts-form__field">
-                        {{ form.as_p }}
-                        {% csrf_token %}
-                    </div>
-                </div>
-                <div class="contacts-form__field">
-                    <input type="hidden" name="next" value="{{ next }}"/>
-                    <button class="contacts-form__button" type="submit">Send</button>
-                </div>
-            </form>
-        </div>
-    </div>
 </div>
 {% endblock %}
 
 {% block domready %}
 const url = '{% url "vet_clinic:post_like" %}';
 var options = {
-    method: 'POST',
-    headers: {'X-CSRFToken': csrftoken},
-    mode: 'same-origin'
+method: 'POST',
+headers: {'X-CSRFToken': csrftoken},
+mode: 'same-origin'
 }
 
 document.querySelector('a.like')
-    .addEventListener('click', function(e){
-    e.preventDefault();
-    var likeButton = this;
+.addEventListener('click', function(e){
+e.preventDefault();
+var likeButton = this;
 
-    // add request body
-    var formData = new FormData();
-    formData.append('id', likeButton.dataset.id);
-    formData.append('action', likeButton.dataset.action);
-    options['body'] = formData;
+// add request body
+var formData = new FormData();
+formData.append('id', likeButton.dataset.id);
+formData.append('action', likeButton.dataset.action);
+options['body'] = formData;
 
-    // send HTTP request
-    fetch(url, options)
-    .then(response => response.json())
-    .then(data => {
-        if (data['status'] === 'ok')
-        {
-            var previousAction = likeButton.dataset.action;
+// send HTTP request
+fetch(url, options)
+.then(response => response.json())
+.then(data => {
+if (data['status'] === 'ok')
+{
+var previousAction = likeButton.dataset.action;
 
-            // toggle button text and data-action
-            var action = previousAction === 'like' ? 'unlike' : 'like';
-            likeButton.dataset.action = action;
-            likeButton.innerHTML = action;
+// toggle button text and data-action
+var action = previousAction === 'like' ? 'unlike' : 'like';
+likeButton.dataset.action = action;
+likeButton.innerHTML = action;
 
-            // update like count
-            var likeCount = document.querySelector('span.count .total');
-            var totalLikes = parseInt(likeCount.innerHTML);
-            likeCount.innerHTML = previousAction === 'like' ? totalLikes + 1 : totalLikes - 1;
-        }
-    })
+// update like count
+var likeCount = document.querySelector('span.count .total');
+var totalLikes = parseInt(likeCount.innerHTML);
+likeCount.innerHTML = previousAction === 'like' ? totalLikes + 1 : totalLikes - 1;
+}
+})
 });
 {% endblock %}

@@ -14,7 +14,7 @@
             {% else %}
             <img src="{{ default_service }}" class="services-carousel__img" width="360"/>
             {% endif %}
-            <div class="cards_card_h6"> {{post.category}} | {{post.publish_date|date:"F j, Y"}}</div>
+            <div class="cards_card_h6"><a href="{{ post.category.get_absolute_url }}" style="text-decoration: none;">{{ post.category }}</a> | {{post.publish_date|date:"F j, Y"}}</div>
             <div class="cards_card_h1">{{ post.title }}</div>
             <div class="cards_text">{{ post.description }}</div>
             <a class="cards_button_border" href="{{ post.get_absolute_url }}"><span

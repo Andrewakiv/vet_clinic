@@ -1,0 +1,18 @@
+.count {
+    color:#aaa;
+    border:3px solid #bbb;
+    border-radius:26px;
+    padding:10px 20px;
+    margin:20px 10px 0;
+}
+
+.like {
+    background-color: var(--map-icon-background-color);
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}

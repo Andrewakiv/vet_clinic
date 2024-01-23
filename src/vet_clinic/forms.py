@@ -9,7 +9,8 @@ class TestimonialAddForm(forms.ModelForm):
         model = Testimonial
         fields = ['name', 'response', 'is_published']
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'contacts-form__input-name', 'placeholder': 'Enter your full name'}),
+            'name': forms.TextInput(
+                attrs={'class': 'contacts-form__input-name', 'placeholder': 'Enter your full name'}),
             'response': forms.Textarea(attrs={'cols': 50, 'rows': 10, 'class': 'contacts-form__input-response',
                                               'placeholder': "Enter your response"})
         }
@@ -44,6 +45,6 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ['comm_content']
         widgets = {
-            forms.Textarea(attrs={'cols': 50, 'rows': 10, 'class': 'contacts-form__input-response',
-                                              'placeholder': "Enter your response"})
+            'comm_content': forms.Textarea(attrs={'cols': 10, 'rows': 1, 'class': 'contacts-form__input-response',
+                                                  'placeholder': "Enter your response"})
         }

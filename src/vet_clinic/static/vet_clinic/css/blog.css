@@ -56,21 +56,23 @@
 }
 
 .BlockArticles_cards_card {
-
     position: relative;
     justify-content: center;
     align-items: center;
 
 }
 
-.cards_card_h6{
-
+.cards_card_h6 {
     margin-top: 30px;
     color: #ff5b2e;
     font-family: 'Poppins SemiBold', sans-serif;
     font-size: 13px;
-
     font-weight: 600px;
+}
+
+.cards_card_h6 a {
+    text-decoration: none;
+    color: #ff5b2e;
 }
 
 .card_img{
@@ -82,15 +84,12 @@
 }
 .cards_card_h1{
     font-family: 'Rubik Bold', sans-serif;
-
     margin-top: 20px;
     color: #040f73;
     font-size: 24px;
     font-weight: bold;
 }
 .cards_text{
-
-
     color: rgb(106,110,143);
     font-size: 17px;
     line-height: 1.5;
@@ -104,7 +103,6 @@
 }
 
 .cards_button_border{
-
     background-color: #ff5b2e;
     width:140px;
     height:50px;
