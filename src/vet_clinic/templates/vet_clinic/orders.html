@@ -6,6 +6,16 @@
 </div>
 
 {% if perms.order.view_order %}
+
+<ul class="list-group mx-auto mb-3 container">
+    {% for service in services_list %}
+    <li class="list-group-item">
+        <a href="{% url 'vet_clinic:show_filter_orders' service.slug %}">{{ service.title }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+
 {% for order in orders %}
 <div class="card container mb-3">
     <div class="card-header">
@@ -32,6 +42,7 @@
         <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
 </div>
+
 {% endfor %}
 {% endif %}
 {% endblock %}

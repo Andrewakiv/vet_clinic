@@ -15,6 +15,7 @@ urlpatterns = [
     path('faq/', views.faq, name='faq'),
     path('responses/', views.responses, name='responses'),
     path('orders/', views.show_orders, name='show_orders'),
+    path('orders/<slug:service_slug>/', views.show_filter_orders, name='show_filter_orders'),
     path('user-orders/<str:user_username>/', views.show_user_orders, name='show_user_orders'),
     path('contacts/', views.contacts, name='contacts'),
     path('contacts/<slug:service_slug>/', views.contacts, name='contacts_detail'),

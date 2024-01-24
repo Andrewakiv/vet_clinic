@@ -101,7 +101,7 @@ class BlogDetailView(DataMixin, ModelFormMixin, DetailView):
             new_comment.post = self.get_object()
             new_comment.name = request.user
             new_comment.save()
-            return redirect('vet_clinic:blog_detail',  blog_slug=self.kwargs[self.slug_url_kwarg])
+            return redirect('vet_clinic:blog_detail', blog_slug=self.kwargs[self.slug_url_kwarg])
 
 
 @require_POST
@@ -169,9 +169,22 @@ def responses(request):
 @permission_required("order.view_order")
 def show_orders(request):
     orders = Order.objects.all()
+    services_list = Service.objects.all()
 
     data = {
-        'orders': orders
+        'orders': orders,
+        'services_list': services_list
+    }
+
+    return render(request, 'vet_clinic/orders.html', context=data)
+
+
+@permission_required("order.view_order")
+def show_filter_orders(request, service_slug):
+    orders = Order.objects.filter(service__slug=service_slug)
+
+    data = {
+        'orders': orders,
     }
 
     return render(request, 'vet_clinic/orders.html', context=data)
