@@ -7,17 +7,43 @@
 
 {% if perms.order.view_order %}
 
-<ul class="list-group mx-auto mb-3 container">
-    {% for service in services_list %}
-    <li class="list-group-item">
-        <a href="{% url 'vet_clinic:show_filter_orders' service.slug %}">{{ service.title }}</a>
+<ul class="nav nav-tabs container mb-5 fs-5">
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Active</a>
     </li>
-    {% endfor %}
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Services</a>
+        <ul class="dropdown-menu">
+            {% for service in services_list %}
+            <li>
+                <a class="dropdown-item" href="{% url 'vet_clinic:show_filter_orders' service.slug %}">{{ service.title }}</a>
+            </li>
+            {% endfor %}
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="{% url 'vet_clinic:show_orders' %}">All</a></li>
+        </ul>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    </li>
 </ul>
+
+<!--<ul class="list-group mx-auto mb-3 container">-->
+<!--    {% for service in services_list %}-->
+<!--    <li class="list-group-item">-->
+<!--        <a href="{% url 'vet_clinic:show_filter_orders' service.slug %}">{{ service.title }}</a>-->
+<!--    </li>-->
+<!--    {% endfor %}-->
+<!--</ul>-->
 
 
 {% for order in orders %}
-<div class="card {% if order.status == 'CMP' %}border-danger{% elif order.status == 'CNF' %}border-success{% elif order.status == 'DLY' %}border-warning{% else %}border-primary{% endif %} container mb-3">
+<div class="card {% if order.status == 'CMP' %}border-danger{% elif order.status == 'CNF' %}border-success{% elif order.status == 'DLY' %}border-warning{% else %}border-primary{% endif %} border-3 container mb-3">
     <div class="card-body my-2">
         <h3 class="card-title">service: {{ order.service }}</h3>
         <p class="card-text">nickname: {{ order.name }}</p>
