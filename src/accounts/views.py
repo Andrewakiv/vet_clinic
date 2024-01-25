@@ -7,7 +7,8 @@ from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 
-from accounts.forms import UserRegistrationForm, UserChangePasswordForm, UserEditForm, ProfileEditForm
+from accounts.forms import UserRegistrationForm, UserChangePasswordForm, UserEditForm, ProfileEditForm, \
+    StaffProfileEditForm
 from accounts.models import Profile
 from vet_clinic.models import Order
 
@@ -55,24 +56,41 @@ def edit(request):
     if request.method == 'POST':
         user_form = UserEditForm(instance=request.user, data=request.POST)
         profile_form = ProfileEditForm(instance=request.user.profile, data=request.POST, files=request.FILES)
+        staff_profile_form = None
+        if request.user.groups.filter(name='moderator').exists():
+            staff_profile_form = StaffProfileEditForm(instance=request.user.staffprofile, data=request.POST)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+        if staff_profile_form.is_valid():
+            if staff_profile_form:
+                staff_profile_form.save()
             # messages.success(request, 'Profile updated successfully')
         # else:
         # messages.error(request, 'Error updating your profile')
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=request.user.profile)
+        staff_profile_form = None
+        if request.user.groups.filter(name='moderator').exists():
+            staff_profile_form = StaffProfileEditForm(instance=request.user.staffprofile)
 
-    return render(request, 'accounts/edit.html', {'user_form': user_form, 'profile_form': profile_form})
+    data = {
+        'user_form': user_form,
+        'profile_form': profile_form,
+        'staff_profile_form': staff_profile_form
+    }
+
+    return render(request, 'accounts/edit.html', context=data)
 
 
 def profile_to_view(request, user_username):
     user_to_view = get_object_or_404(User, username=user_username)
-
+    print(request.user.groups.filter(name='moderator').exists())
     data = {
         'user_to_view': user_to_view,
     }
 
     return render(request, 'accounts/profile.html', context=data)
+
+

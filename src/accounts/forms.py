@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import PasswordChangeForm
 
-from accounts.models import Profile
+from accounts.models import Profile, StaffProfile
 
 
 class UserRegistrationForm(forms.ModelForm):
@@ -51,3 +51,8 @@ class ProfileEditForm(forms.ModelForm):
         model = Profile
         fields = ['date_of_birth', 'photo', 'send_mail']
 
+
+class StaffProfileEditForm(forms.ModelForm):
+    class Meta:
+        model = StaffProfile
+        fields = ['position', 'description']
