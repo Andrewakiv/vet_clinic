@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.models import User
@@ -177,6 +178,64 @@ def show_orders(request):
     }
 
     return render(request, 'vet_clinic/orders.html', context=data)
+
+
+@permission_required("order.view_order")
+def order_detail(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+
+    data = {
+        'order': order
+    }
+
+    return render(request, 'vet_clinic/order-detail.html', context=data)
+
+
+@permission_required("order.view_order")
+def complete_order(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+    if request.method == 'POST':
+        order.status = Order.Status.COMPLETE
+        order.save()
+        messages.success(request, "Order has been completed")
+        return redirect('vet_clinic:order_detail', order_id=order_id)
+    else:
+        data = {
+            'order': order
+        }
+
+    return render(request, 'vet_clinic/order-detail.html', context=data)
+
+
+@permission_required("order.view_order")
+def confirm_order(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+    if request.method == 'POST':
+        order.status = Order.Status.CONFIRM
+        order.save()
+        messages.success(request, "Order has been confirmed")
+        return redirect('vet_clinic:order_detail', order_id=order_id)
+    data = {
+        'order': order
+    }
+
+    return render(request, 'vet_clinic/order-detail.html', context=data)
+
+
+@permission_required("order.view_order")
+def delay_order(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+    if request.method == 'POST':
+        order.status = Order.Status.DELAY
+        order.save()
+        messages.warning(request, "Order has been postponed")
+        return redirect('vet_clinic:order_detail', order_id=order_id)
+    order.save()
+    data = {
+        'order': order
+    }
+
+    return render(request, 'vet_clinic/order-detail.html', context=data)
 
 
 @permission_required("order.view_order")

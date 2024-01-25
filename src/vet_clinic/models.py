@@ -112,12 +112,19 @@ class Testimonial(models.Model):
 
 
 class Order(models.Model):
+    class Status(models.TextChoices):
+        DRAFT = 'DRF', 'Draft'
+        COMPLETE = 'CMP', 'Complete'
+        CONFIRM = 'CNF', 'Confirm'
+        DELAY = 'DLY', 'Delay'
+
     name = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='names', null=True, blank=True)
     phone_number = PhoneNumberField()
     pet_info = models.CharField(max_length=50)
     service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='service', null=True)
     order_date = models.DateTimeField(auto_now_add=True)
     date_for_visit = models.DateField(null=True, blank=True)
+    status = models.CharField(max_length=3, choices=Status.choices, default=Status.DRAFT)
 
     class Meta:
         verbose_name = 'Order'
@@ -126,6 +133,9 @@ class Order(models.Model):
         indexes = [
             models.Index(fields=['-order_date']),
         ]
+
+    def get_absolute_url(self):
+        return reverse("vet_clinic:order_detail", kwargs={"order_id": self.id})
 
     def __str__(self):
         return f'Order by {self.name}'

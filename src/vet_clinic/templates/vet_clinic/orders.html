@@ -17,20 +17,7 @@
 
 
 {% for order in orders %}
-<div class="card container mb-3">
-    <div class="card-header">
-        <ul class="nav nav-pills card-header-pills">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">Active</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-        </ul>
-    </div>
+<div class="card {% if order.status == 'CMP' %}border-danger{% elif order.status == 'CNF' %}border-success{% elif order.status == 'DLY' %}border-warning{% else %}border-primary{% endif %} container mb-3">
     <div class="card-body my-2">
         <h3 class="card-title">service: {{ order.service }}</h3>
         <p class="card-text">nickname: {{ order.name }}</p>
@@ -39,7 +26,7 @@
         <p class="card-text">About Pet: {{ order.pet_info }}</p>
         <p class="card-text">Order date: {{ order.order_date }}</p>
         <p class="card-text">Client date for visiting: {{ order.date_for_visit }}</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <a href="{{ order.get_absolute_url }}" class="btn btn-primary">Details</a>
     </div>
 </div>
 
