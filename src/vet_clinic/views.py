@@ -230,7 +230,6 @@ def delay_order(request, order_id):
         order.save()
         messages.warning(request, "Order has been postponed")
         return redirect('vet_clinic:order_detail', order_id=order_id)
-    order.save()
     data = {
         'order': order
     }
@@ -241,6 +240,50 @@ def delay_order(request, order_id):
 @permission_required("order.view_order")
 def show_filter_orders(request, service_slug):
     orders = Order.objects.filter(service__slug=service_slug)
+
+    data = {
+        'orders': orders,
+    }
+
+    return render(request, 'vet_clinic/orders.html', context=data)
+
+
+@permission_required("order.view_order")
+def draft_orders(request):
+    orders = Order.objects.filter(status=Order.Status.DRAFT)
+
+    data = {
+        'orders': orders,
+    }
+
+    return render(request, 'vet_clinic/orders.html', context=data)
+
+
+@permission_required("order.view_order")
+def completed_orders(request):
+    orders = Order.objects.filter(status=Order.Status.COMPLETE)
+
+    data = {
+        'orders': orders,
+    }
+
+    return render(request, 'vet_clinic/orders.html', context=data)
+
+
+@permission_required("order.view_order")
+def confirmed_orders(request):
+    orders = Order.objects.filter(status=Order.Status.CONFIRM)
+
+    data = {
+        'orders': orders,
+    }
+
+    return render(request, 'vet_clinic/orders.html', context=data)
+
+
+@permission_required("order.view_order")
+def delayed_orders(request):
+    orders = Order.objects.filter(status=Order.Status.DELAY)
 
     data = {
         'orders': orders,
