@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-background">
+    <header class="header">
+        <div class="header__wrapper">
+            <div data-include="header__content.partial.html"></div>
+        </div>
+    </header>
+    <main>
+        <section class="about">
+            <div class="about__title container">
+                <h2 class="about__heading">About Us</h2>
+                <p class="about__contact">
+                    Order our services now!
+                    <a href="#" class="about__phone">+ 1 (234) 567 89 00</a>
+                </p>
+            </div>
+        </section>
+        <section class="intro container">
+            <img
+                    src="img/dogs.png"
+                    alt="Two corgis on a yellow background"
+                    class="intro__image"
+            />
+            <div class="intro__content">
+                <h1 class="intro__heading">
+                    Your Fluffy Friend Is In Our Safe And Caring Hands
+                </h1>
+                <span class="intro__subtitle"
+                >We are a small firm with 15 dedicated employees that provide all
+              kinds of pet care services in New York.</span
+                >
+                <div class="intro__description">
+                    <p class="intro__paragraph">
+                        We know how much you adore your pet. You can be sure that we
+                        care about your family member with all our attention and love
+                        for animals. We offer all kinds of pet care services for our
+                        clients in New York.
+                    </p>
+                    <p class="intro__paragraph">
+                        Our dedicated team of vets, groomers, pet sitters and other
+                        specialists will provide all kinds of services and take care of
+                        your pet. We find an approach to every animal. You can rest
+                        assured that your fluffy family member will stay healthy and
+                        happy.
+                    </p>
+                </div>
+                <div class="intro__buttons">
+                    <a class="intro__button" href="{% url 'vet_clinic:services' %}">Our Services</a>
+                </div>
+            </div>
+        </section>
+        <div class="meet_our_team__partial">
+            <section class="team container">
+                <div class="team__info">
+                    <h2 class="team__title">Meet Our Team</h2>
+                    <p class="team__description">Each member of our Best.Pet family loves animals and is trained to look
+                        after them.
+                    </p>
+                    <div class="row row-cols-1 row-cols-md-2 g-4">
+                        {% for s in staff %}
+                        <div class="col">
+                            <div class="card mx-auto mb-3" style="background-color: var(--background-color);">
+                                <h5 class="card-header" style="color: var(--bright-text-color);">{{ s.position }}</h5>
+                                <div class="row g-0">
+                                    {% if s.user.profile.photo %}
+                                    <div class="col-md-4">
+                                        <img src="{{ s.user.profile.photo.url }}" class="img-fluid rounded-start"
+                                             alt="...">
+                                    </div>
+                                    {% else %}
+                                    <div class="col-md-4">
+                                        <img src="{{ default_profile }}" class="img-fluid rounded-start"
+                                             alt="...">
+                                    </div>
+                                    {% endif %}
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="color: var(--title-text-color);">{{ s.user.first_name }} {{ s.user.last_name }}</h5>
+                                            <p class="card-text" style="color: var(--subtitle-text-color);">{{ s.description }}</p>
+<!--                                            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins-->
+<!--                                                ago</small></p>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+{% endblock %}

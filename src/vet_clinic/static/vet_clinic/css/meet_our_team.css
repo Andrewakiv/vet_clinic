@@ -1,3 +1,161 @@
+.about {
+    background-color: var(--background-saturated-color);
+    padding: 40px 0;
+}
+
+.about__title {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 0 24px;
+    flex-direction: column;
+}
+
+.about__heading{
+    color: var(--bright-text-color);
+    font-size: 28px;
+    padding-right: 20px;
+}
+
+.about__contact {
+    color: var(--title-text-color);
+    font-family: "Poppins Medium";
+    font-size: 14px;
+    line-height: 18.6662px;
+    margin-top: 50px;
+}
+
+.about__phone {
+    color: var(--bright-text-color);
+}
+/*intro*/
+
+.intro__image{
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.intro{
+    margin-top: 90px;
+    margin-bottom: 60px;
+    padding: 0 24px;
+}
+
+.intro__heading{
+    color: var(--title-text-color);
+    font-size: 28px;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    line-height: 37px;
+}
+.intro__content{
+    text-align: center;
+}
+.intro__subtitle{
+    color: var(--subtitle-text-color);
+    font-size: 19px;
+    line-height: 29px;
+    font-family: "Poppins Medium", sans-serif;
+
+}
+.intro__paragraph{
+    font-size: 17px;
+    line-height: 25.5px;
+    color: var(--paragraph-text-color);
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.intro__description{
+    padding-top: 80px;
+}
+.intro__button{
+    display: inline-block;
+    padding: 16px 28px;
+    text-decoration: none;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border-radius: 25px;
+    border: none;
+    font-family: "Poppins Bold";
+    font-size: 15px;
+    line-height: 18px;
+    margin-right: 8px;
+}
+.intro__button:hover {
+    background-color: var(--button-hover-color);
+}
+
+.intro__button:active {
+    background-color: var(--button-background-color);
+}
+.services-intro__button{
+    display: inline-block;
+    padding: 16px 28px;
+    text-decoration: none;
+    background-color: var(--button-background-light-color);
+    color: var(--title-text-color);
+    border-radius: 25px;
+    border: none;
+    font-family: "Poppins Bold";
+    font-size: 15px;
+    line-height: 18px;
+    margin-left: 8px;
+}
+.intro__buttons{
+    margin-top: 20px;
+}
+.services-intro__button:hover {
+    background-color: var(--button-background-color-hover);
+
+}
+
+.services-intro__button:active {
+    background-color: var(--button-hover-color);
+}
+.meet_our_team__partial{
+    padding-top: 50px;
+    padding-bottom: 55px;
+}
+
+
+
+@media (min-width: 768px) {
+    .intro__heading{
+        font-size: 38px;
+        line-height: 50px;
+    }
+    .intro__description{
+        padding-top: 40px;
+        max-width: 66.6%;
+       margin: 0 auto;
+    }
+    .about__heading{
+        font-size: 38px;
+
+    }
+    .about__contact {
+        margin-top: 0;
+    }
+    .about__title{
+        justify-content: space-between;
+        align-items: baseline;
+        flex-direction: row;
+    }
+}
+@media (min-width: 990px) {
+    .intro__heading{
+        font-size: 42px;
+        line-height: 50px;
+    }
+    .about {
+        padding: 40px 20px;
+    }
+}
+
+
+
 .team {
     padding-top: 50px;
 }
@@ -21,50 +179,4 @@
     margin: 0;
     padding-top: 10px;
     padding-bottom: 30px;
-}
-
-.team__members {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.team__image {
-    max-width: 100%;
-    height: auto;
-}
-
-
-.team__member {
-    text-align: center;
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 20px;
-    margin-top: 30px;
-}
-
-.team__member-name {
-    margin-top: 30px;
-    color: var(--title-text-color);
-    font-family: "Rubik Bold", sans-serif;
-    font-size: 24px;
-}
-
-.team__member-position {
-    margin-top: 20px;
-    color: var(--bright-text-color);
-    font-family: "Rubik Bold", sans-serif;
-    font-size: 13px;
-}
-
-@media (min-width: 768px) {
-    .team__member {
-        width: 48%;
-    }
-}
-
-@media (min-width: 1024px) {
-    .team__member {
-        width: 30%;
-    }
 }

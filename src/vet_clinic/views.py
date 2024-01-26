@@ -11,6 +11,7 @@ from django.views.decorators.http import require_POST
 from django.views.generic import ListView, DetailView, FormView
 from django.views.generic.edit import ModelFormMixin
 
+from accounts.models import StaffProfile
 from .forms import TestimonialAddForm, OrderForm, CommentForm
 from .models import Service, Post, Category, Testimonial, Order
 from .utils import DataMixin
@@ -26,10 +27,6 @@ class HomeView(DataMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return self.get_mixin_context(context, title='Home')
-
-
-def about(request):
-    return HttpResponse('about')
 
 
 class ServicesView(DataMixin, ListView):
@@ -273,9 +270,10 @@ def completed_orders(request):
 @permission_required("order.view_order")
 def confirmed_orders(request):
     orders = Order.objects.filter(status=Order.Status.CONFIRM)
-
+    services_list = Service.objects.all()
     data = {
         'orders': orders,
+        'services_list': services_list
     }
 
     return render(request, 'vet_clinic/orders.html', context=data)
@@ -306,3 +304,14 @@ def show_user_orders(request, user_username):
 
 def contacts(request):
     return HttpResponse('contacts')
+
+
+def about(request):
+    staff = StaffProfile.objects.all()
+
+    data = {
+        'staff': staff,
+        'default_profile': settings.DEFAULT_PROFILE_IMAGE
+    }
+
+    return render(request, 'vet_clinic/about-us.html', context=data)

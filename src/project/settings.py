@@ -134,7 +134,7 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DEFAULT_USER_IMAGE = MEDIA_URL+'services/default_service.png'
-
+DEFAULT_PROFILE_IMAGE = MEDIA_URL+'accounts/default_profile.jpg'
 
 LOGIN_REDIRECT_URL = 'vet_clinic:home'
 LOGIN_URL = 'accounts:login'  # must create LoginUserView(LoginView) to use it or use accounts/registration/login.html
