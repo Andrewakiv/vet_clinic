@@ -36,6 +36,14 @@ class UserEditForm(forms.ModelForm):
     class Meta:
         model = get_user_model()
         fields = ['first_name', 'last_name', 'email']
+        widgets = {
+            # 'name': forms.TextInput(
+            #     attrs={'class': 'contacts-form__input-name', 'placeholder': 'Enter your full name'}),
+            'first_name': forms.TextInput(
+                attrs={'class': 'form-control'}),
+            'last_name': forms.TextInput(
+                attrs={'class': 'form-control'}),
+        }
 
     def clean_email(self):
         data = self.cleaned_data['email']
@@ -47,12 +55,25 @@ class UserEditForm(forms.ModelForm):
 
 
 class ProfileEditForm(forms.ModelForm):
+    date_of_birth = forms.DateField(widget=forms.widgets.DateInput(attrs={'class': 'contacts-form__input-service',
+                                                                          'type': 'date'}))
+
     class Meta:
         model = Profile
         fields = ['date_of_birth', 'photo', 'send_mail']
+        # widgets = {
+        #     'photo':  forms.ClearableFileInput(
+        #         attrs={'type':'file', 'class':'form-control', 'id':'inputGroupFile02'}),
+        # }
 
 
 class StaffProfileEditForm(forms.ModelForm):
     class Meta:
         model = StaffProfile
         fields = ['position', 'description']
+        widgets = {
+            'position': forms.TextInput(
+                attrs={'class': 'form-control'}),
+            'description': forms.Textarea(
+                attrs={'class': 'form-control'})
+        }
