@@ -6,12 +6,26 @@ from accounts.models import Profile, StaffProfile
 
 
 class UserRegistrationForm(forms.ModelForm):
-    password = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Repeat password', widget=forms.PasswordInput)
+    password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    password2 = forms.CharField(label='Repeat password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = get_user_model()
         fields = ['username', 'email', 'first_name', 'last_name']
+        widgets = {
+            'username': forms.TextInput(
+                attrs={'class': 'form-control'}),
+            'email': forms.TextInput(
+                attrs={'class': 'form-control'}),
+            # 'password': forms.TextInput(
+            #     attrs={'class': 'form-control', "id":"floatingPassword"}),
+            # 'password2': forms.PasswordInput(
+            #     attrs={'class': 'form-control'}),
+            'first_name': forms.TextInput(
+                attrs={'class': 'form-control'}),
+            'last_name': forms.TextInput(
+                attrs={'class': 'form-control'}),
+        }
 
     def clean_password2(self):
         cd = self.cleaned_data
