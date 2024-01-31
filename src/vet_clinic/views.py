@@ -303,7 +303,7 @@ def show_user_orders(request, user_username):
 
 
 def contacts(request):
-    return HttpResponse('contacts')
+    return render(request, 'vet_clinic/contacts.html')
 
 
 def about(request):

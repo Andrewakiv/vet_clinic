@@ -1,27 +1,100 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="vet-consultations__title container">
-    <h1>Make order</h1>
+<div class="container-background">
+    <section class="about">
+        <div class="about__title container">
+            <h2 class="about__heading">Contacts</h2>
+            <p class="about__contact">
+                Order our services now!
+                <a href="#" class="about__phone">+ 1 (234) 567 89 00</a>
+            </p>
+        </div>
+    </section>
 </div>
-<div class="contacts-help-section__form-container ">
-    <div class="contacts-help-section__wrapper">
-        <form class="contacts-form" action="#" method="post" enctype="multipart/form-data">
-            <div class="responses__form-title">
-                <h3>Please, make order using the following form</h3>
+<div class="container accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"
+            style="color: var(--link-text-color); background-color: var(--button-background-light-color)">
+                What services do your provide?
+            </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+             data-bs-parent="#accordionFlushExample"
+        style="color: var(--link-text-color); background-color: var(--button-background-light-color)">
+            <div class="accordion-body">
+                We offer all services related to pet care. These include grooming, training, dog walking, pet sitting,
+                pet hotel, etc.
             </div>
-            <div class="contacts-form__field">
-                <div class="contacts-form__field">
-                    {{ form.as_p }}
-                    {% csrf_token %}
-                </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo"
+                    style="color: var(--link-text-color); background-color: var(--button-background-light-color)">
+                Do you have a professional vet?
+            </button>
+        </h2>
+        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+             data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body"
+            style="color: var(--link-text-color); background-color: var(--button-background-light-color)">
+                Yes, we have 3 vets that specialize in different pets, from cats to parrots and exotic animals.
+                Still, we're not a vet clinic, so our vets provide only consultations and do not perform any procedures.
             </div>
-            <div class="contacts-form__field">
-                <input type="hidden" name="next" value="{{ next }}"/>
-                <button class="contacts-form__button" type="submit">Order</button>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree"
+            style="color: var(--link-text-color); background-color: var(--button-background-light-color)">
+                What does a pet sitter do?
+            </button>
+        </h2>
+        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+             data-bs-parent="#accordionFlushExample"
+        style="color: var(--link-text-color); background-color: var(--button-background-light-color)">
+            <div class="accordion-body">A pet sitter is a person that looks after your pets when you're out.
+                It includes feeding, washing, providing walks and exercises, etc.
             </div>
-        </form>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour"
+            style="color: var(--link-text-color); background-color: var(--button-background-light-color)">
+                Can I leave my pet at your place?
+            </button>
+        </h2>
+        <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"
+             data-bs-parent="#accordionFlushExample"
+        style="color: var(--link-text-color); background-color: var(--button-background-light-color)">
+            <div class="accordion-body">Yes, you travel with peace of mind. We have a mini-hotel for all kinds of pets.
+                It is spacious, comfortable, and fully equipped.
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingFive">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive"
+            style="color: var(--link-text-color); background-color: var(--button-background-light-color)">
+                Can I order one-time pet sitting services?
+            </button>
+        </h2>
+        <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive"
+             data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body"
+            style="color: var(--link-text-color); background-color: var(--button-background-light-color)">
+                Sure, if you need a pet sitter just once, you can order such a service.
+                Also, you can request a pet sitter for 1-2 hours and decide whether you want to use our services later.
+            </div>
+        </div>
     </div>
 </div>
-
 {% endblock %}
