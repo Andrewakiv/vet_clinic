@@ -42,9 +42,9 @@ class UserRegistrationForm(forms.ModelForm):
 
 
 class UserChangePasswordForm(PasswordChangeForm):
-    old_password = forms.CharField(widget=forms.PasswordInput())
-    new_password1 = forms.CharField(widget=forms.PasswordInput())
-    new_password2 = forms.CharField(widget=forms.PasswordInput())
+    old_password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    new_password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    new_password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
 
 class UserEditForm(forms.ModelForm):
