@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import PasswordChangeForm
+from django.forms import ClearableFileInput
 
 from accounts.models import Profile, StaffProfile
 
@@ -68,6 +69,10 @@ class UserEditForm(forms.ModelForm):
         return data
 
 
+class CustomClearableFileInput(ClearableFileInput):
+    template_name = 'vet_clinic/widgets/custom_clearable_file_input.html'
+
+
 class ProfileEditForm(forms.ModelForm):
     date_of_birth = forms.DateField(widget=forms.widgets.DateInput(attrs={'class': 'contacts-form__input-service',
                                                                           'type': 'date'}))
@@ -75,10 +80,10 @@ class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['date_of_birth', 'photo', 'send_mail']
-        # widgets = {
-        #     'photo':  forms.ClearableFileInput(
-        #         attrs={'type':'file', 'class':'form-control', 'id':'inputGroupFile02'}),
-        # }
+        widgets = {
+            'photo': CustomClearableFileInput(
+                attrs={'class': 'form-control'}),
+        }
 
 
 class StaffProfileEditForm(forms.ModelForm):

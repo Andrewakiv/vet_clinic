@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 
 from accounts.forms import UserRegistrationForm, UserChangePasswordForm, UserEditForm, ProfileEditForm, \
@@ -65,6 +65,7 @@ def edit(request):
         if staff_profile_form.is_valid():
             if staff_profile_form:
                 staff_profile_form.save()
+        return redirect('accounts:edit')
             # messages.success(request, 'Profile updated successfully')
         # else:
         # messages.error(request, 'Error updating your profile')
