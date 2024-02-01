@@ -1,17 +1,17 @@
 from django.conf import settings
 from django.contrib import messages
-from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse, reverse_lazy
+
 from django.views.decorators.http import require_POST
-from django.views.generic import ListView, DetailView, FormView
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import ModelFormMixin
 
 from accounts.models import StaffProfile
+from pet_care_scheduler.forms import ScheduleForm
 from .forms import TestimonialAddForm, OrderForm, CommentForm
 from .models import Service, Post, Category, Testimonial, Order
 from .utils import DataMixin
@@ -56,7 +56,7 @@ class ServiceDetailView(DataMixin, ModelFormMixin, DetailView):
         return self.get_mixin_context(context, title=context['service'].title)
 
     def post(self, request, *args, **kwargs):
-        form = OrderForm(request.POST)
+        form = ScheduleForm(request.POST)
         if form.is_valid():
             new_order = form.save(commit=False)
             new_order.service = self.get_object()
@@ -162,144 +162,6 @@ def responses(request):
         'default_service': settings.DEFAULT_USER_IMAGE
     }
     return render(request, 'vet_clinic/responses.html', context=data)
-
-
-@permission_required("order.view_order")
-def show_orders(request):
-    orders = Order.objects.all()
-    services_list = Service.objects.all()
-
-    data = {
-        'orders': orders,
-        'services_list': services_list
-    }
-
-    return render(request, 'vet_clinic/orders.html', context=data)
-
-
-@permission_required("order.view_order")
-def order_detail(request, order_id):
-    order = get_object_or_404(Order, id=order_id)
-
-    data = {
-        'order': order
-    }
-
-    return render(request, 'vet_clinic/order-detail.html', context=data)
-
-
-@permission_required("order.view_order")
-def complete_order(request, order_id):
-    order = get_object_or_404(Order, id=order_id)
-    if request.method == 'POST':
-        order.status = Order.Status.COMPLETE
-        order.save()
-        messages.success(request, "Order has been completed")
-        return redirect('vet_clinic:order_detail', order_id=order_id)
-    else:
-        data = {
-            'order': order
-        }
-
-    return render(request, 'vet_clinic/order-detail.html', context=data)
-
-
-@permission_required("order.view_order")
-def confirm_order(request, order_id):
-    order = get_object_or_404(Order, id=order_id)
-    if request.method == 'POST':
-        order.status = Order.Status.CONFIRM
-        order.save()
-        messages.success(request, "Order has been confirmed")
-        return redirect('vet_clinic:order_detail', order_id=order_id)
-    data = {
-        'order': order
-    }
-
-    return render(request, 'vet_clinic/order-detail.html', context=data)
-
-
-@permission_required("order.view_order")
-def delay_order(request, order_id):
-    order = get_object_or_404(Order, id=order_id)
-    if request.method == 'POST':
-        order.status = Order.Status.DELAY
-        order.save()
-        messages.warning(request, "Order has been postponed")
-        return redirect('vet_clinic:order_detail', order_id=order_id)
-    data = {
-        'order': order
-    }
-
-    return render(request, 'vet_clinic/order-detail.html', context=data)
-
-
-@permission_required("order.view_order")
-def show_filter_orders(request, service_slug):
-    orders = Order.objects.filter(service__slug=service_slug)
-
-    data = {
-        'orders': orders,
-    }
-
-    return render(request, 'vet_clinic/orders.html', context=data)
-
-
-@permission_required("order.view_order")
-def draft_orders(request):
-    orders = Order.objects.filter(status=Order.Status.DRAFT)
-
-    data = {
-        'orders': orders,
-    }
-
-    return render(request, 'vet_clinic/orders.html', context=data)
-
-
-@permission_required("order.view_order")
-def completed_orders(request):
-    orders = Order.objects.filter(status=Order.Status.COMPLETE)
-
-    data = {
-        'orders': orders,
-    }
-
-    return render(request, 'vet_clinic/orders.html', context=data)
-
-
-@permission_required("order.view_order")
-def confirmed_orders(request):
-    orders = Order.objects.filter(status=Order.Status.CONFIRM)
-    services_list = Service.objects.all()
-    data = {
-        'orders': orders,
-        'services_list': services_list
-    }
-
-    return render(request, 'vet_clinic/orders.html', context=data)
-
-
-@permission_required("order.view_order")
-def delayed_orders(request):
-    orders = Order.objects.filter(status=Order.Status.DELAY)
-
-    data = {
-        'orders': orders,
-    }
-
-    return render(request, 'vet_clinic/orders.html', context=data)
-
-
-def show_user_orders(request, user_username):
-    user_order = get_object_or_404(User, username=user_username)
-    orders = Order.objects.filter(name=user_order)
-
-    data = {
-        'user_order': user_order,
-        'orders': orders
-    }
-
-    return render(request, 'vet_clinic/user_orders.html', context=data)
 
 
 def contacts(request):

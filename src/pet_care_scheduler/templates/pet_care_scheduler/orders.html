@@ -5,18 +5,17 @@
     <h1>Orders</h1>
 </div>
 
-{% if perms.order.view_order %}
 
 <ul class="nav nav-tabs container mb-5 fs-5">
     <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="{% url 'vet_clinic:show_orders' %}">All</a>
+        <a class="nav-link active" aria-current="page" href="{% url 'schedule:show_orders' %}">All</a>
     </li>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Services</a>
         <ul class="dropdown-menu">
             {% for service in services_list %}
             <li>
-                <a class="dropdown-item" href="{% url 'vet_clinic:show_filter_orders' service.slug %}">{{ service.title }}</a>
+                <a class="dropdown-item" href="{% url 'schedule:show_filter_orders' service.slug %}">{{ service.title }}</a>
             </li>
             {% endfor %}
             <li>
@@ -26,16 +25,16 @@
         </ul>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{% url 'vet_clinic:draft_orders' %}">Draft</a>
+        <a class="nav-link" href="{% url 'schedule:draft_orders' %}">Draft</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{% url 'vet_clinic:completed_orders' %}">Completed</a>
+        <a class="nav-link" href="{% url 'schedule:completed_orders' %}">Completed</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{% url 'vet_clinic:confirmed_orders' %}">Confirmed</a>
+        <a class="nav-link" href="{% url 'schedule:confirmed_orders' %}">Confirmed</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{% url 'vet_clinic:delayed_orders' %}">Postponed</a>
+        <a class="nav-link" href="{% url 'schedule:delayed_orders' %}">Postponed</a>
     </li>
     <li class="nav-item">
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -53,11 +52,9 @@
         <p class="card-text">About Pet: {{ order.pet_info }}</p>
         <p class="card-text">Order date: {{ order.order_date }}</p>
         <p class="card-text">Client date for visiting: {{ order.date_for_visit }}</p>
-        <p class="card-text">Client date for visiting: {{ order.status }}</p>
         <a href="{{ order.get_absolute_url }}" class="btn btn-primary">Details</a>
     </div>
 </div>
-
 {% endfor %}
-{% endif %}
+
 {% endblock %}

@@ -9,7 +9,7 @@ from django.urls import reverse_lazy
 
 from accounts.forms import UserRegistrationForm, UserChangePasswordForm, UserEditForm, ProfileEditForm, \
     StaffProfileEditForm
-from accounts.models import Profile
+from accounts.models import Profile, StaffProfile
 from vet_clinic.models import Order
 
 
@@ -38,6 +38,7 @@ def register(request):
             new_user.set_password(form.cleaned_data['password'])
             new_user.save()
             Profile.objects.create(user=new_user)
+            StaffProfile.objects.create(user=new_user)
             return render(request, 'accounts/register_done.html', {'new_user': new_user})
     else:
         form = UserRegistrationForm()

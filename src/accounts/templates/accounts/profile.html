@@ -16,23 +16,20 @@
             <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
     </div>
-
+    {% if request.user.username == user_to_view.username %}
     <ul class="list-group mx-3 container">
         <li class="list-group-item">
-            {% if perms.order.view_order %}
-            {% if request.user.username == user_to_view.username %}
-            <a href="{% url 'vet_clinic:show_orders' %}">Orders</a>
-            {% endif %}
+            {% if perms.pet_care_scheduler.view_schedule %}
+            <a href="{% url 'schedule:show_orders' %}">Orders</a>
             {% endif %}
         </li>
         <li class="list-group-item">
-            <a href="{% url 'vet_clinic:show_user_orders' user_username=request.user.username %}">My Orders</a>
+            <a href="{% url 'schedule:show_user_orders' user_username=request.user.username %}">My Orders</a>
         </li>
         <li class="list-group-item">
             <a href="{% url 'accounts:password_change' %}">Change password</a>
         </li>
-        <li class="list-group-item">A fourth item</li>
-        <li class="list-group-item">And a fifth one</li>
     </ul>
+    {% endif %}
 </div>
 {% endblock %}

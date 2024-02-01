@@ -14,8 +14,8 @@ class Profile(models.Model):
 
 class StaffProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    position = models.CharField(max_length=255)
-    description = models.TextField()
+    position = models.CharField(max_length=255, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return f'StaffProfile of {self.user.username}'

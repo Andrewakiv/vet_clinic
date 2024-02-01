@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'vet_clinic.apps.VetClinicConfig',
     'accounts.apps.AccountsConfig',
-    "phonenumber_field",
+    'phonenumber_field',
+    'pet_care_scheduler.apps.PetCareSchedulerConfig',
 ]
 
 MIDDLEWARE = [
