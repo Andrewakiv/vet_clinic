@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth import get_user_model
-from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
@@ -10,7 +10,7 @@ from django.urls import reverse_lazy
 from accounts.forms import UserRegistrationForm, UserChangePasswordForm, UserEditForm, ProfileEditForm, \
     StaffProfileEditForm
 from accounts.models import Profile, StaffProfile
-from vet_clinic.models import Order
+
 
 
 class MyCustomLoginForm(AuthenticationForm):

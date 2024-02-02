@@ -1,139 +1,139 @@
 from django.contrib import messages
 from django.contrib.auth import get_user_model
-from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.shortcuts import render, get_object_or_404, redirect
+from django.views import View
+from django.views.generic import ListView, DetailView
 
 from .models import Schedule
 from vet_clinic.models import Service
 
 
-@permission_required('pet_care_scheduler.view_schedule')
-def show_orders(request):
-    orders = Schedule.objects.all()
-    services_list = Service.objects.all()
+class ShowOrders(PermissionRequiredMixin, ListView):
+    context_object_name = 'orders'
+    template_name = 'pet_care_scheduler/orders.html'
+    permission_required = 'pet_care_scheduler.view_schedule'
 
-    data = {
-        'orders': orders,
-        'services_list': services_list
-    }
+    def get_queryset(self):
+        return Schedule.objects.all()
 
-    return render(request, 'pet_care_scheduler/orders.html', context=data)
-
-
-@permission_required('pet_care_scheduler.view_schedule')
-def order_detail(request, order_id):
-    order = get_object_or_404(Schedule, id=order_id)
-
-    data = {
-        'order': order
-    }
-
-    return render(request, 'pet_care_scheduler/order-detail.html', context=data)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['services_list'] = Service.objects.all()
+        return context
 
 
-def complete_order(request, order_id):
-    order = get_object_or_404(Schedule, id=order_id)
-    if request.method == 'POST':
+class OrderDetail(PermissionRequiredMixin, DetailView):
+    model = Schedule
+    template_name = 'pet_care_scheduler/order-detail.html'
+    context_object_name = 'order'
+    slug_url_kwarg = 'order_id'
+    permission_required = 'pet_care_scheduler.view_schedule'
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Schedule, id=self.kwargs[self.slug_url_kwarg])
+
+
+
+class CompleteOrder(View):
+    template_name = 'pet_care_scheduler/order-detail.html'
+
+    def get(self, request, order_id):
+        order = get_object_or_404(Schedule, id=order_id)
+        context = {'order': order}
+        return render(request, self.template_name, context)
+
+    def post(self, request, order_id):
+        order = get_object_or_404(Schedule, id=order_id)
         order.status = Schedule.Status.COMPLETE
         order.save()
         messages.success(request, "Order has been completed")
         return redirect('schedule:order_detail', order_id=order_id)
-    else:
-        data = {
-            'order': order
-        }
-
-    return render(request, 'pet_care_scheduler/order-detail.html', context=data)
 
 
-def confirm_order(request, order_id):
-    order = get_object_or_404(Schedule, id=order_id)
-    if request.method == 'POST':
+class ConfirmOrder(View):
+    template_name = 'pet_care_scheduler/order-detail.html'
+
+    def get(self, request, order_id):
+        order = get_object_or_404(Schedule, id=order_id)
+        context = {'order': order}
+        return render(request, self.template_name, context)
+
+    def post(self, request, order_id):
+        order = get_object_or_404(Schedule, id=order_id)
         order.status = Schedule.Status.CONFIRM
         order.save()
-        messages.success(request, "Order has been confirmed")
+        messages.success(request, "Order has been completed")
         return redirect('schedule:order_detail', order_id=order_id)
-    data = {
-        'order': order
-    }
 
-    return render(request, 'pet_care_scheduler/order-detail.html', context=data)
+class DelayOrder(View):
+    template_name = 'pet_care_scheduler/order-detail.html'
 
+    def get(self, request, order_id):
+        order = get_object_or_404(Schedule, id=order_id)
+        context = {'order': order}
+        return render(request, self.template_name, context)
 
-def delay_order(request, order_id):
-    order = get_object_or_404(Schedule, id=order_id)
-    if request.method == 'POST':
+    def post(self, request, order_id):
+        order = get_object_or_404(Schedule, id=order_id)
         order.status = Schedule.Status.DELAY
         order.save()
-        messages.warning(request, "Order has been postponed")
+        messages.success(request, "Order has been completed")
         return redirect('schedule:order_detail', order_id=order_id)
-    data = {
-        'order': order
-    }
-
-    return render(request, 'pet_care_scheduler/order-detail.html', context=data)
 
 
-def show_filter_orders(request, service_slug):
-    orders = Schedule.objects.filter(service__slug=service_slug)
+class FilterOrders(ListView):
+    template_name = 'pet_care_scheduler/orders.html'
+    context_object_name = 'orders'
 
-    data = {
-        'orders': orders,
-    }
-
-    return render(request, 'pet_care_scheduler/orders.html', context=data)
-
-
-def draft_orders(request):
-    orders = Schedule.objects.filter(status=Schedule.Status.DRAFT)
-
-    data = {
-        'orders': orders,
-    }
-
-    return render(request, 'pet_care_scheduler/orders.html', context=data)
+    def get_queryset(self, queryset=None):
+        service_slug = self.kwargs.get('service_slug')
+        return Schedule.objects.filter(service__slug=service_slug)
 
 
-def completed_orders(request):
-    orders = Schedule.objects.filter(status=Schedule.Status.COMPLETE)
+class DraftOrders(ListView):
+    template_name = 'pet_care_scheduler/orders.html'
+    context_object_name = 'orders'
 
-    data = {
-        'orders': orders,
-    }
-
-    return render(request, 'pet_care_scheduler/orders.html', context=data)
+    def get_queryset(self, queryset=None):
+        return Schedule.objects.filter(status=Schedule.Status.DRAFT)
 
 
-def confirmed_orders(request):
-    orders = Schedule.objects.filter(status=Schedule.Status.CONFIRM)
-    services_list = Service.objects.all()
-    data = {
-        'orders': orders,
-        'services_list': services_list
-    }
+class CompletedOrders(ListView):
+    template_name = 'pet_care_scheduler/orders.html'
+    context_object_name = 'orders'
 
-    return render(request, 'pet_care_scheduler/orders.html', context=data)
+    def get_queryset(self, queryset=None):
+        return Schedule.objects.filter(status=Schedule.Status.COMPLETE)
 
 
-def delayed_orders(request):
-    orders = Schedule.objects.filter(status=Schedule.Status.DELAY)
+class ConfirmedOrders(ListView):
+    template_name = 'pet_care_scheduler/orders.html'
+    context_object_name = 'orders'
 
-    data = {
-        'orders': orders,
-    }
-
-    return render(request, 'pet_care_scheduler/orders.html', context=data)
+    def get_queryset(self, queryset=None):
+        return Schedule.objects.filter(status=Schedule.Status.CONFIRM)
 
 
-def show_user_orders(request, user_username):
-    user_order = get_object_or_404(get_user_model(), username=user_username)
-    orders = Schedule.objects.filter(name=user_order)
+class DelayedOrders(ListView):
+    template_name = 'pet_care_scheduler/orders.html'
+    context_object_name = 'orders'
 
-    data = {
-        'user_order': user_order,
-        'orders': orders
-    }
-
-    return render(request, 'pet_care_scheduler/user_orders.html', context=data)
+    def get_queryset(self, queryset=None):
+        return Schedule.objects.filter(status=Schedule.Status.DELAY)
 
 
+class UserOrders(ListView):
+    template_name = 'pet_care_scheduler/user_orders.html'
+
+    def get_queryset(self, queryset=None):
+        user_username = self.kwargs.get('user_username')
+        user_order = get_object_or_404(get_user_model(), username=user_username)
+        return Schedule.objects.filter(name=user_order)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user_username = self.kwargs.get('user_username')
+        context['orders'] = self.get_queryset()
+        context['user_order'] = get_object_or_404(get_user_model(), username=user_username)
+        return context
