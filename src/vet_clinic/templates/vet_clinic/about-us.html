@@ -13,11 +13,6 @@
             </div>
         </section>
         <section class="intro container">
-            <img
-                    src="img/dogs.png"
-                    alt="Two corgis on a yellow background"
-                    class="intro__image"
-            />
             <div class="intro__content">
                 <h1 class="intro__heading">
                     Your Fluffy Friend Is In Our Safe And Caring Hands
@@ -59,9 +54,9 @@
                             <div class="card mx-auto mb-3" style="background-color: var(--background-color); min-height: 280px">
                                 <h5 class="card-header" style="color: var(--bright-text-color);">{{ s.position }}</h5>
                                 <div class="row g-0">
-                                    {% if s.user.profile.photo %}
+                                    {% if s.profile.photo %}
                                     <div class="col-md-4">
-                                        <img src="{{ s.user.profile.photo.url }}" class="img-fluid rounded-start"
+                                        <img src="{{ s.profile.photo.url }}" class="img-fluid rounded-start"
                                              alt="...">
                                     </div>
                                     {% else %}
@@ -72,8 +67,8 @@
                                     {% endif %}
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <h5 class="card-title" style="color: var(--title-text-color);">{{ s.user.first_name }} {{ s.user.last_name }}</h5>
-                                            <p class="card-text" style="color: var(--subtitle-text-color);">{{ s.description }}</p>
+                                            <h5 class="card-title" style="color: var(--title-text-color);">{{ s.first_name }} {{ s.last_name }}</h5>
+                                            <p class="card-text" style="color: var(--subtitle-text-color);">{{ s.staffprofile.description }}</p>
 <!--                                            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins-->
 <!--                                                ago</small></p>-->
                                         </div>

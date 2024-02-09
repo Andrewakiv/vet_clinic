@@ -2,6 +2,7 @@ import logging
 
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth import get_user_model
 from django.core.paginator import Paginator
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
@@ -177,7 +178,7 @@ def contacts(request):
 
 
 def about(request):
-    staff = StaffProfile.objects.all()
+    staff = get_user_model().objects.filter(groups__name='doctors')
 
     data = {
         'staff': staff,

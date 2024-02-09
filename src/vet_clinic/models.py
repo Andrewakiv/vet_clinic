@@ -106,6 +106,10 @@ class Testimonial(models.Model):
     class Meta:
         verbose_name = 'Testimonial'
         verbose_name_plural = 'Testimonials'
+        ordering = ['-publish_date']
+        indexes = [
+            models.Index(fields=['-publish_date']),
+        ]
 
     def __str__(self):
         return self.name

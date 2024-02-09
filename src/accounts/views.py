@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
@@ -107,7 +107,6 @@ def edit(request):
 
 def profile_to_view(request, user_username):
     user_to_view = get_object_or_404(User, username=user_username)
-    # print(request.user.groups.filter(name='moderator').exists())
     data = {
         'user_to_view': user_to_view,
     }
