@@ -1,3 +1,5 @@
+import logging
+
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import PermissionRequiredMixin
@@ -7,6 +9,8 @@ from django.views.generic import ListView, DetailView
 
 from .models import Schedule
 from vet_clinic.models import Service
+
+logger = logging.getLogger('pet_care_scheduler')
 
 
 class ShowOrders(PermissionRequiredMixin, ListView):
@@ -34,7 +38,6 @@ class OrderDetail(PermissionRequiredMixin, DetailView):
         return get_object_or_404(Schedule, id=self.kwargs[self.slug_url_kwarg])
 
 
-
 class CompleteOrder(View):
     template_name = 'pet_care_scheduler/order-detail.html'
 
@@ -47,6 +50,7 @@ class CompleteOrder(View):
         order = get_object_or_404(Schedule, id=order_id)
         order.status = Schedule.Status.COMPLETE
         order.save()
+        logger.info(f'Staff member {request.user.username} has completed an order {order.service.title}.')
         messages.success(request, "Order has been completed")
         return redirect('schedule:order_detail', order_id=order_id)
 
@@ -63,8 +67,10 @@ class ConfirmOrder(View):
         order = get_object_or_404(Schedule, id=order_id)
         order.status = Schedule.Status.CONFIRM
         order.save()
-        messages.success(request, "Order has been completed")
+        logger.info(f'Staff member {request.user.username} has confirmed an order {order.service.title}.')
+        messages.success(request, "Order has been confirmed")
         return redirect('schedule:order_detail', order_id=order_id)
+
 
 class DelayOrder(View):
     template_name = 'pet_care_scheduler/order-detail.html'
@@ -78,7 +84,8 @@ class DelayOrder(View):
         order = get_object_or_404(Schedule, id=order_id)
         order.status = Schedule.Status.DELAY
         order.save()
-        messages.success(request, "Order has been completed")
+        logger.info(f'Staff member {request.user.username} has delayed an order {order.service.title}.')
+        messages.success(request, "Order has been delayed")
         return redirect('schedule:order_detail', order_id=order_id)
 
 

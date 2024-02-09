@@ -1,3 +1,5 @@
+import logging
+
 from django.conf import settings
 from django.contrib import messages
 from django.core.paginator import Paginator
@@ -13,6 +15,9 @@ from pet_care_scheduler.forms import ScheduleForm
 from .forms import TestimonialAddForm, OrderForm, CommentForm
 from .models import Service, Post, Category, Testimonial, Order
 from .utils import DataMixin
+
+
+logger = logging.getLogger('vet_clinic')
 
 
 class HomeView(DataMixin, ListView):
@@ -60,6 +65,7 @@ class ServiceDetailView(DataMixin, ModelFormMixin, DetailView):
             new_order.service = self.get_object()
             new_order.name = request.user
             new_order.save()
+            logger.info(f'{request.user.username} has made an order')
             return redirect('vet_clinic:services')
 
 
@@ -97,6 +103,7 @@ class BlogDetailView(DataMixin, ModelFormMixin, DetailView):
             new_comment.post = self.get_object()
             new_comment.name = request.user
             new_comment.save()
+            logger.info(f'{request.user.username} has commented a post')
             return redirect('vet_clinic:blog_detail', blog_slug=self.kwargs[self.slug_url_kwarg])
 
 
@@ -110,11 +117,13 @@ def post_like(request):
             post = Post.objects.get(id=post_id)
             if action == 'like':
                 post.users_like.add(request.user)
+                logger.info(f'{request.user.username} has liked a post')
             else:
                 post.users_like.remove(request.user)
+                logger.info(f'{request.user.username} has disliked a post')
             return JsonResponse({'status': 'ok'})
         except Post.DoesNotExists:
-            pass
+            logger.warning(f'post does not exist')
     return JsonResponse({'status': 'error'})
 
 
@@ -150,6 +159,7 @@ def responses(request):
         form = TestimonialAddForm(request.POST)
         if form.is_valid():
             form.save()
+            logger.info(f'{request.user.username} response')
             return redirect('vet_clinic:responses')
     else:
         form = TestimonialAddForm()

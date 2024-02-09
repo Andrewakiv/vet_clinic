@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
+import logging
 import os
 from pathlib import Path
 from decouple import config
@@ -53,6 +54,58 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+
+    'formatters': {
+        'main_formatter': {
+            'format': "{asctime} - {levelname} - {module} - {message}",
+            'style': '{'
+        }
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'main_formatter'
+        },
+        'vet_clinic_file': {
+            'class': 'logging.FileHandler',
+            'filename': 'vet_clinic_info.log',
+            'formatter': 'main_formatter'
+        },
+        'accounts_file': {
+            'class': 'logging.FileHandler',
+            'filename': 'accounts_info.log',
+            'formatter': 'main_formatter'
+        },
+        'pet_care_scheduler_file': {
+            'class': 'logging.FileHandler',
+            'filename': 'pet_care_scheduler_info.log',
+            'formatter': 'main_formatter'
+        }
+    },
+    'loggers': {
+        'vet_clinic': {
+            'handlers': ['console', 'vet_clinic_file'],
+            'propagate': True,
+            'level': 'INFO'
+        },
+        'accounts': {
+            'handlers': ['console', 'accounts_file'],
+            'propagate': True,
+            'level': 'INFO'
+        },
+        'pet_care_scheduler': {
+            'handlers': ['console', 'pet_care_scheduler_file'],
+            'propagate': True,
+            'level': 'INFO'
+        }
+    }
+}
+
 
 ROOT_URLCONF = 'project.urls'
 

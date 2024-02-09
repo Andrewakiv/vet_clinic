@@ -1,3 +1,5 @@
+import logging
+
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
@@ -11,6 +13,7 @@ from accounts.forms import UserRegistrationForm, UserChangePasswordForm, UserEdi
     StaffProfileEditForm
 from accounts.models import Profile, StaffProfile
 
+logger = logging.getLogger('accounts')
 
 
 class MyCustomLoginForm(AuthenticationForm):
@@ -24,10 +27,20 @@ class LoginUser(LoginView):
     form_class = MyCustomLoginForm
     template_name = 'accounts/login.html'
 
+    def form_valid(self, form):
+        username = form.cleaned_data.get('username')
+        logger.info(f'User {username} has logged in')
+        return super().form_valid(form)
+
 
 class LogoutUser(LogoutView):
     template_name = 'accounts/logout.html'
     extra_context = {'title': 'Logout'}
+
+    def dispatch(self, request, *args, **kwargs):
+        username = request.user.username
+        logger.info(f'User {username} has logged out.')
+        return super().dispatch(request, *args, **kwargs)
 
 
 def register(request):
@@ -39,6 +52,7 @@ def register(request):
             new_user.save()
             Profile.objects.create(user=new_user)
             StaffProfile.objects.create(user=new_user)
+            logger.info(f'User {form.cleaned_data["username"]} has registered.')
             return render(request, 'accounts/register_done.html', {'new_user': new_user})
     else:
         form = UserRegistrationForm()
@@ -50,6 +64,11 @@ class UserChangePassword(PasswordChangeView):
     form_class = UserChangePasswordForm
     template_name = 'accounts/password_change_form.html'
     success_url = reverse_lazy('accounts:password_change_done')
+
+    def dispatch(self, request, *args, **kwargs):
+        username = request.user.username
+        logger.info(f'User {username} has changed password.')
+        return super().dispatch(request, *args, **kwargs)
 
 
 @login_required
@@ -63,9 +82,9 @@ def edit(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-        if staff_profile_form.is_valid():
-            if staff_profile_form:
-                staff_profile_form.save()
+        if staff_profile_form and staff_profile_form.is_valid():
+            staff_profile_form.save()
+        logger.info(f'User {request.user.username} has edited profile.')
         return redirect('accounts:edit')
             # messages.success(request, 'Profile updated successfully')
         # else:
@@ -88,7 +107,7 @@ def edit(request):
 
 def profile_to_view(request, user_username):
     user_to_view = get_object_or_404(User, username=user_username)
-    print(request.user.groups.filter(name='moderator').exists())
+    # print(request.user.groups.filter(name='moderator').exists())
     data = {
         'user_to_view': user_to_view,
     }
