@@ -21,7 +21,7 @@ class ShowOrders(PermissionRequiredMixin, ListView):
     permission_required = 'pet_care_scheduler.view_schedule'
 
     def get_queryset(self):
-        return Schedule.objects.all()
+        return Schedule.objects.exclude(status=Schedule.Status.COMPLETE)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

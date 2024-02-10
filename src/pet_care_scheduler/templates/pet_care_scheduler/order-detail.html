@@ -62,7 +62,7 @@
         <p class="card-text">About Pet: {{ order.pet_info }}</p>
         <p class="card-text">Order date: {{ order.order_date }}</p>
         <p class="card-text">Client date for visiting: {{ order.date_for_visit }}</p>
-        <a href="{{ order.get_absolute_url }}" class="btn btn-primary">Go somewhere</a>
+        <a href="{% url 'schedule:show_orders' %}" class="btn btn-primary">Go somewhere</a>
     </div>
 </div>
 

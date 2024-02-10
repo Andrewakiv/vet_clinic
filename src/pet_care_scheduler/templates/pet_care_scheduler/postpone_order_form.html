@@ -1,10 +1,30 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Edit order</h1>
-<form action="" method="post" enctype="multipart/form-data">
+<div class="vet-consultations__title container">
+    <h1>Edit your account</h1>
+</div>
+
+<form class="container" action="#" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
-    <p><button type="submit">Submit</button></p>
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Phone number</label>
+        <div class="col-sm-10">
+            <p>{{ form.phone_number }}</p>
+        </div>
+        <label class="col-sm-2 col-form-label">Information about pet:</label>
+        <div class="col-sm-10">
+            <p>{{ form.pet_info }}</p>
+        </div>
+        <label class="col-sm-2 col-form-label my-4">Date for visit:</label>
+        <div class="col-sm-10">
+            <p>{{ form.date_for_visit }}</p>
+        </div>
+    </div>
+    <div class="contacts-form__field">
+        <input type="hidden" name="next" value="{{ next }}"/>
+        <button class="contacts-form__button" type="submit">Edit</button>
+    </div>
+    <!--    <button type="submit" class="btn btn-primary">Edit</button>-->
 </form>
 {% endblock %}
