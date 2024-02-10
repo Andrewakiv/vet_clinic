@@ -15,5 +15,6 @@ urlpatterns = [
     path('orders/<int:order_id>/complete/', views.CompleteOrder.as_view(), name='complete_order'),
     path('orders/<int:order_id>/confirm/', views.ConfirmOrder.as_view(), name='confirm_order'),
     path('orders/<int:order_id>/delay/', views.DelayOrder.as_view(), name='delay_order'),
+    path('orders/<int:order_id>/postpone/', views.PostponeOrder.as_view(), name='postpone_order'),
     path('orders/<slug:service_slug>/', views.FilterOrders.as_view(), name='show_filter_orders'),
 ]

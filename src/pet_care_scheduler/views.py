@@ -4,9 +4,11 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse, reverse_lazy
 from django.views import View
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, FormView, UpdateView
 
+from .forms import ScheduleForm
 from .models import Schedule
 from vet_clinic.models import Service
 
@@ -86,7 +88,24 @@ class DelayOrder(View):
         order.save()
         logger.info(f'Staff member {request.user.username} has delayed an order {order.service.title}.')
         messages.success(request, "Order has been delayed")
-        return redirect('schedule:order_detail', order_id=order_id)
+        return redirect('schedule:postpone_order', order_id=order_id)
+
+
+class PostponeOrder(UpdateView):
+    template_name = 'pet_care_scheduler/postpone_order_form.html'
+    form_class = ScheduleForm
+    order_id = 'order_id'
+
+    def get_success_url(self):
+        return reverse_lazy('schedule:order_detail', kwargs={'order_id': self.kwargs[self.order_id]})
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Schedule, id=self.kwargs[self.order_id])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Edit page'
+        return context
 
 
 class FilterOrders(ListView):
