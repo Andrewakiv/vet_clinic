@@ -1,0 +1,1592 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 98,
+  "fields": {
+    "action_time": "2024-02-01T15:28:33.908Z",
+    "user": 12,
+    "content_type": 15,
+    "object_id": "6",
+    "object_repr": "StaffProfile of andrew",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 99,
+  "fields": {
+    "action_time": "2024-02-01T15:28:55.556Z",
+    "user": 12,
+    "content_type": 12,
+    "object_id": "12",
+    "object_repr": "Profile of andrew",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 100,
+  "fields": {
+    "action_time": "2024-02-01T15:52:30.941Z",
+    "user": 12,
+    "content_type": 4,
+    "object_id": "15",
+    "object_repr": "Emma",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 101,
+  "fields": {
+    "action_time": "2024-02-09T11:28:39.137Z",
+    "user": 12,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "moderator",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 102,
+  "fields": {
+    "action_time": "2024-02-09T11:30:08.630Z",
+    "user": 12,
+    "content_type": 3,
+    "object_id": "2",
+    "object_repr": "doctors",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 103,
+  "fields": {
+    "action_time": "2024-02-09T12:21:50.528Z",
+    "user": 12,
+    "content_type": 4,
+    "object_id": "14",
+    "object_repr": "Alina",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 104,
+  "fields": {
+    "action_time": "2024-02-09T12:27:44.923Z",
+    "user": 12,
+    "content_type": 15,
+    "object_id": "10",
+    "object_repr": "StaffProfile of Alina",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 2,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 2,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 2,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 2,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 3,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 3,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 3,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 3,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 4,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 4,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 4,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 4,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 5,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 5,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 5,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 5,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 6,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 6,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 6,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 6,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add Service",
+    "content_type": 7,
+    "codename": "add_service"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change Service",
+    "content_type": 7,
+    "codename": "change_service"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete Service",
+    "content_type": 7,
+    "codename": "delete_service"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view Service",
+    "content_type": 7,
+    "codename": "view_service"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add Team",
+    "content_type": 8,
+    "codename": "add_team"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change Team",
+    "content_type": 8,
+    "codename": "change_team"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete Team",
+    "content_type": 8,
+    "codename": "delete_team"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view Team",
+    "content_type": 8,
+    "codename": "view_team"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add Team",
+    "content_type": 9,
+    "codename": "add_post"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change Team",
+    "content_type": 9,
+    "codename": "change_post"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete Team",
+    "content_type": 9,
+    "codename": "delete_post"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view Team",
+    "content_type": 9,
+    "codename": "view_post"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add Category",
+    "content_type": 10,
+    "codename": "add_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change Category",
+    "content_type": 10,
+    "codename": "change_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete Category",
+    "content_type": 10,
+    "codename": "delete_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view Category",
+    "content_type": 10,
+    "codename": "view_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 41,
+  "fields": {
+    "name": "Can add Category",
+    "content_type": 11,
+    "codename": "add_testimonial"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 42,
+  "fields": {
+    "name": "Can change Category",
+    "content_type": 11,
+    "codename": "change_testimonial"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 43,
+  "fields": {
+    "name": "Can delete Category",
+    "content_type": 11,
+    "codename": "delete_testimonial"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 44,
+  "fields": {
+    "name": "Can view Category",
+    "content_type": 11,
+    "codename": "view_testimonial"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 45,
+  "fields": {
+    "name": "Can add profile",
+    "content_type": 12,
+    "codename": "add_profile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 46,
+  "fields": {
+    "name": "Can change profile",
+    "content_type": 12,
+    "codename": "change_profile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 47,
+  "fields": {
+    "name": "Can delete profile",
+    "content_type": 12,
+    "codename": "delete_profile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 48,
+  "fields": {
+    "name": "Can view profile",
+    "content_type": 12,
+    "codename": "view_profile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 49,
+  "fields": {
+    "name": "Can add order",
+    "content_type": 13,
+    "codename": "add_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 50,
+  "fields": {
+    "name": "Can change order",
+    "content_type": 13,
+    "codename": "change_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 51,
+  "fields": {
+    "name": "Can delete order",
+    "content_type": 13,
+    "codename": "delete_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 52,
+  "fields": {
+    "name": "Can view order",
+    "content_type": 13,
+    "codename": "view_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 53,
+  "fields": {
+    "name": "Can add comment",
+    "content_type": 14,
+    "codename": "add_comment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 54,
+  "fields": {
+    "name": "Can change comment",
+    "content_type": 14,
+    "codename": "change_comment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 55,
+  "fields": {
+    "name": "Can delete comment",
+    "content_type": 14,
+    "codename": "delete_comment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 56,
+  "fields": {
+    "name": "Can view comment",
+    "content_type": 14,
+    "codename": "view_comment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 57,
+  "fields": {
+    "name": "Can add staff profile",
+    "content_type": 15,
+    "codename": "add_staffprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 58,
+  "fields": {
+    "name": "Can change staff profile",
+    "content_type": 15,
+    "codename": "change_staffprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 59,
+  "fields": {
+    "name": "Can delete staff profile",
+    "content_type": 15,
+    "codename": "delete_staffprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 60,
+  "fields": {
+    "name": "Can view staff profile",
+    "content_type": 15,
+    "codename": "view_staffprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 61,
+  "fields": {
+    "name": "Can add Schedule",
+    "content_type": 16,
+    "codename": "add_schedule"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 62,
+  "fields": {
+    "name": "Can change Schedule",
+    "content_type": 16,
+    "codename": "change_schedule"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 63,
+  "fields": {
+    "name": "Can delete Schedule",
+    "content_type": 16,
+    "codename": "delete_schedule"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 64,
+  "fields": {
+    "name": "Can view Schedule",
+    "content_type": 16,
+    "codename": "view_schedule"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 65,
+  "fields": {
+    "name": "Can add staff profiles",
+    "content_type": 17,
+    "codename": "add_staffprofiles"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 66,
+  "fields": {
+    "name": "Can change staff profiles",
+    "content_type": 17,
+    "codename": "change_staffprofiles"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 67,
+  "fields": {
+    "name": "Can delete staff profiles",
+    "content_type": 17,
+    "codename": "delete_staffprofiles"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 68,
+  "fields": {
+    "name": "Can view staff profiles",
+    "content_type": 17,
+    "codename": "view_staffprofiles"
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 1,
+  "fields": {
+    "name": "moderator",
+    "permissions": []
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 2,
+  "fields": {
+    "name": "doctors",
+    "permissions": [
+      61,
+      62,
+      63,
+      64
+    ]
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 12,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$D1VW4M7CwFztskSWgw7Juv$aqWxJ1W0moh20O5q+7EfN1AezZ2kc1K97mIrMd3Q1tc=",
+    "last_login": "2024-02-17T17:42:33.930Z",
+    "is_superuser": true,
+    "username": "andrew",
+    "first_name": "",
+    "last_name": "",
+    "email": "danchyshy.andriy@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2024-02-01T15:25:50.735Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 13,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$z6FzCgZnHxKFBsAYjNINoy$lIgN9oXSKIZ7R2aelmvqnRXwq1/7H1nGQKefZnnAPPk=",
+    "last_login": "2024-02-01T15:26:58.610Z",
+    "is_superuser": false,
+    "username": "qweqw",
+    "first_name": "weqwe",
+    "last_name": "ads",
+    "email": "qweqw@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-02-01T15:26:48.686Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 14,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$t1xKV44sSIac6Cr1JyYZvt$nhqgL96Ft8dtpCWXXyhwnBj1r72phIq9W6+DvLLtmko=",
+    "last_login": "2024-02-09T12:33:45.053Z",
+    "is_superuser": false,
+    "username": "Alina",
+    "first_name": "Alina",
+    "last_name": "Maisner",
+    "email": "alina@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-02-01T15:30:04Z",
+    "groups": [
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 15,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$PETbcly5A2s3zFxATOs1ja$fC0P+tAAx78PFixSsxEndp6T5IV5ulkNSf+0sV1lSBo=",
+    "last_login": "2024-02-01T15:52:42.692Z",
+    "is_superuser": false,
+    "username": "Emma",
+    "first_name": "Emma",
+    "last_name": "Watson",
+    "email": "emma@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-02-01T15:51:15Z",
+    "groups": [
+      1
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 16,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$4ZtoY0FqJByrKxeGitSGBB$ZcpaCSSsqMMcGKFdXSZ2Jz0lHLuTadx0iQrcdGJgcrg=",
+    "last_login": "2024-02-08T15:54:14.788Z",
+    "is_superuser": false,
+    "username": "tester1",
+    "first_name": "tester1",
+    "last_name": "logs edit2",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-02-08T15:46:38.040Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 17,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$obew1loD0SKXdOOtAbtgTT$QzIRYzMfYqQFRTQKpls9BYjPJ2D9u6zJ6Cz2fGM4PRg=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "tester2",
+    "first_name": "tester2",
+    "last_name": "loggs",
+    "email": "tester2@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-02-08T15:47:59.827Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "vet_clinic",
+    "model": "service"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "vet_clinic",
+    "model": "team"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "vet_clinic",
+    "model": "post"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 10,
+  "fields": {
+    "app_label": "vet_clinic",
+    "model": "category"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 11,
+  "fields": {
+    "app_label": "vet_clinic",
+    "model": "testimonial"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 15,
+  "fields": {
+    "app_label": "accounts",
+    "model": "staffprofile"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 16,
+  "fields": {
+    "app_label": "pet_care_scheduler",
+    "model": "schedule"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 17,
+  "fields": {
+    "app_label": "accounts",
+    "model": "staffprofiles"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "be40ua1aa6t9h0olqudnnu4tnd1qocou",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2pACUygu3XsGMsOAVA0kpV0Z765NutDtf-_9lwi4rSVsPS1hZnEWCsTpdySMj1R3wnestyZjq-syk9wVedAur43T83K4fwcFe_nW2g8DOmujUmicAkhZj2nKZkKvlU0-gmVPgC67nJmIHBrUaMggjMDi_QH4Mzhe:1rYQ4f:j0xCZQcgVPapQzLsa_RvGrk15gqy8Wl8dDbkQ3aXkpQ",
+    "expire_date": "2024-02-23T12:33:45.057Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "k431v53ihguublx5cqmktmju5vgwrvn9",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGln-x6ak5wzW7nqDA8iR4qRC3B0ipYD2zcx7iQzbWvPWeclTEWehjTj9jgj04LaTcod2myXNbV0mlLsiD9rldS78vBzu30GFXr810uht9Bgi0RgGnwCcDqQScgTHCNqmVCIWzQWIAxvvokXFdkjGByXeHytcOJ4:1rbOht:UU5fDkZmwNAagEqsdV6XHmu-SAJ7_OS1iSVE-mo60os",
+    "expire_date": "2024-03-02T17:42:33.933Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "wpo4p28nphsn0532z8oeqe61xhz35hk3",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQRO9CHaGFxWJJmT5nQMsvOImwZOzKyt1jSy6SbjTvzWzC87pUv_Y8-zGJq1Di8tsFjq_cDpCe3B6TjFNb5jHIQ5En7fI-pfy-ne7fQeVe97UpOhqbXSiE1hRyYChhxBCQtIPC4MgqbRFoKGWPg3WQ2UJQyIxJfL7L_zcj:1rQaa4:MmzKPTQiEyD8LdycJm7Lqlh1L3t28NaR66fr32iIMGE",
+    "expire_date": "2024-02-01T22:09:48.581Z"
+  }
+},
+{
+  "model": "vet_clinic.service",
+  "pk": 1,
+  "fields": {
+    "title": "Vet Consultations",
+    "slug": "vet-consultations",
+    "description": "Our professional caregivers will sit with your pet, feed, wash and entertain it, and even stay overnight if needed.",
+    "content": "Vet Consultations for Cats, Dogs, Birds, and Other Pets\r\n\r\nSchedule your consultation at Best.Pet.\r\n\r\nIf you have any questions or issues with your pet, we will be happy to advise you. We have three professional and certified veterinary physicians in Best.Pet.\r\n\r\nAll of them have huge on-hands experience with different species of animals, from usual pets to the most exotic animals.\r\n\r\nIf you notice that your pet has begun to behave differently, this is a reason to sign up for a vet consultation at Best.Pet. Symptoms may include lack of appetite, inertness, fever, and so on. Also, your pet may do some uncustomary things — for example, your cat may seem to be stressed, spoil your shoes, scratch doors, etc.\r\n\r\nRemember that animals can't speak and are not able to tell humans that they don't feel well. Thus, you need to look after your pet, be attentive, and treat it like a child that will never grow up. If you have any doubts about your pet's wellbeing, contact our vet.",
+    "price": "25.00",
+    "photo": "services/2024/01/10/parrot.png",
+    "publish_date": "2024-01-10T08:34:08.476Z",
+    "updated_date": "2024-01-11T14:31:49.441Z",
+    "is_published": true
+  }
+},
+{
+  "model": "vet_clinic.service",
+  "pk": 2,
+  "fields": {
+    "title": "Pet Sitting",
+    "slug": "pet-sitting",
+    "description": "Our professional caregivers will sit with your pet, feed, wash and entertain it, and even stay overnight if needed.",
+    "content": "Vet Consultations for Cats, Dogs, Birds, and Other Pets \r\n\r\nSchedule your consultation at Best.Pet.\r\n\r\nIf you have any questions or issues with your pet, we will be happy to advise you. We have three professional and certified veterinary physicians in Best.Pet.\r\n\r\nAll of them have huge on-hands experience with different species of animals, from usual pets to the most exotic animals.\r\n\r\nIf you notice that your pet has begun to behave differently, this is a reason to sign up for a vet consultation at Best.Pet. Symptoms may include lack of appetite, inertness, fever, and so on. Also, your pet may do some uncustomary things — for example, your cat may seem to be stressed, spoil your shoes, scratch doors, etc.\r\n\r\nRemember that animals can't speak and are not able to tell humans that they don't feel well. Thus, you need to look after your pet, be attentive, and treat it like a child that will never grow up. If you have any doubts about your pet's wellbeing, contact our vet.",
+    "price": "15.00",
+    "photo": "services/2024/01/10/girl-with-cat.png",
+    "publish_date": "2024-01-10T09:27:29.139Z",
+    "updated_date": "2024-01-10T09:27:29.139Z",
+    "is_published": true
+  }
+},
+{
+  "model": "vet_clinic.service",
+  "pk": 3,
+  "fields": {
+    "title": "Dog Training",
+    "slug": "dog-training",
+    "description": "Professional dog handlers can train dogs of any breed and consult their owners. A dog of any temperament can be trained; we prove that.",
+    "content": "Vet Consultations for Cats, Dogs, Birds, and Other Pets \r\n\r\nSchedule your consultation at Best.Pet.\r\n\r\nIf you have any questions or issues with your pet, we will be happy to advise you. We have three professional and certified veterinary physicians in Best.Pet.\r\n\r\nAll of them have huge on-hands experience with different species of animals, from usual pets to the most exotic animals.\r\n\r\nIf you notice that your pet has begun to behave differently, this is a reason to sign up for a vet consultation at Best.Pet. Symptoms may include lack of appetite, inertness, fever, and so on. Also, your pet may do some uncustomary things — for example, your cat may seem to be stressed, spoil your shoes, scratch doors, etc.\r\n\r\nRemember that animals can't speak and are not able to tell humans that they don't feel well. Thus, you need to look after your pet, be attentive, and treat it like a child that will never grow up. If you have any doubts about your pet's wellbeing, contact our vet.",
+    "price": "35.00",
+    "photo": "services/2024/01/10/girl-with-dog-pink.png",
+    "publish_date": "2024-01-10T09:29:31.177Z",
+    "updated_date": "2024-01-10T09:29:31.177Z",
+    "is_published": true
+  }
+},
+{
+  "model": "vet_clinic.service",
+  "pk": 4,
+  "fields": {
+    "title": "Dog Walking",
+    "slug": "dog-walking",
+    "description": "We can take your dog for a walk on schedule, spend time outdoors, and return it home. One-time and regular services are available.",
+    "content": "Vet Consultations for Cats, Dogs, Birds, and Other Pets \r\n\r\nSchedule your consultation at Best.Pet.\r\n\r\nIf you have any questions or issues with your pet, we will be happy to advise you. We have three professional and certified veterinary physicians in Best.Pet.\r\n\r\nAll of them have huge on-hands experience with different species of animals, from usual pets to the most exotic animals.\r\n\r\nIf you notice that your pet has begun to behave differently, this is a reason to sign up for a vet consultation at Best.Pet. Symptoms may include lack of appetite, inertness, fever, and so on. Also, your pet may do some uncustomary things — for example, your cat may seem to be stressed, spoil your shoes, scratch doors, etc.\r\n\r\nRemember that animals can't speak and are not able to tell humans that they don't feel well. Thus, you need to look after your pet, be attentive, and treat it like a child that will never grow up. If you have any doubts about your pet's wellbeing, contact our vet.",
+    "price": "10.00",
+    "photo": "services/2024/01/10/girl-with-dog-blue.png",
+    "publish_date": "2024-01-10T09:30:58.668Z",
+    "updated_date": "2024-01-10T09:30:58.668Z",
+    "is_published": true
+  }
+},
+{
+  "model": "vet_clinic.service",
+  "pk": 5,
+  "fields": {
+    "title": "Mini Hotel",
+    "slug": "mini-hotel",
+    "description": "If you need to leave your pet for a couple of days, your fluffy friend can enjoy its stay at our pet hotel. We have spacious cages and the best treatment.",
+    "content": "Vet Consultations for Cats, Dogs, Birds, and Other Pets \r\n\r\nSchedule your consultation at Best.Pet.\r\n\r\nIf you have any questions or issues with your pet, we will be happy to advise you. We have three professional and certified veterinary physicians in Best.Pet.\r\n\r\nAll of them have huge on-hands experience with different species of animals, from usual pets to the most exotic animals.\r\n\r\nIf you notice that your pet has begun to behave differently, this is a reason to sign up for a vet consultation at Best.Pet. Symptoms may include lack of appetite, inertness, fever, and so on. Also, your pet may do some uncustomary things — for example, your cat may seem to be stressed, spoil your shoes, scratch doors, etc.\r\n\r\nRemember that animals can't speak and are not able to tell humans that they don't feel well. Thus, you need to look after your pet, be attentive, and treat it like a child that will never grow up. If you have any doubts about your pet's wellbeing, contact our vet.",
+    "price": "35.00",
+    "photo": "",
+    "publish_date": "2024-01-10T09:35:06.999Z",
+    "updated_date": "2024-01-10T09:35:06.999Z",
+    "is_published": true
+  }
+},
+{
+  "model": "vet_clinic.team",
+  "pk": 1,
+  "fields": {
+    "name": "Alina Maisner",
+    "slug": "alina-maisner",
+    "position": "Pet Sitter",
+    "description": "Alina provides professional pet sitting and dog walking services. She has been working in Best.Pet for 10 years already. She loves animals, and this feeling is mutual. Alina is attentive and looks after all kinds of pets, especially dogs and cats.",
+    "photo": "team/2024/01/10/team-member-one.webp",
+    "publish_date": "2024-01-10T20:56:45.581Z",
+    "updated_date": "2024-01-10T20:56:45.581Z",
+    "is_published": true
+  }
+},
+{
+  "model": "vet_clinic.team",
+  "pk": 2,
+  "fields": {
+    "name": "Jessica Shimmer",
+    "slug": "jessica-shimmer",
+    "position": "Veterinarian",
+    "description": "Jessica is a certified veterinary technician with over 12 years of hands-on experience in vet clinics in the USA. Jessica provides personal consultations and can make prescriptions but doesn't perform any complex procedures at Best.Pet.",
+    "photo": "team/2024/01/10/team-member-two.png",
+    "publish_date": "2024-01-10T20:57:35.334Z",
+    "updated_date": "2024-01-10T20:57:35.334Z",
+    "is_published": true
+  }
+},
+{
+  "model": "vet_clinic.team",
+  "pk": 3,
+  "fields": {
+    "name": "Mary Douglas",
+    "slug": "mary-douglas",
+    "position": "Groomer",
+    "description": "Mary is a professional groomer. She knows how to take care of animals' coats so that they always look great and feel good. Mary also provides consultations and does everything to keep your fluffy friend happy, neat, and healthy.",
+    "photo": "team/2024/01/10/team-member-three.png",
+    "publish_date": "2024-01-10T20:58:36.191Z",
+    "updated_date": "2024-01-10T20:58:36.191Z",
+    "is_published": true
+  }
+},
+{
+  "model": "vet_clinic.post",
+  "pk": 1,
+  "fields": {
+    "title": "Meal Options for Your Dog",
+    "slug": "meal-options-for-your-dog",
+    "description": "Proper nutrition is especially important for purebred dogs. Some dogs are in rather poor health, and you should maintain it with healthy food and vitamins.",
+    "content": "Proper nutrition is especially important for purebred dogs. Some dogs are in rather poor health, and you should maintain it with healthy food and vitamins.Proper nutrition is especially important for purebred dogs. Some dogs are in rather poor health, and you should maintain it with healthy food and vitamins.Proper nutrition is especially important for purebred dogs. Some dogs are in rather poor health, and you should maintain it with healthy food and vitamins.Proper nutrition is especially important for purebred dogs. Some dogs are in rather poor health, and you should maintain it with healthy food and vitamins.",
+    "photo": "posts/2024/01/11/blog_dog.webp",
+    "publish_date": "2024-01-11T09:57:26.356Z",
+    "updated_date": "2024-01-11T09:57:26.356Z",
+    "is_published": true,
+    "category": 1,
+    "users_like": []
+  }
+},
+{
+  "model": "vet_clinic.post",
+  "pk": 2,
+  "fields": {
+    "title": "How to Look After Rabbits",
+    "slug": "how-to-look-after-rabbits",
+    "description": "Indoor rabbits are so soft and fluffy that every second family thinks about buying a rabbit! But these animals require special care, including a spacious cage.",
+    "content": "Indoor rabbits are so soft and fluffy that every second family thinks about buying a rabbit! But these animals require special care, including a spacious cage.Indoor rabbits are so soft and fluffy that every second family thinks about buying a rabbit! But these animals require special care, including a spacious cage.Indoor rabbits are so soft and fluffy that every second family thinks about buying a rabbit! But these animals require special care, including a spacious cage.Indoor rabbits are so soft and fluffy that every second family thinks about buying a rabbit! But these animals require special care, including a spacious cage.Indoor rabbits are so soft and fluffy that every second family thinks about buying a rabbit! But these animals require special care, including a spacious cage.",
+    "photo": "posts/2024/01/11/blog_girl.webp",
+    "publish_date": "2024-01-11T09:59:02.960Z",
+    "updated_date": "2024-01-11T09:59:02.960Z",
+    "is_published": true,
+    "category": 2,
+    "users_like": []
+  }
+},
+{
+  "model": "vet_clinic.post",
+  "pk": 3,
+  "fields": {
+    "title": "Signs Your Cat is Stressed",
+    "slug": "signs-your-cat-is-stressed",
+    "description": "Everyone knows that cats can be very wayward animals. But sometimes they show their bad temper for special reasons, namely because they are stressed.",
+    "content": "Everyone knows that cats can be very wayward animals. But sometimes they show their bad temper for special reasons, namely because they are stressed. \r\n\r\nEveryone knows that cats can be very wayward animals. But sometimes they show their bad temper for special reasons, namely because they are stressed. Everyone knows that cats can be very wayward animals. But sometimes they show their bad temper for special reasons, namely because they are stressed. \r\n\r\nEveryone knows that cats can be very wayward animals. But sometimes they show their bad temper for special reasons, namely because they are stressed.",
+    "photo": "posts/2024/01/11/blog_cat.webp",
+    "publish_date": "2024-01-11T10:02:22.144Z",
+    "updated_date": "2024-01-12T10:01:31.718Z",
+    "is_published": true,
+    "category": 2,
+    "users_like": []
+  }
+},
+{
+  "model": "vet_clinic.category",
+  "pk": 1,
+  "fields": {
+    "name": "Pet health",
+    "slug": "pet-health"
+  }
+},
+{
+  "model": "vet_clinic.category",
+  "pk": 2,
+  "fields": {
+    "name": "Pet care",
+    "slug": "pet-care"
+  }
+},
+{
+  "model": "vet_clinic.testimonial",
+  "pk": 1,
+  "fields": {
+    "name": "Jokie",
+    "slug": "jokie",
+    "response": "My parents were worried about my health as I didn't want to eat at all. A vet at Best.Pet helped them a lot, explained the peculiarities of parrots feeding, and offered a special meal plan. Yummy!",
+    "publish_date": "2024-01-11T10:20:41.458Z",
+    "is_published": true
+  }
+},
+{
+  "model": "vet_clinic.testimonial",
+  "pk": 2,
+  "fields": {
+    "name": "Axel",
+    "slug": "axel",
+    "response": "When Mummy traveled abroad, she couldn't take me with her. So, she called Best.Pet, and Alina came to care for me for 2 weeks. I really liked Alina; we had so much fun and enjoyed long walks.",
+    "publish_date": "2024-01-11T10:24:49.491Z",
+    "is_published": true
+  }
+},
+{
+  "model": "vet_clinic.testimonial",
+  "pk": 3,
+  "fields": {
+    "name": "Milo",
+    "slug": "milo",
+    "response": "I have to take medications regularly. When my parents decided to go on a vacation, they were worried about my feeding. They called a pet sitter Mary, and we liked each other so much!",
+    "publish_date": "2024-01-11T10:25:17.382Z",
+    "is_published": true
+  }
+},
+{
+  "model": "vet_clinic.testimonial",
+  "pk": 13,
+  "fields": {
+    "name": "Busya",
+    "slug": "busya",
+    "response": "When Mummy traveled abroad, she couldn't take me with her. So, she called Best.Pet, and Alina came to care for me for 2 weeks. I really liked Alina; we had so much fun and enjoyed long walks.",
+    "publish_date": "2024-01-12T17:48:05.016Z",
+    "is_published": false
+  }
+},
+{
+  "model": "vet_clinic.testimonial",
+  "pk": 14,
+  "fields": {
+    "name": "Busik",
+    "slug": "busik",
+    "response": "I have to take medications regularly. When my parents decided to go on a vacation, they were worried about my feeding. They called a pet sitter Mary, and we liked each other so much!I have to take medications regularly. When my parents decided to go on a vacation, they were worried about my feeding. They called a pet sitter Mary, and we liked each other so much!",
+    "publish_date": "2024-01-12T17:48:42.462Z",
+    "is_published": false
+  }
+},
+{
+  "model": "vet_clinic.testimonial",
+  "pk": 15,
+  "fields": {
+    "name": "Barsik",
+    "slug": "barsik",
+    "response": "When Mummy traveled abroad, she couldn't take me with her. So, she called Best.Pet, and Alina came to care for me for 2 weeks. I really liked Alina; we had so much fun and enjoyed long walks.When Mummy traveled abroad, she couldn't take me with her. So, she called Best.Pet, and Alina came to care for me for 2 weeks. I really liked Alina; we had so much fun and enjoyed long walks.When Mummy traveled abroad, she couldn't take me with her. So, she called Best.Pet, and Alina came to care for me for",
+    "publish_date": "2024-01-12T17:49:29.237Z",
+    "is_published": false
+  }
+},
+{
+  "model": "vet_clinic.testimonial",
+  "pk": 16,
+  "fields": {
+    "name": "Bobko",
+    "slug": "bobko",
+    "response": "My parents were worried about my health as I didn't want to eat at all. A vet at Best.Pet helped them a lot, explained the peculiarities of parrots feeding, and offered a special meal plan. Yummy!My parents were worried about my health as I didn't want to eat at all. A vet at Best.Pet helped them a lot, explained the peculiarities of parrots feeding, and offered a special meal plan. Yummy!My parents were worried about my health as I didn't want to eat at all. A vet at Best.Pet helped them a lot,",
+    "publish_date": "2024-01-12T17:50:06.402Z",
+    "is_published": false
+  }
+},
+{
+  "model": "vet_clinic.testimonial",
+  "pk": 17,
+  "fields": {
+    "name": "Topic",
+    "slug": "topic",
+    "response": "My parents were worried about my health as I didn't want to eat at all. A vet at Best.Pet helped them a lot, explained the peculiarities of parrots feeding, and offered a special meal plan. Yummy!",
+    "publish_date": "2024-01-12T17:50:35.404Z",
+    "is_published": false
+  }
+},
+{
+  "model": "vet_clinic.testimonial",
+  "pk": 18,
+  "fields": {
+    "name": "busika",
+    "slug": "busika",
+    "response": "test response for logs",
+    "publish_date": "2024-02-08T15:28:41.767Z",
+    "is_published": false
+  }
+},
+{
+  "model": "vet_clinic.comment",
+  "pk": 9,
+  "fields": {
+    "name": 12,
+    "post": 2,
+    "comm_content": "test loggs",
+    "created": "2024-02-08T15:28:06.561Z",
+    "updated": "2024-02-08T15:28:06.561Z",
+    "active": true
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 11,
+  "fields": {
+    "user": 13,
+    "date_of_birth": null,
+    "photo": "",
+    "send_mail": false
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 12,
+  "fields": {
+    "user": 12,
+    "date_of_birth": null,
+    "photo": "accounts/2024/02/01/photo_5298946761236272982_x.jpg",
+    "send_mail": false
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 13,
+  "fields": {
+    "user": 14,
+    "date_of_birth": null,
+    "photo": "",
+    "send_mail": false
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 14,
+  "fields": {
+    "user": 15,
+    "date_of_birth": null,
+    "photo": "",
+    "send_mail": false
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 15,
+  "fields": {
+    "user": 16,
+    "date_of_birth": "2024-02-15",
+    "photo": "",
+    "send_mail": false
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 16,
+  "fields": {
+    "user": 17,
+    "date_of_birth": null,
+    "photo": "",
+    "send_mail": false
+  }
+},
+{
+  "model": "accounts.staffprofile",
+  "pk": 6,
+  "fields": {
+    "user": 12,
+    "position": "weq",
+    "description": "asd"
+  }
+},
+{
+  "model": "accounts.staffprofile",
+  "pk": 7,
+  "fields": {
+    "user": 15,
+    "position": null,
+    "description": null
+  }
+},
+{
+  "model": "accounts.staffprofile",
+  "pk": 8,
+  "fields": {
+    "user": 16,
+    "position": null,
+    "description": null
+  }
+},
+{
+  "model": "accounts.staffprofile",
+  "pk": 9,
+  "fields": {
+    "user": 17,
+    "position": null,
+    "description": null
+  }
+},
+{
+  "model": "accounts.staffprofile",
+  "pk": 10,
+  "fields": {
+    "user": 14,
+    "position": "Pet Sitter",
+    "description": "Alina provides professional pet sitting and dog walking services. She has been working in Best.Pet for 10 years already. She loves animals, and this feeling is mutual. Alina is attentive and looks after all kinds of pets, especially dogs and cats."
+  }
+},
+{
+  "model": "pet_care_scheduler.schedule",
+  "pk": 6,
+  "fields": {
+    "name": 12,
+    "phone_number": "+380989252437",
+    "pet_info": "fgsdfgsd",
+    "service": 1,
+    "order_date": "2024-02-01T15:42:09.175Z",
+    "date_for_visit": "2024-02-08",
+    "status": "CNF"
+  }
+},
+{
+  "model": "pet_care_scheduler.schedule",
+  "pk": 7,
+  "fields": {
+    "name": 12,
+    "phone_number": "+380989252437",
+    "pet_info": "qweqwe",
+    "service": 1,
+    "order_date": "2024-02-02T13:41:00.914Z",
+    "date_for_visit": "2024-02-03",
+    "status": "DLY"
+  }
+},
+{
+  "model": "pet_care_scheduler.schedule",
+  "pk": 8,
+  "fields": {
+    "name": 12,
+    "phone_number": "+380676832237",
+    "pet_info": "fddg",
+    "service": 1,
+    "order_date": "2024-02-02T13:41:09.355Z",
+    "date_for_visit": "2024-02-12",
+    "status": "CNF"
+  }
+},
+{
+  "model": "pet_care_scheduler.schedule",
+  "pk": 9,
+  "fields": {
+    "name": 12,
+    "phone_number": "+380989252437",
+    "pet_info": "sdfsdf",
+    "service": 5,
+    "order_date": "2024-02-02T13:41:17.028Z",
+    "date_for_visit": "2024-02-20",
+    "status": "CMP"
+  }
+},
+{
+  "model": "pet_care_scheduler.schedule",
+  "pk": 10,
+  "fields": {
+    "name": 12,
+    "phone_number": "+380676832237",
+    "pet_info": "sdfsd",
+    "service": 3,
+    "order_date": "2024-02-02T13:41:27.016Z",
+    "date_for_visit": "2024-02-13",
+    "status": "DLY"
+  }
+},
+{
+  "model": "pet_care_scheduler.schedule",
+  "pk": 11,
+  "fields": {
+    "name": 12,
+    "phone_number": "+380989252437",
+    "pet_info": "sdfsdf",
+    "service": 3,
+    "order_date": "2024-02-02T13:41:45.910Z",
+    "date_for_visit": "2024-02-21",
+    "status": "CNF"
+  }
+},
+{
+  "model": "pet_care_scheduler.schedule",
+  "pk": 12,
+  "fields": {
+    "name": 12,
+    "phone_number": "+380676832237",
+    "pet_info": "qweqwe",
+    "service": 2,
+    "order_date": "2024-02-02T13:41:55.223Z",
+    "date_for_visit": "2024-02-23",
+    "status": "CMP"
+  }
+},
+{
+  "model": "pet_care_scheduler.schedule",
+  "pk": 13,
+  "fields": {
+    "name": 12,
+    "phone_number": "+380989252437",
+    "pet_info": "asdsaasd",
+    "service": 2,
+    "order_date": "2024-02-02T13:42:05.230Z",
+    "date_for_visit": "2024-02-14",
+    "status": "DLY"
+  }
+},
+{
+  "model": "pet_care_scheduler.schedule",
+  "pk": 14,
+  "fields": {
+    "name": 12,
+    "phone_number": "+380676832237",
+    "pet_info": "dsfsdf",
+    "service": 4,
+    "order_date": "2024-02-02T13:42:17.315Z",
+    "date_for_visit": "2024-02-27",
+    "status": "CMP"
+  }
+},
+{
+  "model": "pet_care_scheduler.schedule",
+  "pk": 15,
+  "fields": {
+    "name": 12,
+    "phone_number": "+380989252437",
+    "pet_info": "fsdfsd",
+    "service": 4,
+    "order_date": "2024-02-02T13:42:26.335Z",
+    "date_for_visit": "2024-02-22",
+    "status": "DLY"
+  }
+},
+{
+  "model": "pet_care_scheduler.schedule",
+  "pk": 16,
+  "fields": {
+    "name": 14,
+    "phone_number": "+380676832237",
+    "pet_info": "asdas",
+    "service": 1,
+    "order_date": "2024-02-02T21:18:09.320Z",
+    "date_for_visit": "2024-02-09",
+    "status": "CMP"
+  }
+},
+{
+  "model": "pet_care_scheduler.schedule",
+  "pk": 17,
+  "fields": {
+    "name": 14,
+    "phone_number": "+380989252437",
+    "pet_info": "test for log",
+    "service": 1,
+    "order_date": "2024-02-08T13:22:19.217Z",
+    "date_for_visit": "2024-02-19",
+    "status": "DLY"
+  }
+},
+{
+  "model": "pet_care_scheduler.schedule",
+  "pk": 18,
+  "fields": {
+    "name": 14,
+    "phone_number": "+380989252437",
+    "pet_info": "test for log",
+    "service": 1,
+    "order_date": "2024-02-08T13:23:14.909Z",
+    "date_for_visit": "2024-02-20",
+    "status": "DLY"
+  }
+},
+{
+  "model": "pet_care_scheduler.schedule",
+  "pk": 19,
+  "fields": {
+    "name": 14,
+    "phone_number": "+380989252437",
+    "pet_info": "test 2 for log",
+    "service": 4,
+    "order_date": "2024-02-08T13:28:29.575Z",
+    "date_for_visit": "2024-02-20",
+    "status": "CMP"
+  }
+},
+{
+  "model": "pet_care_scheduler.schedule",
+  "pk": 20,
+  "fields": {
+    "name": 12,
+    "phone_number": "+380989252437",
+    "pet_info": "test 3 for log",
+    "service": 3,
+    "order_date": "2024-02-08T15:10:55.709Z",
+    "date_for_visit": "2024-02-15",
+    "status": "DLY"
+  }
+},
+{
+  "model": "pet_care_scheduler.schedule",
+  "pk": 21,
+  "fields": {
+    "name": 12,
+    "phone_number": "+380676832237",
+    "pet_info": "test 4 for log",
+    "service": 5,
+    "order_date": "2024-02-08T15:11:36.046Z",
+    "date_for_visit": "2024-02-13",
+    "status": "CNF"
+  }
+},
+{
+  "model": "pet_care_scheduler.schedule",
+  "pk": 22,
+  "fields": {
+    "name": 12,
+    "phone_number": "+380676832237",
+    "pet_info": "test 5 for log",
+    "service": 2,
+    "order_date": "2024-02-08T15:27:27.140Z",
+    "date_for_visit": "2024-02-20",
+    "status": "CNF"
+  }
+}
+]
