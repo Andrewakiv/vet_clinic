@@ -12,6 +12,8 @@ from django.urls import reverse_lazy
 from accounts.forms import UserRegistrationForm, UserChangePasswordForm, UserEditForm, ProfileEditForm, \
     StaffProfileEditForm
 from accounts.models import Profile, StaffProfile
+from actions.models import Actions
+from actions.utils import create_action
 
 logger = logging.getLogger('accounts')
 
@@ -52,6 +54,7 @@ def register(request):
             new_user.save()
             Profile.objects.create(user=new_user)
             StaffProfile.objects.create(user=new_user)
+            create_action(new_user, 'has created an account')
             logger.info(f'User {form.cleaned_data["username"]} has registered.')
             return render(request, 'accounts/register_done.html', {'new_user': new_user})
     else:
@@ -107,8 +110,11 @@ def edit(request):
 
 def profile_to_view(request, user_username):
     user_to_view = get_object_or_404(User, username=user_username)
+    actions = Actions.objects.filter(user=request.user)
+
     data = {
         'user_to_view': user_to_view,
+        'actions': actions
     }
 
     return render(request, 'accounts/profile.html', context=data)

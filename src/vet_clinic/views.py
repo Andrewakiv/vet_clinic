@@ -3,6 +3,7 @@ import logging
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
@@ -12,6 +13,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import ModelFormMixin
 
 from accounts.models import StaffProfile
+from actions.utils import create_action
 from pet_care_scheduler.forms import ScheduleForm
 from .forms import TestimonialAddForm, OrderForm, CommentForm
 from .models import Service, Post, Category, Testimonial, Order
@@ -108,6 +110,7 @@ class BlogDetailView(DataMixin, ModelFormMixin, DetailView):
             return redirect('vet_clinic:blog_detail', blog_slug=self.kwargs[self.slug_url_kwarg])
 
 
+@login_required
 @require_POST
 def post_like(request):
     post_id = request.POST.get('id')
@@ -118,6 +121,7 @@ def post_like(request):
             post = Post.objects.get(id=post_id)
             if action == 'like':
                 post.users_like.add(request.user)
+                create_action(request.user, 'likes', post)
                 logger.info(f'{request.user.username} has liked a post')
             else:
                 post.users_like.remove(request.user)
