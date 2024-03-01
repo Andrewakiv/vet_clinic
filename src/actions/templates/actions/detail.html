@@ -1,6 +1,6 @@
 {% with user=action.user profile=action.user.profile %}
-<div class="action">
-    <div class="info">
+<div class="card">
+    <div class="card-body">
         <p>
             <span class="date">{{ action.created|timesince }} ago</span>
             <br/>
@@ -9,9 +9,9 @@
             </a>
             {{ action.verb }}
             {% if action.target %}
-                {% with target=action.target %}
-                <a href="{{ target.get_absolute_url }}">{{ target }}</a>
-                {% endwith %}
+            {% with target=action.target %}
+            <a href="{{ target.get_absolute_url }}">{{ target }}</a>
+            {% endwith %}
             {% endif %}
         </p>
     </div>

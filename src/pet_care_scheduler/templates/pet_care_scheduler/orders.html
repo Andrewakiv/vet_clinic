@@ -45,14 +45,14 @@
 {% for order in orders %}
 <div class="card {% if order.status == 'CMP' %}border-danger{% elif order.status == 'CNF' %}border-success{% elif order.status == 'DLY' %}border-warning{% else %}border-primary{% endif %} border-3 container mb-3">
     <div class="card-body my-2">
-        <h3 class="card-title">service: {{ order.service }}</h3>
+        <h3 class="card-title">service: <a href="{{ order.get_absolute_url }}">{{ order.service }}</a></h3>
         <p class="card-text">nickname: {{ order.name }}</p>
         <p class="card-text">First and last name: {{ order.name.first_name }} {{ order.name.last_name }}</p>
         <p class="card-text">Phone Number: {{ order.phone_number }}</p>
         <p class="card-text">About Pet: {{ order.pet_info }}</p>
         <p class="card-text">Order date: {{ order.order_date }}</p>
         <p class="card-text">Client date for visiting: {{ order.date_for_visit }}</p>
-        <a href="{{ order.get_absolute_url }}" class="btn btn-primary">Details</a>
+        <a href="{% url 'schedule:order_edit' order.id %}" class="btn btn-primary">Details</a>
     </div>
 </div>
 {% endfor %}

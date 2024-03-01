@@ -29,9 +29,9 @@ class ShowOrders(PermissionRequiredMixin, ListView):
         return context
 
 
-class OrderDetail(PermissionRequiredMixin, DetailView):
+class OrderEdit(PermissionRequiredMixin, DetailView):
     model = Schedule
-    template_name = 'pet_care_scheduler/order-detail.html'
+    template_name = 'pet_care_scheduler/order-edit.html'
     context_object_name = 'order'
     slug_url_kwarg = 'order_id'
     permission_required = 'pet_care_scheduler.view_schedule'
@@ -40,8 +40,18 @@ class OrderDetail(PermissionRequiredMixin, DetailView):
         return get_object_or_404(Schedule, id=self.kwargs[self.slug_url_kwarg])
 
 
-class CompleteOrder(View):
+class OrderDetail(DetailView):
+    model = Schedule
     template_name = 'pet_care_scheduler/order-detail.html'
+    context_object_name = 'order'
+    slug_url_kwarg = 'order_id'
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Schedule, id=self.kwargs[self.slug_url_kwarg])
+
+
+class CompleteOrder(View):
+    template_name = 'pet_care_scheduler/order-edit.html'
 
     def get(self, request, order_id):
         order = get_object_or_404(Schedule, id=order_id)
@@ -54,11 +64,11 @@ class CompleteOrder(View):
         order.save()
         logger.info(f'Staff member {request.user.username} has completed an order {order.service.title}.')
         messages.success(request, "Order has been completed")
-        return redirect('schedule:order_detail', order_id=order_id)
+        return redirect('schedule:order_edit', order_id=order_id)
 
 
 class ConfirmOrder(View):
-    template_name = 'pet_care_scheduler/order-detail.html'
+    template_name = 'pet_care_scheduler/order-edit.html'
 
     def get(self, request, order_id):
         order = get_object_or_404(Schedule, id=order_id)
@@ -71,11 +81,11 @@ class ConfirmOrder(View):
         order.save()
         logger.info(f'Staff member {request.user.username} has confirmed an order {order.service.title}.')
         messages.success(request, "Order has been confirmed")
-        return redirect('schedule:order_detail', order_id=order_id)
+        return redirect('schedule:order_edit', order_id=order_id)
 
 
 class DelayOrder(View):
-    template_name = 'pet_care_scheduler/order-detail.html'
+    template_name = 'pet_care_scheduler/order-edit.html'
 
     def get(self, request, order_id):
         order = get_object_or_404(Schedule, id=order_id)
@@ -97,7 +107,7 @@ class PostponeOrder(UpdateView):
     order_id = 'order_id'
 
     def get_success_url(self):
-        return reverse_lazy('schedule:order_detail', kwargs={'order_id': self.kwargs[self.order_id]})
+        return reverse_lazy('schedule:order_edit', kwargs={'order_id': self.kwargs[self.order_id]})
 
     def get_object(self, queryset=None):
         return get_object_or_404(Schedule, id=self.kwargs[self.order_id])

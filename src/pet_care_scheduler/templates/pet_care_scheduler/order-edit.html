@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="mx-auto">
+            {% if messages %}
+            {% for message in messages %}
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% else %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="card container mb-3">
+    <div class="card-header">
+        <ul class="nav nav-pills card-header-pills">
+            <li class="nav-item mx-2">
+                <form action="{% url 'schedule:complete_order' order.id %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-outline-danger" type="submit">Complete</button>
+                </form>
+            </li>
+            <li class="nav-item mx-2">
+                <form action="{% url 'schedule:confirm_order' order.id %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-success" type="submit">Confirm</button>
+                </form>
+            </li>
+            <li class="nav-item mx-2">
+                <form action="{% url 'schedule:delay_order' order.id %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-warning" type="submit">Delay</button>
+                </form>
+            </li>
+            <li class="nav-item mx-1">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="card-body my-2">
+        <h3 class="card-title">service: {{ order.service }}</h3>
+        <p class="card-text">nickname: {{ order.name }}</p>
+        <p class="card-text">First and last name: {{ order.name.first_name }} {{ order.name.last_name }}</p>
+        <p class="card-text">Phone Number: {{ order.phone_number }}</p>
+        <p class="card-text">About Pet: {{ order.pet_info }}</p>
+        <p class="card-text">Order date: {{ order.order_date }}</p>
+        <p class="card-text">Client date for visiting: {{ order.date_for_visit }}</p>
+        <a href="{% url 'schedule:show_orders' %}" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+
+{% endblock %}
