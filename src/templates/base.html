@@ -32,23 +32,47 @@
                             {% endfor %}
                         </ul>
                     </nav>
-                    <div class="user-auth">
-                        {% if user.is_authenticated %}
-                        <div class="user-auth__greeting">
-                            Hello <a href="{% url 'accounts:profile_to_view' user_username=user.username %}">{{ user.username }}</a>,
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <div class="container-fluid">
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    {% if user.is_authenticated %}
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page"
+                                           href="{% url 'accounts:profile_to_view' user_username=user.username %}">
+                                            {{ user.username }}
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'accounts:edit' %}">
+                                            Edit
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                            <form method="post" action="{% url 'accounts:logout' %}">
+                                                {% csrf_token %}
+                                                <button type="submit">Logout</button>
+                                            </form>
+                                        </a>
+                                    </li>
+                                    {% else %}
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page"
+                                           href="{% url 'accounts:login' %}">
+                                            Login
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'accounts:register' %}">
+                                            Register
+                                        </a>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
                         </div>
-                        <form id="logout-form" method="post" action="{% url 'accounts:logout' %}">
-                            {% csrf_token %}
-                            <a class="custom-button__login" href="{% url 'accounts:edit' %}">Edit</a>
-                            <button class="custom-button" type="submit">Logout</button>
-                        </form>
-                        {% else %}
-                        <div class="user-auth__login-link">
-                            <a class="custom-button__login" href="{% url 'accounts:login' %}">Login</a>
-                            <a class="custom-button__register" href="{% url 'accounts:register' %}">Register</a>
-                        </div>
-                        {% endif %}
-                    </div>
+                    </nav>
                     <div class="header__top-icons">
                         <a href="S" class="header__menu-btn">
                             <span class="header__navicon"></span>

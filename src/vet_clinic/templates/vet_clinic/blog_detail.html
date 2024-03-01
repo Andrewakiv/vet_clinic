@@ -27,6 +27,7 @@
                         <span class="total">{{ total_likes }}</span>
                         like{{ total_likes|pluralize }}
                     </span>
+                    {% if user.is_authenticated %}
                     <a href="#" data-id="{{ post.id }}"
                        data-action="{% if request.user in users_like %}un{% endif %}like"
                        class="like button">
@@ -36,6 +37,7 @@
                         Unlike
                         {% endif %}
                     </a>
+                    {% endif %}
                 </div>
                 {% endwith %}
             </div>
@@ -45,6 +47,7 @@
 
             <div class="contacts-help-section__form-container ">
                 <div class="contacts-help-section__wrapper">
+                    {% if user.is_authenticated %}
                     <form class="contacts-form" action="#" method="post" enctype="multipart/form-data">
                         <div class="responses__form-title">
                             <h3>Please, leave comment using the following form</h3>
@@ -60,6 +63,11 @@
                             <button class="contacts-form__button" type="submit">Send</button>
                         </div>
                     </form>
+                    {% else %}
+                    <div class="responses__form-title">
+                        <h3>Please, login to leave a comment</h3>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
 

@@ -32,6 +32,7 @@
 
     <div class="contacts-help-section__form-container ">
         <div class="contacts-help-section__wrapper">
+            {% if user.is_authenticated %}
             <form class="contacts-form" action="#" method="post" enctype="multipart/form-data">
                 <div class="responses__form-title">
                     <h3>Please, make order using the following form</h3>
@@ -47,6 +48,11 @@
                     <button class="contacts-form__button" type="submit">Order</button>
                 </div>
             </form>
+            {% else %}
+            <div class="responses__form-title">
+                <h3>Please, login to make in order</h3>
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>
