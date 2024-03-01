@@ -7,7 +7,8 @@
 
 
 <div class="d-flex flex-row bd-highlight mb-3 container">
-    <div class="card" style="width: 18rem;">
+    <div class="card"
+         style="width: 18rem; color: var(--link-text-color); background-color: var(--button-background-light-color)">
         {% if user_to_view.profile.photo %}
         <img src="{{ user_to_view.profile.photo.url }}" class="card-img-top" alt="...">
         {% endif %}
@@ -19,26 +20,37 @@
     </div>
     {% if request.user.username == user_to_view.username %}
     <ul class="list-group mx-3 container">
-        <li class="list-group-item">
+        <li class="list-group-item"
+            style="background-color: var(--button-background-light-color)">
             {% if perms.pet_care_scheduler.view_schedule %}
-            <a href="{% url 'schedule:show_orders' %}">Orders</a>
+            <a href="{% url 'schedule:show_orders' %}"
+               style="text-decoration: none; border-bottom: 1px solid var(--link-text-color);color: var(--link-text-color);">
+                Orders
+            </a>
             {% endif %}
         </li>
-        <li class="list-group-item">
-            <a href="{% url 'schedule:show_user_orders' user_username=request.user.username %}">My Orders</a>
+        <li class="list-group-item"
+            style="background-color: var(--button-background-light-color)">
+            <a href="{% url 'schedule:show_user_orders' user_username=request.user.username %}"
+               style="text-decoration: none; border-bottom: 1px solid var(--link-text-color);color: var(--link-text-color);">
+                My Orders
+            </a>
         </li>
-        <li class="list-group-item">
-            <a href="{% url 'accounts:password_change' %}">Change password</a>
+        <li class="list-group-item"
+            style="background-color: var(--button-background-light-color)">
+            <a href="{% url 'accounts:password_change' %}" style="text-decoration: none; border-bottom: 1px solid var(--link-text-color);color: var(--link-text-color);">
+                Change password
+            </a>
         </li>
     </ul>
     {% endif %}
 </div>
 <div class="container mx-auto">
-        <h2>What's happening</h2>
-        <div id="action-list">
-            {% for action in actions %}
-            {% include "actions/detail.html" %}
-            {% endfor %}
-        </div>
+    <h2>Your actions</h2>
+    <div id="action-list">
+        {% for action in actions %}
+        {% include "actions/detail.html" %}
+        {% endfor %}
     </div>
+</div>
 {% endblock %}

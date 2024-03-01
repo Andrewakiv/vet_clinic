@@ -1,8 +1,8 @@
 {% with user=action.user profile=action.user.profile %}
 <div class="card">
-    <div class="card-body">
+    <div class="card-body" style="color: var(--title-text-color); background-color: var(--button-background-light-color)">
         <p>
-            <span class="date">{{ action.created|timesince }} ago</span>
+            <span class="date" style="color: var(--paragraph-text-color);">{{ action.created|timesince }} ago</span>
             <br/>
             <a href="{{ user.get_absolute_url }}">
                 {{ user.first_name }}
@@ -10,7 +10,9 @@
             {{ action.verb }}
             {% if action.target %}
             {% with target=action.target %}
-            <a href="{{ target.get_absolute_url }}">{{ target }}</a>
+            <a href="{{ target.get_absolute_url }}" style="text-decoration: none;
+    border-bottom: 1px solid var(--link-text-color);
+    color: var(--link-text-color);">{{ target }}</a>
             {% endwith %}
             {% endif %}
         </p>
