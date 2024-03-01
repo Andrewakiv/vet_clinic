@@ -107,6 +107,7 @@ class BlogDetailView(DataMixin, ModelFormMixin, DetailView):
             new_comment.post = self.get_object()
             new_comment.name = request.user
             new_comment.save()
+            create_action(request.user, 'commented post', new_comment.post)
             logger.info(f'{request.user.username} has commented a post')
             return redirect('vet_clinic:blog_detail', blog_slug=self.kwargs[self.slug_url_kwarg])
 

@@ -122,7 +122,8 @@ class Order(models.Model):
         CONFIRM = 'CNF', 'Confirm'
         DELAY = 'DLY', 'Delay'
 
-    name = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='names', null=True, blank=True)
+    name = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='names', null=True,
+                             blank=True)
     phone_number = PhoneNumberField()
     pet_info = models.CharField(max_length=50)
     service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='service', null=True)
@@ -154,7 +155,7 @@ class Comment(models.Model):
     active = models.BooleanField(default=True)
 
     class Meta:
-        ordering = ['created']
+        ordering = ['-created']
         indexes = [
             models.Index(fields=['created'])
         ]
