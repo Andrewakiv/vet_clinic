@@ -1,6 +1,6 @@
 from django import forms
 from phonenumber_field.widgets import PhoneNumberPrefixWidget
-from .models import Testimonial, Comment
+from .models import Testimonial
 from django.utils.text import slugify
 
 
@@ -22,13 +22,3 @@ class TestimonialAddForm(forms.ModelForm):
         if commit:
             instance.save()
         return instance
-
-
-class CommentForm(forms.ModelForm):
-    class Meta:
-        model = Comment
-        fields = ['comm_content']
-        widgets = {
-            'comm_content': forms.Textarea(attrs={'cols': 10, 'rows': 1, 'class': 'contacts-form__input-response',
-                                                  'placeholder': "Enter your response"})
-        }

@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'phonenumber_field',
     'pet_care_scheduler.apps.PetCareSchedulerConfig',
-    'actions.apps.ActionsConfig'
+    'actions.apps.ActionsConfig',
+    'blog.apps.BlogConfig'
 ]
 
 MIDDLEWARE = [

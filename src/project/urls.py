@@ -23,7 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('vet_clinic.urls', namespace='vet_clinic')),
     path('accounts/', include('accounts.urls', namespace='accounts')),
-    path('schedule/', include('pet_care_scheduler.urls', namespace='schedule'))
+    path('schedule/', include('pet_care_scheduler.urls', namespace='schedule')),
+    path('blog/', include('blog.urls', namespace='blog'))
 ]
 
 if settings.DEBUG:

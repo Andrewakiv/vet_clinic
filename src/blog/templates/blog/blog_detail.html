@@ -87,7 +87,7 @@
 {% endblock %}
 
 {% block domready %}
-const url = '{% url "vet_clinic:post_like" %}';
+const url = '{% url "blog:post_like" %}';
 var options = {
 method: 'POST',
 headers: {'X-CSRFToken': csrftoken},

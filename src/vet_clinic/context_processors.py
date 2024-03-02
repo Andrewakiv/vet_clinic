@@ -1,7 +1,7 @@
 menu = [
     {'title': "About", 'url_name': 'vet_clinic:about'},
     {'title': "Services", 'url_name': 'vet_clinic:services'},
-    {'title': "Blog", 'url_name': 'vet_clinic:blog'},
+    {'title': "Blog", 'url_name': 'blog:blog'},
     {'title': "Happy Clients", 'url_name': 'vet_clinic:responses'},
     {'title': "Contacts", 'url_name': 'vet_clinic:contacts'},
 ]
@@ -13,7 +13,7 @@ def get_mainmenu(request):
 
 footer_nav = [
     {'title': "Testimonials", 'url_name': 'vet_clinic:responses'},
-    {'title': "Blog", 'url_name': 'vet_clinic:blog'},
+    {'title': "Blog", 'url_name': 'blog:blog'},
 ]
 
 
