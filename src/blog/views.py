@@ -1,3 +1,5 @@
+import logging
+
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
@@ -9,6 +11,9 @@ from actions.utils import create_action
 from vet_clinic.utils import DataMixin
 from .forms import CommentForm
 from .models import Post, Category
+
+
+logger = logging.getLogger('blog')
 
 
 class BlogView(DataMixin, ListView):
@@ -46,7 +51,7 @@ class BlogDetailView(DataMixin, ModelFormMixin, DetailView):
             new_comment.name = request.user
             new_comment.save()
             create_action(request.user, 'commented post', new_comment.post)
-            # logger.info(f'{request.user.username} has commented a post')
+            logger.info(f'{request.user.username} has commented a post')
             return redirect('blog:blog_detail', blog_slug=self.kwargs[self.slug_url_kwarg])
 
 
@@ -62,14 +67,14 @@ def post_like(request):
             if action == 'like':
                 post.users_like.add(request.user)
                 create_action(request.user, 'likes', post)
-                # logger.info(f'{request.user.username} has liked a post')
+                logger.info(f'{request.user.username} has liked a post')
             else:
                 post.users_like.remove(request.user)
-                # logger.info(f'{request.user.username} has disliked a post')
+                logger.info(f'{request.user.username} has disliked a post')
             return JsonResponse({'status': 'ok'})
         except Post.DoesNotExists:
             pass
-            # logger.warning(f'post does not exist')
+            logger.warning(f'post does not exist')
     return JsonResponse({'status': 'error'})
 
 

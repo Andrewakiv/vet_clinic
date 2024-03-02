@@ -1,8 +1,5 @@
 from django.contrib import admin
-from phonenumber_field.widgets import PhoneNumberPrefixWidget
-
 from .models import Service, Testimonial
-from django import forms
 
 
 @admin.register(Service)

@@ -87,6 +87,11 @@ LOGGING = {
             'class': 'logging.FileHandler',
             'filename': 'pet_care_scheduler_info.log',
             'formatter': 'main_formatter'
+        },
+        'blog_file': {
+            'class': 'logging.FileHandler',
+            'filename': 'blog_info.log',
+            'formatter': 'main_formatter'
         }
     },
     'loggers': {
@@ -102,6 +107,11 @@ LOGGING = {
         },
         'pet_care_scheduler': {
             'handlers': ['console', 'pet_care_scheduler_file'],
+            'propagate': True,
+            'level': 'INFO'
+        },
+        'blog': {
+            'handlers': ['console', 'blog_file'],
             'propagate': True,
             'level': 'INFO'
         }
