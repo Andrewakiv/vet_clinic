@@ -32,28 +32,6 @@ class Service(models.Model):
         return reverse("vet_clinic:service_detail", kwargs={"service_slug": self.slug})
 
 
-class Team(models.Model):
-    name = models.CharField(max_length=50)
-    slug = models.SlugField(max_length=50, unique=True, db_index=True)
-    position = models.CharField(max_length=50)
-    description = models.TextField(blank=True)
-    photo = models.ImageField(upload_to='team/%Y/%m/%d/', blank=True, null=True, default=None)
-    publish_date = models.DateTimeField(auto_now_add=True)
-    updated_date = models.DateTimeField(auto_now=True)
-    is_published = models.BooleanField(default=True)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = 'Team'
-        verbose_name_plural = 'Team'
-        ordering = ['-publish_date']
-        indexes = [
-            models.Index(fields=['-publish_date']),
-        ]
-
-
 class Post(models.Model):
     title = models.CharField(max_length=50)
     slug = models.SlugField(max_length=50, unique=True, db_index=True)
@@ -113,37 +91,6 @@ class Testimonial(models.Model):
 
     def __str__(self):
         return self.name
-
-
-class Order(models.Model):
-    class Status(models.TextChoices):
-        DRAFT = 'DRF', 'Draft'
-        COMPLETE = 'CMP', 'Complete'
-        CONFIRM = 'CNF', 'Confirm'
-        DELAY = 'DLY', 'Delay'
-
-    name = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='names', null=True,
-                             blank=True)
-    phone_number = PhoneNumberField()
-    pet_info = models.CharField(max_length=50)
-    service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='service', null=True)
-    order_date = models.DateTimeField(auto_now_add=True)
-    date_for_visit = models.DateField(null=True, blank=True)
-    status = models.CharField(max_length=3, choices=Status.choices, default=Status.DRAFT)
-
-    class Meta:
-        verbose_name = 'Order'
-        verbose_name_plural = 'Orders'
-        ordering = ['-order_date']
-        indexes = [
-            models.Index(fields=['-order_date']),
-        ]
-
-    def get_absolute_url(self):
-        return reverse("vet_clinic:order_detail", kwargs={"order_id": self.id})
-
-    def __str__(self):
-        return f'Order by {self.name}'
 
 
 class Comment(models.Model):

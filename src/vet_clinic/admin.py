@@ -1,7 +1,7 @@
 from django.contrib import admin
 from phonenumber_field.widgets import PhoneNumberPrefixWidget
 
-from .models import Service, Team, Post, Category, Testimonial, Order, Comment
+from .models import Service, Post, Category, Testimonial, Comment
 from django import forms
 
 
@@ -15,15 +15,6 @@ class ServiceAdmin(admin.ModelAdmin):
     search_fields = ['is_published', 'title']
     # list_filter = [PassportFilter, 'is_published', 'category__name']
     # readonly_fields = ['post_photo']
-
-
-@admin.register(Team)
-class TeamAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'position', 'description', 'photo', 'publish_date', 'updated_date', 'is_published']
-    list_display_links = ['id', 'name']
-    prepopulated_fields = {'slug': ('name', )}
-    ordering = ['-publish_date', 'name']
-    search_fields = ['is_published', 'name']
 
 
 @admin.register(Post)
@@ -50,22 +41,6 @@ class ServiceAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name', )}
     ordering = ['-publish_date', 'name']
     search_fields = ['publish_date', 'name']
-
-
-class OrderForm(forms.ModelForm):
-    class Meta:
-        widgets = {
-            'phone_number': PhoneNumberPrefixWidget(),
-        }
-
-
-@admin.register(Order)
-class ServiceAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'phone_number', 'pet_info', 'service', 'order_date', 'date_for_visit']
-    list_display_links = ['id', 'name']
-    ordering = ['-order_date', 'name']
-    search_fields = ['name', 'pet_info']
-    form = OrderForm
 
 
 @admin.register(Comment)

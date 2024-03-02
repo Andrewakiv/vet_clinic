@@ -15,8 +15,8 @@ from django.views.generic.edit import ModelFormMixin
 from accounts.models import StaffProfile
 from actions.utils import create_action
 from pet_care_scheduler.forms import ScheduleForm
-from .forms import TestimonialAddForm, OrderForm, CommentForm
-from .models import Service, Post, Category, Testimonial, Order
+from .forms import TestimonialAddForm, CommentForm
+from .models import Service, Post, Category, Testimonial
 from .utils import DataMixin
 
 
@@ -52,7 +52,7 @@ class ServiceDetailView(DataMixin, ModelFormMixin, DetailView):
     template_name = 'vet_clinic/service_detail.html'
     context_object_name = 'service'
     slug_url_kwarg = 'service_slug'  # from url
-    form_class = OrderForm
+    form_class = ScheduleForm
 
     def get_object(self, queryset=None):
         return get_object_or_404(Service, slug=self.kwargs[self.slug_url_kwarg])
