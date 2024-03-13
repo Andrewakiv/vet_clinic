@@ -24,7 +24,8 @@ urlpatterns = [
     path('', include('vet_clinic.urls', namespace='vet_clinic')),
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('schedule/', include('pet_care_scheduler.urls', namespace='schedule')),
-    path('blog/', include('blog.urls', namespace='blog'))
+    path('blog/', include('blog.urls', namespace='blog')),
+    path('__debug__/', include('debug_toolbar.urls')),
 ]
 
 if settings.DEBUG:
