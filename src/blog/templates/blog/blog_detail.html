@@ -6,7 +6,7 @@
         <section class="vet-consultations">
             <div class="vet-consultations__title container">
                 <h1>{{post.title}}</h1>
-                <!--                <p>Order our services now! <a href="#">+ 1 (234) 567 89 00</a></p>-->
+                <!--<p>Order our services now! <a href="#">+ 1 (234) 567 89 00</a></p>-->
             </div>
         </section>
         <section class="consultations">
@@ -23,6 +23,9 @@
                     <h2>{{post.title}}</h2>
                     <h3>Read about:</h3>
                     <p>{{post.description}}</p>
+                    <span class="count">
+                        {{ total_views }} view{{ total_views|pluralize }}
+                    </span>
                     <span class="count">
                         <span class="total">{{ total_likes }}</span>
                         like{{ total_likes|pluralize }}
