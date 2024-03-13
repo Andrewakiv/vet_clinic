@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a17f9223-e49d-4f12-89b0-614e42e32684" name="Changes" comment="dasda">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +17,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -26,6 +27,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -43,29 +47,33 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "DefaultHtmlFileTemplate": "HTML File",
+    "Python.views.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/andrew/PycharmProjects/vet_clinic/src/vet_clinic/static/vet_clinic/img",
+    "last_opened_file_path": "/home/andrew/task_manager",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/media/accounts" />
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/vet_clinic/static/vet_clinic/img" />
       <recent name="$PROJECT_DIR$/src/vet_clinic/static/vet_clinic/fonts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/vet_clinic/static/vet_clinic/img" />
       <recent name="$PROJECT_DIR$/src/vet_clinic/templates/vet_clinic" />
+      <recent name="$PROJECT_DIR$/src/templates" />
+      <recent name="$PROJECT_DIR$/src/vet_clinic/static/vet_clinic/img" />
       <recent name="$PROJECT_DIR$/src/vet_clinic/templates/includes" />
     </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-50da183f06c8-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13135.95" />
+        <option value="bundled-python-sdk-d68999036c7f-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.14475.56" />
       </set>
     </attachedChunks>
   </component>
