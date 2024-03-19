@@ -68,7 +68,7 @@ class ServiceDetailView(DataMixin, ModelFormMixin, DetailView):
             new_order.service = self.get_object()
             new_order.name = request.user
             new_order.save()
-            # create_action(request.user, 'makes order', new_order)
+            create_action(request.user, 'makes order', new_order)
             logger.info(f'{request.user.username} has made an order')
             return redirect('vet_clinic:services')
 
