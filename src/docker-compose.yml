@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  postgres_vet:
+    image: postgres:15
+    container_name: postgres_vet
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+
+  vet_clinic:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vet_clinic
+    depends_on:
+      - postgres_vet
+    volumes:
+      - static_volume:/app/static
+      - media_volume:/app/media
+    env_file:
+      - .env
+
+  nginx_vet_clinic:
+    build:
+      dockerfile: ./Dockerfile
+      context: ./docker/nginx
+    container_name: nginx_vet_clinic
+    volumes:
+      - static_volume:/app/static
+      - media_volume:/app/media
+    depends_on:
+      - vet_clinic
+    ports:
+      - "80:80"
+
+volumes:
+  static_volume:
+  media_volume:
+  postgres_data:
