@@ -1,5 +1,7 @@
 import logging
 
+import redis
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
@@ -14,6 +16,8 @@ from .models import Post, Category
 
 
 logger = logging.getLogger('blog')
+
+r = redis.Redis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=settings.REDIS_DB)
 
 
 class BlogView(DataMixin, ListView):
@@ -40,6 +44,10 @@ class BlogDetailView(DataMixin, ModelFormMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        try:
+            context['total_views'] = r.incr(f'post:{self.get_object().id}:views')
+        except:
+            logger.info('redis db is not loaded')
         context['comments'] = self.get_object().comment_post.filter(active=True)  # check related name
         return self.get_mixin_context(context, title=context['post'].title)
 

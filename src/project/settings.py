@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 INTERNAL_IPS = [
  '127.0.0.1',
@@ -156,12 +156,14 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'vet_clinic',
-        'USER': 'andrewakiv',
-        'PASSWORD': config("PASSWORD"),
-        'PORT': '5432'
+        'NAME': config("POSTGRES_DB"),
+        'USER': config("POSTGRES_USER"),
+        'PASSWORD': config("POSTGRES_PASSWORD"),
+        'PORT': config("POSTGRES_PORT"),
+        'HOST': config("POSTGRES_HOST"),
     }
 }
+
 
 
 # Password validation
@@ -194,11 +196,14 @@ USE_I18N = True
 
 USE_TZ = True
 
+AUTH_USER_MODEL = 'auth.User'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = '/media/'
@@ -228,4 +233,11 @@ AUTHENTICATION_BACKENDS = [
     'accounts.authentication.EmailAuthBackend',
 ]
 
+REDIS_HOST = config('REDIS_HOST')
+REDIS_PORT = config('REDIS_PORT')
+REDIS_DB = config('REDIS_DB')
 
+# try:
+#     from .local_settings import *
+# except ImportError:
+#     pass
